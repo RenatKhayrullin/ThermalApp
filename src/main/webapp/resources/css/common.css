@@ -1,0 +1,11 @@
+body{
+    background-color: #eee;
+}
+table{
+    vertical-align: top;
+}
+th {
+    background-color: #9acfea;
+    color: white;
+}
+tr:nth-child(even) {background-color: #9acfea}

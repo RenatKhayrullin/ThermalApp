@@ -1,0 +1,80 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- Настройки фабрики сессий Стардога //библиотека stardog-spring
+    <bean name="ontDataSource" class="com.complexible.stardog.ext.spring.DataSourceFactoryBean">
+        <property name="to" value="TermalOnt"/>
+        <property name="username" value="admin"/>
+        <property name="password" value="admin"/>
+        <property name="reasoningType" value="true" />
+        <property name="url" value="snarl://localhost:5820/"/>
+    </bean>
+
+    <bean name="snarlTemplate" class="com.complexible.stardog.ext.spring.SnarlTemplate">
+        <property name="dataSource" ref="ontDataSource"/>
+    </bean>
+
+    <bean name="importer" class="com.complexible.stardog.ext.spring.DataImporter">
+        <property name="snarlTemplate" ref="snarlTemplate"/>
+        <property name="format" value="RDFXML"/>
+        <property name="inputFiles">
+            <list>
+                <value>classpath:termal_ont.rdf</value>
+            </list>
+        </property>
+    </bean>
+    -->
+
+    <!-- подлкючение к базе данных -->
+    <!-- драйвер для подключения к серверу баз данных -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${hibernate.connection.driver_class}"/>
+        <property name="url" value="${hibernate.connection.url}"/>
+        <property name="username" value="${hibernate.connection.username}"/>
+        <property name="password" value="${hibernate.connection.password}"/>
+    </bean>
+
+    <!-- Менеджер транзакций // библиотека spring-tx-->
+    <bean id="transactionManager"
+          class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <!-- Настраивает управление транзакциями с помощью аннотации @Transactional -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!-- Настройки entityManager Хибернейта //библиотека spring-orm-->
+    <bean id = "entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- поставщик данных -->
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+        </property>
+        <!-- где лежат объекты-маппинги (сущности БД) -->
+        <property name="packagesToScan" value="com.app.mvc.dataBaseDomainModel"/>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.connection.driver_class">${hibernate.connection.driver_class}</prop>
+                <prop key="hibernate.connection.url">${hibernate.connection.url}</prop>
+                <prop key="hibernate.connection.username">${hibernate.connection.username}</prop>
+                <prop key="hibernate.connection.password">${hibernate.connection.password}</prop>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+                <prop key="hibernate.default_schema">ont</prop>
+                <prop key="hibernate.current_session_context_class">${hibernate.current_session_context_class}</prop>
+                <prop key="hibernate.connection.release_mode">${hibernate.connection.release_mode}</prop>
+                <!--<prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.use_sql_comments">true</prop>-->
+            </props>
+        </property>
+
+    </bean>
+
+</beans>
