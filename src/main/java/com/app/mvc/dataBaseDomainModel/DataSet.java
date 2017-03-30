@@ -5,7 +5,6 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity

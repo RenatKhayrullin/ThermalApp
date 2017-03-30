@@ -43,6 +43,28 @@
                         </thead>
                     </table>
                 </td>
+                <td>
+                    <table id="statesTab" class="display cell-border row-border dt-middle" cellspacing="0" width="100%" style="overflow-x:auto">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>phaseName</th>
+                            <th>phaseType</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </td>
+                <td>
+                    <table id="qtyTab" class="display cell-border row-border dt-middle" cellspacing="0" width="100%" style="overflow-x:auto">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>quantityName</th>
+                            <th>quantityDesignation</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </td>
             </tr>
             <tr>
                 <td colspan="3" class="text-left">
@@ -74,46 +96,57 @@
                 'searchable': false,
                 'orderable': false,
                 'className': 'dt-body-center',
-                'render': function (data, type, full, meta){
-                    return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+                'render': function (data){
+                    return '<input type="checkbox" name="substanceid" value="' + $('<div/>').text(data).html() + '">';
                 }
             }],
         });
 
-        // Handle form submission event
-        $('#metaData').on('submit', function(e){
-            var frm = $('#metaData');
-            var form = this;
-            var data = {};
-
-            // Iterate over all checkboxes in the table
-            chemtable.$('input[type="checkbox"]').each(function(){
-                // If checkbox exists in DOM
-                if($.contains(document, this)){
-                    // If checkbox is checked
-                    if(this.checked){
-                        data["substanceid"] = parseInt(this.value),
-                        data["stateid"] = parseInt(this.value),
-                        data["propertyid"] = parseInt(this.value)
-                    }
+        var statedata =eval('${statesList}');
+        var statetable = $('#statesTab').DataTable( {
+            'aaData':           statedata,
+            'paging':           false,
+            'scrollCollapse':   true,
+            'scrollY':          '50vh',
+            'info':             false,
+            'aoColumns': [
+                { 'mData': 'id'},
+                { 'mData': 'phaseName' },
+                { 'mData': 'phaseType' }
+            ],
+            'columnDefs': [{
+                'targets': 0,
+                'searchable': false,
+                'orderable': false,
+                'className': 'dt-body-center',
+                'render': function (data){
+                    return '<input type="checkbox" name="stateid" value="' + $('<div/>').text(data).html() + '">';
                 }
-            });
+            }],
+        });
 
 
-            console.log(data);
-            console.log("URL", frm.attr('action'));
-            console.log("METHOD", frm.attr('method'));
-
-            $.ajax({
-                url: frm.attr('action'),
-                type: frm.attr('method'),
-                contentType : "application/json",
-                dataType: "json",
-                data: JSON.stringify(data),
-                success :function(data) {
-                    console.log("SUCCESS: ", data);
+        var qtydata =eval('${quantitiesList}');
+        var qtytable = $('#qtyTab').DataTable( {
+            'aaData':           qtydata,
+            'paging':           false,
+            'scrollCollapse':   true,
+            'scrollY':          '50vh',
+            'info':             false,
+            'aoColumns': [
+                { 'mData': 'id'},
+                { 'mData': 'quantityName' },
+                { 'mData': 'quantityDesignation' }
+            ],
+            'columnDefs': [{
+                'targets': 0,
+                'searchable': false,
+                'orderable': false,
+                'className': 'dt-body-center',
+                'render': function (data){
+                    return '<input type="checkbox" name="propertyid" value="' + $('<div/>').text(data).html() + '">';
                 }
-            });
+            }],
         });
     });
 

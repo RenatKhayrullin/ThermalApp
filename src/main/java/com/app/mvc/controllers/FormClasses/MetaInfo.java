@@ -1,35 +1,37 @@
 package com.app.mvc.controllers.FormClasses;
 
 
+import java.util.List;
+
 public class MetaInfo {
 
-    private Integer substanceid;
-    private Integer stateid;
-    private Integer propertyid;
+    private List<Long> substanceid;
+    private List<Long> stateid;
+    private List<Long> propertyid;
 
     public MetaInfo() {}
 
-    public Integer getSubstanceid() {
+    public List<Long> getSubstanceid() {
         return substanceid;
     }
 
-    public void setSubstanceid(Integer substanceid) {
+    public void setSubstanceid(List<Long> substanceid) {
         this.substanceid = substanceid;
     }
 
-    public Integer getStateid() {
+    public List<Long> getStateid() {
         return stateid;
     }
 
-    public void setStateid(Integer stateid) {
+    public void setStateid(List<Long> stateid) {
         this.stateid = stateid;
     }
 
-    public Integer getPropertyid() {
+    public List<Long> getPropertyid() {
         return propertyid;
     }
 
-    public void setPropertyid(Integer propertyid) {
+    public void setPropertyid(List<Long> propertyid) {
         this.propertyid = propertyid;
     }
 

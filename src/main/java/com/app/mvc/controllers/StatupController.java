@@ -34,7 +34,7 @@ public class StatupController {
         String statesJson = startupPageServices.getDataAsString(states);
         String quantitiesJson = startupPageServices.getDataAsString(quantities);
 
-        model.addAttribute("metaData", new MetaInfo());
+        model.addAttribute("dataMetaInfo", new MetaInfo());
         model.addAttribute("chemSubstList", chemicalSubstancesJson);
 		model.addAttribute("statesList", statesJson);
 		model.addAttribute("quantitiesList", quantitiesJson);
