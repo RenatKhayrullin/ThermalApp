@@ -7,12 +7,12 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <!-- Настройки фабрики сессий Стардога //библиотека stardog-spring
+    <!-- Настройки фабрики сессий Стардога //библиотека stardog-spring -->
     <bean name="ontDataSource" class="com.complexible.stardog.ext.spring.DataSourceFactoryBean">
         <property name="to" value="TermalOnt"/>
         <property name="username" value="admin"/>
         <property name="password" value="admin"/>
-        <property name="reasoningType" value="true" />
+        <property name="reasoningType" value="false" />
         <property name="url" value="snarl://localhost:5820/"/>
     </bean>
 
@@ -25,11 +25,11 @@
         <property name="format" value="RDFXML"/>
         <property name="inputFiles">
             <list>
-                <value>classpath:termal_ont.rdf</value>
+                <value>classpath:OntologyStorage.rdf</value>
             </list>
         </property>
     </bean>
-    -->
+
 
     <!-- подлкючение к базе данных -->
     <!-- драйвер для подключения к серверу баз данных -->
