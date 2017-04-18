@@ -9,10 +9,10 @@
 
     <!-- Настройки фабрики сессий Стардога //библиотека stardog-spring -->
     <bean name="ontDataSource" class="com.complexible.stardog.ext.spring.DataSourceFactoryBean">
-        <property name="to" value="TermalOnt"/>
+        <property name="to" value="ThermalOnt"/>
         <property name="username" value="admin"/>
         <property name="password" value="admin"/>
-        <property name="reasoningType" value="false" />
+        <property name="reasoningType" value="true" />
         <property name="url" value="snarl://localhost:5820/"/>
     </bean>
 
