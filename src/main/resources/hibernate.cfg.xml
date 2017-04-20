@@ -15,5 +15,7 @@
         <mapping class="com.app.mvc.dataBaseDomainModel.SubstanceInState" />
         <mapping class="com.app.mvc.dataBaseDomainModel.DataSet" />
         <mapping class="com.app.mvc.dataBaseDomainModel.UploadedFiles" />
+        <mapping class="com.app.mvc.dataBaseDomainModel.ThirdPartyResource" />
+        <mapping class="com.app.mvc.dataBaseDomainModel.ResourceColumns" />
     </session-factory>
 </hibernate-configuration>

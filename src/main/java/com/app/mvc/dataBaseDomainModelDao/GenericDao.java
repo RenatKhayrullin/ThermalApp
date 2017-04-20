@@ -19,4 +19,8 @@ public interface GenericDao<E extends Serializable>
     E findByPk(final long id);
 
     void SetDaoClass(Class<E> daoClass);
+
+    List<E> findColumnsOfResource(Long id);
+
+    E findResourceByName(String name);
 }
