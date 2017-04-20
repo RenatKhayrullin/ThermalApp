@@ -3,6 +3,7 @@ package com.app.mvc.jsonview;
 import com.fasterxml.jackson.annotation.JsonView;
 import java.util.List;
 
+//katya saluds u
 public class OntProperties
 {
     @JsonView(Views.Public.class)
