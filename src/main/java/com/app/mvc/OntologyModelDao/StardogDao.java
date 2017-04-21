@@ -3,6 +3,8 @@ package com.app.mvc.OntologyModelDao;
 import com.app.mvc.TreeModel.CourtBranch;
 import com.app.mvc.TreeModel.OntList;
 import com.app.mvc.TreeModel.Elements;
+import org.apache.jena.rdf.model.*;
+import org.apache.jena.util.FileManager;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.slf4j.Logger;
@@ -10,9 +12,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.complexible.stardog.ext.spring.SnarlTemplate;
 import com.app.mvc.TreeModel.ElProperty;
+import org.apache.jena.query.* ;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.apache.jena.enhanced.BuiltinPersonalities.model;
+import static org.apache.jena.vocabulary.RDFS.*;
 
 @Repository
 @Component
@@ -35,12 +42,13 @@ public class StardogDao {
                 "OPTIONAL { ?supertype <" + Constants.SUBCLASS.toString() + "> ?type } . " +
                 "} ORDER BY ?type ?supertype";
 
-        logger.debug("Class Hierarchy: " + query);
+        System.out.println("Class Hierarchy: " + query);
 
         List<OntList> results = snarlTemplate.query(query, bindingSet -> {
             OntList branch = new OntList();
             branch.setName(bindingSet.getValue("type").toString()
                     .substring(bindingSet.getValue("type").toString().indexOf("#")+1,bindingSet.getValue("type").toString().length()));
+            System.out.println("TYPE: " + branch.getName());
 
             if (bindingSet.getValue("supertype") != null) {
                 branch.setParent(bindingSet.getValue("supertype").toString()
@@ -48,6 +56,7 @@ public class StardogDao {
             } else {
                 branch.setParent("0");
             }
+            System.out.println("SUPERTYPE: " + branch.getParent());
 
             return branch;
         });
@@ -125,6 +134,9 @@ public class StardogDao {
         Elements elements = new Elements();
         String nameUri = createNewSubject(name);
         String query = "SELECT ?s { ?s <" + Constants.ELEMENT + "> <"+nameUri+">}";
+
+        System.out.println("SparqlQuery For Inds: "+query);
+
         List<Elements> results = snarlTemplate.query(query, bindingSet -> {
             Elements el = new Elements();
             el.setElement(bindingSet.getValue("s").toString().substring((bindingSet.getValue("s").toString().indexOf("#")+1),bindingSet.getValue("s").toString().length()));

@@ -1,6 +1,9 @@
 package com.app.mvc.jsonview;
 
+import com.app.mvc.TreeModel.Elements;
 import com.fasterxml.jackson.annotation.JsonView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 //katya says hello
@@ -14,6 +17,10 @@ public class OntProperties
     List<String> objProperties;
     @JsonView(Views.Public.class)
     List<String> dataProperties;
+    @JsonView(Views.Public.class)
+    List<String> individuals;
+    @JsonView(Views.Public.class)
+    List<String> label;
 
     public String getMsg() { return msg; }
 
@@ -30,4 +37,24 @@ public class OntProperties
     public List<String> getDataProperties() { return dataProperties; }
 
     public void setDataProperties(List<String> dataProperties) { this.dataProperties = dataProperties; }
+
+    public List<String> getIndividuals() { return individuals; }
+
+    public void setIndividuals(List<Elements> individuals) {
+        ArrayList<String> stringInds = new ArrayList<String>();
+        for (Elements ind: individuals) {
+            String element = ind.getElement();
+            stringInds.add(element);
+        }
+        this.individuals = stringInds;
+    }
+
+    public void setStringIndividuals(List<String> individuals) {
+        this.individuals = individuals;
+    }
+
+    public List<String> getLabel() { return this.label; }
+
+    public void setLabel(List<String> label) { this.label = label; }
+
 }

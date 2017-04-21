@@ -1,5 +1,8 @@
 package com.app.mvc.controllers;
 
+import com.app.mvc.OntologyModelDao.JenaDAO;
+import com.app.mvc.TreeModel.OntList;
+import org.apache.jena.Jena;
 import org.springframework.stereotype.Controller;
 import com.app.mvc.TreeModel.CourtBranch;
 import org.slf4j.LoggerFactory;
@@ -22,11 +25,16 @@ public class OntologyController {
     @Autowired
     private StardogDao stardogDAO;
 
+    @Autowired
+    private JenaDAO jenaDAO;
+
     //вывод таблички иерархии классов
     @RequestMapping(value="/OntTree", method = RequestMethod.GET)
     public String showOntTree(Locale locale, Model model) {
         List<CourtBranch> ontList = stardogDAO.makeOntTree();
-        logger.debug("Found " + ontList.size() + " number of dogs in the store");
+        //logger.debug("Found " + ontList.size() + " number of dogs in the store");
+        //List<OntList> ontList = jenaDAO.getOntList();
+        //List<CourtBranch> ontList = jenaDAO.buildOntTree();
         model.addAttribute("ontList", ontList);
         return "OntTree";
     }
