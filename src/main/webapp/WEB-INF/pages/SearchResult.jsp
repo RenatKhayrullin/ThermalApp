@@ -97,9 +97,9 @@
                 'orderable': false,
                 'className': 'dt-body-center',
                 'render': function (data){
-                    if (data.toString().startsWith("http")) {
-                        return '<a href="' + data + '">' + data.toString().match("[0-9]+")[0] + '</a>';
-                    } else return data;
+                    if (data.toString().indexOf("Image") > 0) return '<img src="' + data + '"/>';
+                    if (data.toString().startsWith("http")) return '<a href="' + data + '">' + data.toString().match("[0-9]+")[0] + '</a>';
+                    return data;
                 }
             }/*,
 

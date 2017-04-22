@@ -1,15 +1,18 @@
 package com.app.mvc.controllers;
 
+import com.app.mvc.OntologyModelDao.JenaDAO;
 import com.app.mvc.Utility.ChemSpiderInfo;
 import com.app.mvc.Utility.ChemSpiderXMLHelper;
 import com.app.mvc.Utility.XMLLoader;
 import com.app.mvc.applicationServices.ResourceService;
+import com.app.mvc.controllers.FormClasses.SearchRequest;
 import com.app.mvc.dataBaseDomainModel.ResourceColumns;
 import com.app.mvc.dataBaseDomainModel.ThirdPartyResource;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,26 +36,36 @@ public class HTTPController {
     @Autowired
     private ResourceService resourceService;
 
+    @Autowired
+    private JenaDAO jenaDAO;
+
     @RequestMapping(value = "/http", method = RequestMethod.GET)
     public String SearchForm(Model model) {
         return "http";
     }
 
     @RequestMapping(value="/searchResult", method= RequestMethod.POST)
-    public String sendGet(Model uiModel, @RequestParam(value = "entity", required = true) String entity)
+    public String sendGet(Model uiModel, @ModelAttribute final SearchRequest searchRequest)
             throws IOException {
 
-        List<ThirdPartyResource> thirdPartyResources = resourceService.getAllResources();
+        System.out.println(searchRequest.toString());
+        String entity = jenaDAO.getFormula(searchRequest.getEntity());
+        if (entity.isEmpty()) return "NotFound";
+
+        ThirdPartyResource resource = resourceService.getResourceByName(searchRequest.getResource());
+
+        //List<ThirdPartyResource> thirdPartyResources = resourceService.getAllResources();
 
         //choosing chemspider - get(0)
-        List<ResourceColumns> resourceColumns = resourceService.getResourceColumns(thirdPartyResources.get(0).getId());
+        List<ResourceColumns> resourceColumns = resourceService.getResourceColumns(resource.getId());
         System.out.println(entity);
-        String url = thirdPartyResources.get(0).getUrl();
+        String url = resource.getUrl();
         //System.out.println(url);
         url = url.replace("{entity}", transformFormulaForQuery(entity));
         if (url.contains("{apikey}")) {
-            url = url.replace("{apikey}", thirdPartyResources.get(0).getApikey());
+            url = url.replace("{apikey}", resource.getApikey());
         }
+        System.out.println(url);
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -60,8 +73,8 @@ public class HTTPController {
         con.setRequestMethod("GET");
 
         //add request header
-        con.addRequestProperty("Accept", thirdPartyResources.get(0).getAcceptData());
-        con.addRequestProperty("Accept-Charset", thirdPartyResources.get(0).getAcceptCharset());
+        con.addRequestProperty("Accept", resource.getAcceptData());
+        con.addRequestProperty("Accept-Charset", resource.getAcceptCharset());
 
         int responseCode = con.getResponseCode();
         System.out.println("\nSending 'GET' request to URL : " + url);

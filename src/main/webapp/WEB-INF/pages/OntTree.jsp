@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <html>
     <spring:url value="/resources/jquery/jquery-3.1.1.min.js"               var="jqueryJs" />
@@ -24,9 +25,9 @@
 
 <body>
 <h1>Ontology</h1>
-    <table cellpadding="5", cellspacing="20">
+    <table  cellpadding="5", cellspacing="20">
         <tr>
-            <td valign="top" rowspan="2">
+            <td valign="top" rowspan="4">
                 <table>
                     <c:forEach items="${ontList}" var="ontElem">
                         <tr>
@@ -37,16 +38,16 @@
                     </c:forEach>
                 </table>
             </td>
-            <td valign="top" colspan="3">
+            <td valign="top" colspan="2", height="30">
                 <div id="label"></div>
             </td>
         </tr>
         <tr>
             <td valign="top">
-                <table id="objProp" class="display cell-border row-border dt-middle" cellspacing="20" width="100%" style="overflow-x:auto">
+                <table id="objProp" class="display cell-border row-border dt-middle" cellspacing="5" width="100%" style="overflow-x:auto">
                     <thead>
                     <tr>
-                        <th>Object Property</th>
+                        <th><div id = "objPropHead"></div></th>
                     </tr>
                     </thead>
                 </table>
@@ -55,26 +56,57 @@
                 <table id="dataProp" class="display cell-border row-border dt-middle" cellspacing="5" width="100%" style="overflow-x:auto">
                     <thead>
                     <tr>
-                        <th>Data Property</th>
-                    </tr>
-                    </thead>
-                </table>
-            </td>
-            <td valign="top">
-                <table id="inds" class="display cell-border row-border dt-middle" cellspacing="5" width="100%" style="overflow-x:auto">
-                    <thead>
-                    <tr>
-                        <th>Instances</th>
+                        <th><div id = "dataPropHead"></div></th>
                     </tr>
                     </thead>
                 </table>
             </td>
         </tr>
+        <tr>
+            <td valign="top" colspan="2", height="30">
+                <div id="search"></div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top", colspan="2">
+                <form:form id="indRes" action="/searchResult" method="POST" modelAttribute="searchRequest">
+                    <table id="searchTab" cellpadding="5", cellspacing="20">
+                        <tr>
+                            <td valign="top">
+                                <table id="inds" class="display cell-border row-border dt-middle" cellspacing="20" width="100%" style="overflow-x:auto">
+                                    <thead>
+                                        <tr>
+                                            <th><div id = "indHead"></div></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </td>
+                            <td valign="top">
+                                <table id="resources" class="display cell-border row-border dt-middle" cellspacing="20" width="100%" style="overflow-x:auto">
+                                    <thead>
+                                        <tr>
+                                            <th><div id = "resHead"></div></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-left">
+                                <div id="submit"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </form:form>
+            </td>
+        </tr>
+
     </table>
 </body>
 
 <script type="text/javascript">
     $(document).ready(function(){
+        $("#label").html("Choose Ontology Class");
 
         $(".post_btn").click(function() {
 
@@ -93,27 +125,6 @@
                     console.log("SUCCESS: ", data);
                     //display(data);
                     datatab(data);
-                    /*
-                    var ontdata =eval(data);
-                    var onttable = $('#ontDataTab').DataTable( {
-                        'aaData':           ontdata,
-                        'paging':           false,
-                        'scrollCollapse':   true,
-                        'scrollY':          '50vh',
-                        'info':             false,
-                        'aoColumns': [
-                            { 'mData': 'individuals' }
-                        ],
-                        'columnDefs': [{
-                            'targets': 0,
-                            'searchable': false,
-                            'orderable': false,
-                            'className': 'dt-body-center',
-                            'render': function (data){
-                                return '<input type="checkbox" name="indName" value="' + $('<div/>').text(data).html() + '">';
-                            }
-                        }],
-                    });*/
                 },
                 error : function(e) {
                     console.log("ERROR: ", e);
@@ -124,12 +135,31 @@
     });
 
     function datatab(data) {
-        $('#label').html(data["label"]);
-        var objPropData = process(data, "objProperties");
-        console.log(objPropData[0].field);
+        var label = (data["label"])? data["label"] : "";
+        $('#label').html("Label: "+ label);
+
+        //Destroy old dataTables
         if ($.fn.DataTable.isDataTable( '#objProp' ) ) {
             $('#objProp').dataTable().fnDestroy();
         }
+        if ($.fn.DataTable.isDataTable( '#dataProp' ) ) {
+            $('#dataProp').dataTable().fnDestroy();
+        }
+        if ($.fn.DataTable.isDataTable( '#inds' ) ) {
+            $('#inds').dataTable().fnDestroy();
+        }
+        if ($.fn.DataTable.isDataTable( '#resources' ) ) {
+            $('#resources').dataTable().fnDestroy();
+        }
+        $('#search').empty();
+        $('#inds').empty();
+        $('#resources').empty();
+        $('#submit').empty();
+
+        //Show dataTables for ObjProperties and dataProperties
+        var objPropData = process(data, "objProperties");
+
+        $('#objPropHead').html("Object Properties");
         var objPropTable = $('#objProp').DataTable( {
             'aaData':           objPropData,
             'paging':           false,
@@ -142,9 +172,8 @@
         });
 
         var dataPropData = process(data, "dataProperties");
-        if ($.fn.DataTable.isDataTable( '#dataProp' ) ) {
-            $('#dataProp').dataTable().fnDestroy();
-        }
+
+        $('#dataPropHead').html("Data Properties");
         var dataPropTable = $('#dataProp').DataTable( {
             'aaData':           dataPropData,
             'paging':           false,
@@ -157,9 +186,15 @@
         });
 
         var inds = process(data, "individuals");
-        if ($.fn.DataTable.isDataTable( '#inds' ) ) {
-            $('#inds').dataTable().fnDestroy();
-        }
+
+        //If there are no instances, do nothing
+        if (inds.length == 0) return;
+
+        //Show form for searching related instances in thirdparty resources
+        $('#search').html("Choose instance and resource to search for related objects");
+        $('#submit').html('<input id="submitId" type="submit" value="Get Data">');
+
+        $('#indHead').html("Instances");
         var indTable = $('#inds').DataTable( {
             'aaData':           inds,
             'paging':           false,
@@ -168,7 +203,39 @@
             'info':             false,
             'aoColumns': [
                 { 'mData': 'field' }
-            ]
+            ],
+            'columnDefs': [{
+                'targets': 0,
+                'searchable': false,
+                'orderable': false,
+                //'className': 'dt-body-center',
+                'render': function (data){
+                    return '<input type="radio" name="entity" value="' + $('<div/>').text(data).html() + '">' + data;
+                }
+            }]
+        });
+
+        $('#resHead').html("Resources");
+        var resData = JSON.parse('${thirdPartyRes}');
+        console.log(resData);
+        var resTable = $('#resources').DataTable( {
+            'aaData':           resData,
+            'paging':           false,
+            'scrollCollapse':   true,
+            'scrollY':          '50vh',
+            'info':             false,
+            'aoColumns': [
+                { 'mData': 'resourceName' }
+            ],
+            'columnDefs': [{
+                'targets': 0,
+                'searchable': false,
+                'orderable': false,
+                //'className': 'dt-body-center',
+                'render': function (data){
+                    return '<p><input type="radio" name="resource" value="' + $('<div/>').text(data).html() + '">' + data + '</p>';
+                }
+            }]
         });
     }
 
@@ -203,6 +270,7 @@
 
     function process(data, field) {
         var array = [];
+        if (data[field] == null) return array;
         data[field].forEach(function (element) {
             var object = {"field": element};
             array.push(object);

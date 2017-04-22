@@ -56,7 +56,8 @@ public class JenaDAO {
         while(jenaresults.hasNext()) {
             String soln = jenaresults.next().toString();
             //System.out.println(soln);
-            soln = soln.substring(soln.indexOf('#')+1, soln.indexOf('>'));
+            if ((soln.contains("#")) && (soln.contains(">")))
+                soln = soln.substring(soln.indexOf('#')+1, soln.indexOf('>'));
             results.add(soln);
         }
         return results;
@@ -102,11 +103,33 @@ public class JenaDAO {
         ArrayList<String> result = new ArrayList<String>();
         Resource resource = inf.getResource(nameUri);
         //System.out.println(resource.toString());
-        String resourceLabel = resource.getProperty(label).getObject().toString();
+        Statement resourceLabel = resource.getProperty(label);
+        if (resourceLabel == null) return result;
+        else {
+            String label = resourceLabel.getObject().toString();
+            result.add(label);
+        }
         //System.out.println(resourceLabel);
-        result.add(resourceLabel);
         return result;
     }
+
+    //Formula
+    public String getFormula(String className) {
+        String nameUri = createNewSubject(className);
+
+        String query = "SELECT ?formula WHERE {<" + nameUri+ "> <" + Constants.WWW +
+                "#hasChemicalFormula> ?formula.}";
+
+        System.out.println(query);
+        List <String> queryResult = getSearchResults(query);
+        if (queryResult.size() > 0) {
+            String result = queryResult.get(0);
+            if (result.contains("\""))
+                result = result.substring(result.indexOf('"') + 1, result.lastIndexOf('"'));
+            return result;
+        } else return "";
+    }
+
     /*
     //Tree hierarchy
     List<OntList> getOntList() {
