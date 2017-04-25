@@ -10,30 +10,6 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page session="false" %>
 <html>
-<!--<head>
-    <title>Chemspider</title>
-    <style type="text/css">
-        TABLE {
-            width: 300px; /* Ширина таблицы */
-            border: 2px solid black; /* Рамка вокруг таблицы */
-            background: white; /* Цвет фона таблицы */
-        }
-        TD, TH {
-            text-align: center; /* Выравнивание по центру */
-            padding: 3px; /* Поля вокруг содержимого ячеек */
-        }
-        TH {
-            background: #4682b4; /* Цвет фона */
-            color: white; /* Цвет текста */
-            border-bottom: 2px solid black; /* Линия снизу */
-        }
-        .lc {
-            font-weight: bold; /* Жирное начертание текста */
-            text-align: left; /* Выравнивание по левому краю */
-        }
-    </style>
-</head>
--->
 
 <spring:url value="/resources/jquery/jquery-3.1.1.min.js"               var="jqueryJs" />
 <script src="${jqueryJs}"></script>
@@ -57,17 +33,30 @@
 <link href="${common}" rel="stylesheet" />
 
 <body>
-<h2>List of available data</h2>
+    <h2>List of available data</h2>
 
- <table id="dataTab" class="display cell-border row-border dt-middle" cellspacing="0" width="100%" style="overflow-x:auto">
-     <thead>
+    <form:form id="bind" action="/bind?entity=${entity}&resource=${resource}" method="POST" modelAttribute="link">
+        <table id="form">
             <tr>
-                <c:forEach items="${columns}" var="c">
-                  <th>${c.columnComment}</th>
-                </c:forEach>
-             </tr>
-     </thead>
- </table>
+                <td>
+                    <table id="dataTab" class="display cell-border row-border dt-middle" cellspacing="0" width="100%" style="overflow-x:auto">
+                        <thead>
+                            <tr>
+                                <c:forEach items="${columns}" var="c">
+                                  <th>${c.columnComment}</th>
+                                </c:forEach>
+                             </tr>
+                        </thead>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-left">
+                    <input id="submitEntity" type="submit" value="Bind">
+                </td>
+            </tr>
+        </table>
+    </form:form>
 
 
 <script type="text/javascript">
@@ -75,6 +64,10 @@
     $(document).ready(function (){
         console.log('${infos}');
         var data = JSON.parse('${infos}');
+        if ('${tpresource.additional}'.length > 0) {
+                console.log('${tpresource.additional}');
+                data = data['${tpresource.additional}'];
+        }
         console.log(data);
         var columns = eval('${jsoncolumns}');
         var array = [];
@@ -92,26 +85,30 @@
             'aoColumns':        array,
             'columnDefs': [
                 {
-                'targets': "_all",
-                'searchable': false,
-                'orderable': false,
-                'className': 'dt-body-center',
-                'render': function (data){
-                    if (data.toString().indexOf("Image") > 0) return '<img src="' + data + '"/>';
-                    if (data.toString().startsWith("http")) return '<a href="' + data + '">' + data.toString().match("[0-9]+")[0] + '</a>';
-                    return data;
-                }
-            }/*,
-
-            {
-                'targets': 1,
-                'searchable': false,
-                'orderable': false,
-                'className': 'dt-body-center',
-                'render': function (data){
-                    return '<a shape="' + data + '">' + data + '</a>';
-                }
-            }*/],
+                    'targets': 0,
+                    'searchable': true,
+                    'orderable': true,
+                    'render': function (data) {
+                        if (data == null) return "";
+                        if (data.toString().startsWith("http"))
+                            return '<input type="radio" name="link" value="' + data + '">' +
+                                    '<a href="' + data + '" title="' + data + '">' + 'Link' + '</a>';
+                        return '<input type="radio" name="link" value="' + data + '">' + data;
+                    }
+                },
+                {
+                    'targets': "_all",
+                    'searchable': true,
+                    'orderable': true,
+                    'className': 'dt-body-center',
+                    'render': function (data) {
+                        if (data == null) return "";
+                        if (data.toString().indexOf("Image") > 0) return '<img src="' + data + '"/>';
+                        if (data.toString().startsWith("http")) return '<a href="' + data +
+                                '" title="' + data + '">' + 'Link' + '</a>';
+                        return data;
+                    }
+                }]
         });
     });
 

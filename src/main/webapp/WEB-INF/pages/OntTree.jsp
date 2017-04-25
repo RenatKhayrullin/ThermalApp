@@ -25,9 +25,9 @@
 
 <body>
 <h1>Ontology</h1>
-    <table  cellpadding="5", cellspacing="20">
+    <table  cellpadding="5" cellspacing="20" >
         <tr>
-            <td valign="top" rowspan="4">
+            <td valign="top" rowspan="5" width="250">
                 <table>
                     <c:forEach items="${ontList}" var="ontElem">
                         <tr>
@@ -38,13 +38,18 @@
                     </c:forEach>
                 </table>
             </td>
-            <td valign="top" colspan="2", height="30">
+            <td valign="top" colspan="3" height="30">
                 <div id="label"></div>
             </td>
         </tr>
         <tr>
-            <td valign="top">
-                <table id="objProp" class="display cell-border row-border dt-middle" cellspacing="5" width="100%" style="overflow-x:auto">
+            <td valign="top" colspan="3" height="30">
+                <div id="comment"></div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="250">
+                <table id="objProp" class="display cell-border row-border dt-middle" cellspacing="5" >
                     <thead>
                     <tr>
                         <th><div id = "objPropHead"></div></th>
@@ -52,8 +57,8 @@
                     </thead>
                 </table>
             </td>
-            <td valign="top">
-                <table id="dataProp" class="display cell-border row-border dt-middle" cellspacing="5" width="100%" style="overflow-x:auto">
+            <td valign="top" width="250">
+                <table id="dataProp" class="display cell-border row-border dt-middle" cellspacing="5" >
                     <thead>
                     <tr>
                         <th><div id = "dataPropHead"></div></th>
@@ -61,28 +66,35 @@
                     </thead>
                 </table>
             </td>
+            <td></td>
         </tr>
         <tr>
-            <td valign="top" colspan="2", height="30">
+            <td valign="top" colspan="3" height="30" >
                 <div id="search"></div>
             </td>
         </tr>
         <tr>
-            <td valign="top", colspan="2">
+            <td valign="top" colspan="3">
                 <form:form id="indRes" action="/searchResult" method="POST" modelAttribute="searchRequest">
-                    <table id="searchTab" cellpadding="5", cellspacing="20">
+                    <table  id="searchTab" cellpadding="5" cellspacing="20">
                         <tr>
-                            <td valign="top">
-                                <table id="inds" class="display cell-border row-border dt-middle" cellspacing="20" width="100%" style="overflow-x:auto">
+                            <td valign="top" width="250">
+                                <table id="inds" class="display cell-border row-border dt-middle" cellspacing="20" style="overflow-x:auto">
                                     <thead>
                                         <tr>
                                             <th><div id = "indHead"></div></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                 </table>
                             </td>
-                            <td valign="top">
-                                <table id="resources" class="display cell-border row-border dt-middle" cellspacing="20" width="100%" style="overflow-x:auto">
+                            <td valign="top" rowspan="3">
+                                <div id="info"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top" width="250">
+                                <table id="resources" class="display cell-border row-border dt-middle" cellspacing="20" style="overflow-x:auto">
                                     <thead>
                                         <tr>
                                             <th><div id = "resHead"></div></th>
@@ -92,7 +104,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2" class="text-left">
+                            <td class="text-left">
                                 <div id="submit"></div>
                             </td>
                         </tr>
@@ -132,11 +144,39 @@
                 }
             });
         });
+
+
+
     });
+
+    function getInfo(name) {
+
+        console.log(name);
+
+        $.ajax({
+            type : "POST",
+            contentType : "application/json",
+            url : "/OntTree/InstInfo",
+
+            data : JSON.stringify(name),
+            dataType : "json",
+
+            success : function(data) {
+                console.log("SUCCESS: ", data);
+                //display(data);
+                displayInfo(data);
+            },
+            error : function(e) {
+                console.log("ERROR: ", e);
+            }
+        });
+    }
 
     function datatab(data) {
         var label = (data["label"])? data["label"] : "";
-        $('#label').html("Label: "+ label);
+        var comment = (data["comment"])? data["comment"] : "";
+        $('#label').html('<h3>' + label + '</h3>');
+        $('#comment').html('<h4>' + comment + '</h4>');
 
         //Destroy old dataTables
         if ($.fn.DataTable.isDataTable( '#objProp' ) ) {
@@ -151,10 +191,8 @@
         if ($.fn.DataTable.isDataTable( '#resources' ) ) {
             $('#resources').dataTable().fnDestroy();
         }
-        $('#search').empty();
-        $('#inds').empty();
-        $('#resources').empty();
-        $('#submit').empty();
+        $('#search').hide();
+        $('#searchTab').hide();
 
         //Show dataTables for ObjProperties and dataProperties
         var objPropData = process(data, "objProperties");
@@ -191,8 +229,12 @@
         if (inds.length == 0) return;
 
         //Show form for searching related instances in thirdparty resources
-        $('#search').html("Choose instance and resource to search for related objects");
-        $('#submit').html('<input id="submitId" type="submit" value="Get Data">');
+        $('#search').show();
+        $('#searchTab').show();
+        $('#search').html('<h4>Choose instance and resource to search for related objects</h4>');
+        $('#submit').html('<button type="submit">Get data</button>');
+        $('#info').empty();
+
 
         $('#indHead').html("Instances");
         var indTable = $('#inds').DataTable( {
@@ -202,20 +244,29 @@
             'scrollY':          '50vh',
             'info':             false,
             'aoColumns': [
-                { 'mData': 'field' }
+                { 'mData': 'field'},
+                { 'mData': 'info'}
             ],
             'columnDefs': [{
                 'targets': 0,
-                'searchable': false,
-                'orderable': false,
-                //'className': 'dt-body-center',
+                'searchable': true,
+                'orderable': true,
                 'render': function (data){
                     return '<input type="radio" name="entity" value="' + $('<div/>').text(data).html() + '">' + data;
+                }
+            },{
+                'targets': 1,
+                'searchable': false,
+                'orderable': false,
+                'render': function (data){
+                    return '<button type="button" onClick="getInfo(\'' + data + '\')" value="' + data + '">' + 'info' + '</button>';
                 }
             }]
         });
 
+
         $('#resHead').html("Resources");
+
         var resData = JSON.parse('${thirdPartyRes}');
         console.log(resData);
         var resTable = $('#resources').DataTable( {
@@ -229,57 +280,60 @@
             ],
             'columnDefs': [{
                 'targets': 0,
-                'searchable': false,
-                'orderable': false,
-                //'className': 'dt-body-center',
+                'searchable': true,
+                'orderable': true,
                 'render': function (data){
-                    return '<p><input type="radio" name="resource" value="' + $('<div/>').text(data).html() + '">' + data + '</p>';
+                    return '<input type="radio" name="resource" value="' + $('<div/>').text(data).html() + '">' + data;
                 }
             }]
         });
-    }
-
-    function display(data) {
-        if (data["code"] != 200) {
-            $('#feedback').html("No data");
-            return;
-        }
-        var response = "";
-        response += add(data, "label");
-        response += add(data, "objProperties");
-        response += add(data, "dataProperties");
-        response += add(data, "individuals");
-
-        console.log(response);
-        $('#feedback').html(response);
-        /*
-        var json = "<h4>Ajax Response</h4><pre>"
-            + JSON.stringify(data, null, 4) + "</pre>";
-        $('#feedback').html(json);
-        */
-    }
-
-    function add(data, field) {
-        var response = "<h3>"+ field + "</h3>";
-        data[field].forEach(function (element) {
-            response = response + "<br/>" + element;
-        });
-        response += "<br/>"
-        return response;
     }
 
     function process(data, field) {
         var array = [];
         if (data[field] == null) return array;
         data[field].forEach(function (element) {
-            var object = {"field": element};
+            var object = {"field": element, "info": element};
             array.push(object);
         });
         console.log(array);
         return array;
     }
 
+    function displayInfo(data) {
+        var info = JSON.parse(data["instInfo"]);
+        console.log(info);
+        var response = '<br><br><br>';
+        for (var key in info) {
+            //console.log(key);
 
+            response += ('<strong>' + key + ':</strong><br>');
+            if (Array.isArray(info[key])) {
+                info[key].forEach(function (element) {
+                    if (element.toString().startsWith("http"))
+                            element = '<div style="line-height: 30%;"> <a href="' + element + '">' + element + '</div>';
+                    //console.log(element);
+                    //response += ('   ' + element + '<br>');
+                    response += ('<div style="text-indent: 15px;">' + element + '</div>' + '<br>');
+                });
+            }
+            else {
+                var text = "";
+                if (info[key].toString().startsWith("http")) {
+                    text = '<a href="' + info[key] + '">' + info[key];
+                } else text = info[key];
+                response += ('<div style="text-indent: 15px;">' + text + '</div>' + '<br>');
+            }
+            response += '<br>';
+        }
+        $('#info').html(response);
+    }
+
+
+
+
+
+    //border="5" bgcolor="#006400"
 </script>
 
 </html>

@@ -41,6 +41,11 @@
             <td>Apikey (if required)</td>
             <td><input type = "text" name="apikey" value = ""/></td>
         </tr>
+
+        <tr>
+            <td>Additional Information</td>
+            <td><input type = "text" name="additional" value = ""/></td>
+        </tr>
     </table>
 
     <input type="submit" value="Save" />

@@ -21,6 +21,7 @@
             <th>Accept Data</th>
             <th>Accept Charset</th>
             <th>Apikey</th>
+            <th>Additional Info</th>
             <th>Resource fields that will be shown</th>
         </tr>
         </thead>
@@ -33,6 +34,7 @@
                     <td>"${r.acceptData}"</td>
                     <td>"${r.acceptCharset}"</td>
                     <td>"${r.apikey}"</td>
+                    <td>"${r.additional}"</td>
                     <td><a href="${columnsUrl}">List of fields</a></td>
                 </tr>
             </c:forEach>

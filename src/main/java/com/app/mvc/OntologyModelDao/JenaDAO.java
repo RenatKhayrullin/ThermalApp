@@ -2,16 +2,19 @@ package com.app.mvc.OntologyModelDao;
 
 import com.app.mvc.TreeModel.CourtBranch;
 import com.app.mvc.TreeModel.OntList;
+import com.sun.corba.se.spi.orbutil.fsm.Input;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.util.FileManager;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.apache.jena.vocabulary.RDFS.Resource;
+import static org.apache.jena.vocabulary.RDFS.comment;
 import static org.apache.jena.vocabulary.RDFS.label;
 
 /**
@@ -21,11 +24,17 @@ import static org.apache.jena.vocabulary.RDFS.label;
 @Component
 public class JenaDAO {
 
-    private String filename = "OntologyStorage.rdf";
-    private Model model = ModelFactory.createDefaultModel().read(FileManager.get().open(filename), "");
-    private InfModel inf = ModelFactory.createRDFSModel(model);
+    private String filename;
+    private Model model;
+    private InfModel inf;
 
-    public JenaDAO() {}
+    public JenaDAO() throws FileNotFoundException {
+        filename = Constants.HOME + "OntologyStorage.rdf";
+        model = ModelFactory.createDefaultModel();//.read(FileManager.get().open(filename), "");
+        InputStream in = new FileInputStream(filename);
+        model = model.read(in, null);
+        inf = ModelFactory.createRDFSModel(model);
+    }
 
     private String createNewSubject(String name) {
         return Constants.WWW + "#" + name;
@@ -58,6 +67,8 @@ public class JenaDAO {
             //System.out.println(soln);
             if ((soln.contains("#")) && (soln.contains(">")))
                 soln = soln.substring(soln.indexOf('#')+1, soln.indexOf('>'));
+            if (soln.contains("\""))
+                    soln = soln.substring(soln.indexOf('"') + 1, soln.lastIndexOf('"'));
             results.add(soln);
         }
         return results;
@@ -97,37 +108,75 @@ public class JenaDAO {
         return getSearchResults(query);
     }
 
-    //Labels
-    public List<String> getLabel(String className) {
+    //Class
+    public String getClassName(String instName) {
+        String nameUri = createNewSubject(instName);
+
+        String query = "SELECT ?class { <" + nameUri + "> <" + Constants.ELEMENT + ">  ?class. ?class a <" +
+                Constants.OWL + "#Class>}";
+
+        System.out.println("CLASS: "+query);
+        List<String> result = getSearchResults(query);
+
+        return result.get(0);
+    }
+
+    //Class Property (RDFS)
+    public List<String> getClassProperty(String className, Property property) {
         String nameUri = createNewSubject(className);
         ArrayList<String> result = new ArrayList<String>();
         Resource resource = inf.getResource(nameUri);
         //System.out.println(resource.toString());
-        Statement resourceLabel = resource.getProperty(label);
-        if (resourceLabel == null) return result;
+        Statement resourceProperty = resource.getProperty(property);
+        if (resourceProperty == null) return result;
         else {
-            String label = resourceLabel.getObject().toString();
-            result.add(label);
+            String prop = resourceProperty.getObject().toString();
+            result.add(prop);
         }
         //System.out.println(resourceLabel);
         return result;
     }
 
-    //Formula
-    public String getFormula(String className) {
-        String nameUri = createNewSubject(className);
+    //Instance Property
+    public String getInstanceProperty(String instName, String propertyName) {
+        String nameUri = createNewSubject(instName);
 
-        String query = "SELECT ?formula WHERE {<" + nameUri+ "> <" + Constants.WWW +
-                "#hasChemicalFormula> ?formula.}";
+        String query = "SELECT ?value WHERE {<" + nameUri + "> <" + Constants.WWW +
+                "#" + propertyName + "> ?value.}";
 
         System.out.println(query);
         List <String> queryResult = getSearchResults(query);
         if (queryResult.size() > 0) {
             String result = queryResult.get(0);
-            if (result.contains("\""))
-                result = result.substring(result.indexOf('"') + 1, result.lastIndexOf('"'));
             return result;
         } else return "";
+    }
+
+
+    //sameAs
+    public List<String> getSameAs(String instName) throws IOException {
+        String nameUri = createNewSubject(instName);
+
+        String query = "SELECT ?entity WHERE {<" + nameUri+ "> <" + Constants.OWL +
+                "#sameAs> ?entity.}";
+
+        System.out.println(query);
+        List <String> queryResult = getSearchResults(query);
+        return queryResult;
+    }
+
+    public void setSameAs(String className, String newEntity) throws IOException {
+        String nameUri = createNewSubject(className);
+        Resource resource = model.getResource(nameUri);
+        if (resource == null) return;
+        System.out.println(resource.toString());
+        Property property = model.getProperty("http://www.w3.org/2002/07/owl#sameAs");
+        System.out.println(property.getURI());
+        Statement statement = model.createStatement(resource, property, newEntity);
+        model.add(statement);
+        OutputStream out = new FileOutputStream(filename);
+        model.write(out);
+        out.close();
     }
 
     /*

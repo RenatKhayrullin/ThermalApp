@@ -21,6 +21,10 @@ public class OntProperties
     List<String> individuals;
     @JsonView(Views.Public.class)
     List<String> label;
+    @JsonView(Views.Public.class)
+    List<String> comment;
+    @JsonView(Views.Public.class)
+    String instInfo;
 
     public String getMsg() { return msg; }
 
@@ -56,5 +60,13 @@ public class OntProperties
     public List<String> getLabel() { return this.label; }
 
     public void setLabel(List<String> label) { this.label = label; }
+
+    public List<String> getComment() { return this.comment; }
+
+    public void setComment(List<String> comment) { this.comment = comment; }
+
+    public String getInstInfo() { return instInfo; }
+
+    public void setInstInfo(String instInfo) { this.instInfo = instInfo; }
 
 }

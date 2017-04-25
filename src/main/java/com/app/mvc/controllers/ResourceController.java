@@ -44,7 +44,8 @@ public class ResourceController {
     public String addedResource(@ModelAttribute("resourceAttribute")
                                 @RequestParam String url, @RequestParam String apikey,
                                 @RequestParam String acceptData, @RequestParam String acceptCharset,
-                                @RequestParam String resourceName, Model model) {
+                                @RequestParam String resourceName, @RequestParam String additional,
+                                Model model) {
 
         ThirdPartyResource resource = new ThirdPartyResource();
 
@@ -53,7 +54,7 @@ public class ResourceController {
         resource.setAcceptData(acceptData);
         resource.setAcceptCharset(acceptCharset);
         resource.setResourceName(resourceName);
-        resource.setQueryString(false);
+        resource.setAdditional(additional);
 
         resourceService.saveResource(resource);
 

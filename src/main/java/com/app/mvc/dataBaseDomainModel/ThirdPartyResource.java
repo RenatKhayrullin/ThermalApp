@@ -21,7 +21,7 @@ public class ThirdPartyResource implements Serializable{
     private String acceptData;
     private String acceptCharset;
     private String resourceName;
-    private boolean queryString;
+    private String additional;
     @JsonIgnore
     private Set<ResourceColumns> resourceColumns = new HashSet<ResourceColumns>();
 
@@ -57,9 +57,9 @@ public class ThirdPartyResource implements Serializable{
     public String getResourceName() { return this.resourceName; }
     public void setResourceName(String resourceName) { this.resourceName = resourceName; }
 
-    @Column(name = "query_string")
-    public boolean getQueryString() { return this.queryString; }
-    public void setQueryString(boolean queryString) { this.queryString = queryString; }
+    @Column(name = "additional")
+    public String getAdditional() { return this.additional; }
+    public void setAdditional(String additional) { this.additional = additional; }
 
     @OneToMany(mappedBy = "resourceNumber", cascade = CascadeType.ALL,
             orphanRemoval = true)

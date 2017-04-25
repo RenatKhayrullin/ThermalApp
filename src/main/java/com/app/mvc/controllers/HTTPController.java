@@ -49,8 +49,6 @@ public class HTTPController {
             throws IOException {
 
         System.out.println(searchRequest.toString());
-        String entity = jenaDAO.getFormula(searchRequest.getEntity());
-        if (entity.isEmpty()) return "NotFound";
 
         ThirdPartyResource resource = resourceService.getResourceByName(searchRequest.getResource());
 
@@ -58,13 +56,23 @@ public class HTTPController {
 
         //choosing chemspider - get(0)
         List<ResourceColumns> resourceColumns = resourceService.getResourceColumns(resource.getId());
-        System.out.println(entity);
+
         String url = resource.getUrl();
-        //System.out.println(url);
-        url = url.replace("{entity}", transformFormulaForQuery(entity));
+
+        if (resource.getResourceName().contains("chemspider")) {
+            String entity = jenaDAO.getInstanceProperty(searchRequest.getEntity(), "hasChemicalFormula");
+            if (entity.isEmpty()) {
+                uiModel.addAttribute("msg", "This instance does not have Chemical Formula");
+                return "ErrorPage";
+            }
+            url = url.replace("{entity}", transformFormulaForQuery(entity));
+        }
+        else url = url.replace("{entity}", searchRequest.getEntity().toLowerCase());
+
         if (url.contains("{apikey}")) {
             url = url.replace("{apikey}", resource.getApikey());
         }
+
         System.out.println(url);
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -75,13 +83,20 @@ public class HTTPController {
         //add request header
         con.addRequestProperty("Accept", resource.getAcceptData());
         con.addRequestProperty("Accept-Charset", resource.getAcceptCharset());
+        //con.addRequestProperty("Accept", "application/json");
+        //con.addRequestProperty("Accept-Charset", "UTF-8");
 
         int responseCode = con.getResponseCode();
         System.out.println("\nSending 'GET' request to URL : " + url);
         System.out.println("Response Code : " + responseCode);
-        System.out.println(con.getContentType());
+        String contentType = con.getContentType();
+        System.out.println(contentType);
 
-        if (responseCode != 200) return "NotFound";
+        if ((responseCode != 200)) { //|| (! contentType.equalsIgnoreCase(resource.getAcceptData()))) {
+            //System.out.println(resource.getAcceptData());
+            uiModel.addAttribute("msg", "Nothing was found at this resource");
+            return "ErrorPage";
+        }
 
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
@@ -113,6 +128,9 @@ public class HTTPController {
         uiModel.addAttribute("infos", infos);
         uiModel.addAttribute("columns", resourceColumns);
         uiModel.addAttribute("jsoncolumns", columns);
+        uiModel.addAttribute("tpresource", resource);
+        uiModel.addAttribute("entity", searchRequest.getEntity());
+        uiModel.addAttribute("resource", searchRequest.getResource());
         return "SearchResult";
     }
 

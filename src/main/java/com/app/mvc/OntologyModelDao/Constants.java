@@ -11,6 +11,7 @@ public enum Constants {
     PROPERTY("http://www.ThermalDb.ru"),
     RDFS("http://www.w3.org/2000/01/rdf-schema"),
     OWL("http://www.w3.org/2002/07/owl"),
+    HOME("C:\\Users\\Катерина\\Github\\src\\main\\resources\\"),
     WWW("http://www.ThermalDb.ru");
 
 
