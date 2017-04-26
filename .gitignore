@@ -1,7 +1,6 @@
 # Project Package Files #
 target/
 out/
-*.jar
 *.war
 *.ear
 
@@ -26,7 +25,6 @@ out/
 *.dmg
 *.gz
 *.iso
-*.jar
 *.rar
 *.tar
 *.zip
@@ -34,7 +32,6 @@ out/
 # Logs and databases #
 ######################
 *.log
-*.sql
 *.sqlite
 
 # OS generated files #
