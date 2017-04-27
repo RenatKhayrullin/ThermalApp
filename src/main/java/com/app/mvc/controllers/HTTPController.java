@@ -58,6 +58,7 @@ public class HTTPController {
         List<ResourceColumns> resourceColumns = resourceService.getResourceColumns(resource.getId());
 
         String url = resource.getUrl();
+        //String url =
 
         if (resource.getResourceName().contains("chemspider")) {
             String entity = jenaDAO.getInstanceProperty(searchRequest.getEntity(), "hasChemicalFormula");

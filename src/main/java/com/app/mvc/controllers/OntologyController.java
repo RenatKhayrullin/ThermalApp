@@ -47,9 +47,11 @@ public class OntologyController {
         List<ThirdPartyResource> tpresources = resourceService.getAllResources();
         ObjectMapper jsonDataMapper = new ObjectMapper();
         String resources = jsonDataMapper.writeValueAsString(tpresources);
+        String ontJson = jsonDataMapper.writeValueAsString(ontList);
 
         model.addAttribute("thirdPartyRes", resources);
         model.addAttribute("ontList", ontList);
+        model.addAttribute("ontJson", ontJson);
         return "OntTree";
     }
 }

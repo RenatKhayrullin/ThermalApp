@@ -4,6 +4,10 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <html>
+
+    <spring:url value="/resources/css/style.min.css" var="jqueryTreeStyle" />
+    <link href="${jqueryTreeStyle}" rel="stylesheet" />
+
     <spring:url value="/resources/jquery/jquery-3.1.1.min.js"               var="jqueryJs" />
     <script src="${jqueryJs}"></script>
 
@@ -22,21 +26,15 @@
     <spring:url value="/resources/DataTables/css/dataTables.checkboxes.css" var="checkboxesDataTablesCss" />
     <link href="${checkboxesDataTablesCss}" rel="stylesheet" />
 
+    <script src="/resources/jquery/jstree.min.js"></script>
+
 
 <body>
 <h1>Ontology</h1>
     <table  cellpadding="5" cellspacing="20" >
         <tr>
-            <td valign="top" rowspan="5" width="250">
-                <table>
-                    <c:forEach items="${ontList}" var="ontElem">
-                        <tr>
-                            <td>${ontElem.id}</td>
-                            <td><button class="post_btn">${ontElem.name}</button></td>
-                            <td>${ontElem.parentId}</td>
-                        </tr>
-                    </c:forEach>
-                </table>
+            <td valign="top" rowspan="5" width="370">
+                <div id="ontology"/>
             </td>
             <td valign="top" colspan="3" height="30">
                 <div id="label"></div>
@@ -119,18 +117,22 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $("#label").html("Choose Ontology Class");
+        var ontData = JSON.parse('${ontJson}');
+        console.log(ontData);
+        ontData = makeTree('${ontJson}');
+        console.log(ontData);
 
-        $(".post_btn").click(function() {
+        $("#ontology").on("changed.jstree", function (e, data) {
 
-            name = $(this).text();
-            console.log(name);
+            var ontData = data.node.text;
+            console.log(ontData);
 
             $.ajax({
                 type : "POST",
                 contentType : "application/json",
                 url : "/OntTree/OntProperty",
 
-                data : JSON.stringify(name),
+                data : JSON.stringify(ontData),
                 dataType : "json",
 
                 success : function(data) {
@@ -142,15 +144,12 @@
                     console.log("ERROR: ", e);
                     display(e);
                 }
-            });
-        });
-
-
-
+            })}).jstree({ 'core' : {
+                'data' : ontData
+        } });
     });
 
     function getInfo(name) {
-
         console.log(name);
 
         $.ajax({
@@ -171,6 +170,7 @@
             }
         });
     }
+
 
     function datatab(data) {
         var label = (data["label"])? data["label"] : "";
@@ -300,6 +300,26 @@
         return array;
     }
 
+    function makeTree(data) {
+        var ontData = JSON.parse(data);
+        var object = {}, array = [];
+        ontData.forEach(function (element) {
+            if (element["parentId"] == 0) {
+                object = {
+                    "id": element["id"].toString(),
+                    "parent": "#",
+                    "text": element["name"]
+                };
+            } else object = {
+                "id": element["id"].toString(),
+                "parent": element["parentId"].toString(),
+                "text": element["name"]
+            };
+            array.push(object);
+        })
+        return array;
+    }
+
     function displayInfo(data) {
         var info = JSON.parse(data["instInfo"]);
         console.log(info);
@@ -328,10 +348,6 @@
         }
         $('#info').html(response);
     }
-
-
-
-
 
     //border="5" bgcolor="#006400"
 </script>
