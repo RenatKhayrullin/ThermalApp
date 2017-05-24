@@ -1,0 +1,974 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix www: <http://www.ThermalDb.ru#> .
+
+@base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
+
+<#PureChemicalSubstance>
+	a rr:TriplesMap;
+
+	rr:logicalTable [
+		rr:sqlQuery """
+        
+            select distinct cs.*
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.substance_in_state as cs_s on filter.substance_in_state_id = cs_s.id
+            inner join ont.pure_chemical_substance as cs on cs_s.substance_id = cs.id
+        
+        """
+	];
+
+	rr:subjectMap [
+		rr:class www:PureChemicalSubstance;
+		rr:class owl:NamedIndividual;
+		rr:template "http://www.ThermalDb.ru#{substance_name}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate www:hasChemicalName;
+		rr:objectMap [ rr:column "substance_name"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate www:hasChemicalFormula;
+		rr:objectMap [ rr:column "substance_formula"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate www:hasChemicalType;
+		rr:objectMap [ rr:column "substance_type"; rr:datatype xsd:string; ];
+	].
+
+
+<#StateOfAggregation>
+	a rr:TriplesMap;
+
+	rr:logicalTable [
+		rr:sqlQuery """
+        
+            select distinct s.* 
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.substance_in_state as cs_s on filter.substance_in_state_id = cs_s.id
+            inner join ont.state as s on cs_s.state_id  = s.id
+        
+        """
+	];
+
+	rr:subjectMap [
+		rr:class www:StateOfAggregation;
+		rr:class owl:NamedIndividual;
+		rr:template "http://www.ThermalDb.ru#State{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate www:hasStateName;
+		rr:objectMap [ rr:column "phase_name"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+        rr:predicate www:hasStateType;
+        rr:objectMap [ rr:column "phase_type"; rr:datatype xsd:string; ];
+    ].
+
+
+<#DataSource>
+	a rr:TriplesMap;
+
+	rr:logicalTable [
+		rr:sqlQuery """
+        
+            select distinct ds.*
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.point_of_measure as pm on pm.data_set_id = filter.id
+            inner join ont.data_source as ds on pm.data_source_id = ds.id
+        
+        """
+	];
+
+	rr:subjectMap [
+		rr:class www:DataSource;
+		rr:class owl:NamedIndividual;
+		rr:template "http://www.ThermalDb.ru#DataSource{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate www:hasABibliographicReference;
+		rr:objectMap [ rr:column "bibliographic_reference"; rr:datatype xsd:string; ];
+	].
+
+
+<#CrystalStructure>
+	a rr:TriplesMap;
+
+	rr:logicalTable [
+		rr:sqlQuery """
+        
+            select distinct cs.*
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.substance_in_state as cs_s on filter.substance_in_state_id = cs_s.id
+            inner join ont.crystal_structure as cs on cs_s.crystal_struct_id = cs.id
+        
+        """
+	];
+
+	rr:subjectMap [
+		rr:class www:CrystalStructure;
+		rr:class owl:NamedIndividual;
+		rr:template "http://www.ThermalDb.ru#CrystalStructure{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate www:hasCrystalStructureName;
+		rr:objectMap [ rr:column "crystal_structure"; rr:datatype xsd:string; ];
+	].
+
+
+<#MagneticStructure>
+	a rr:TriplesMap;
+
+	rr:logicalTable [
+		rr:sqlQuery """
+        
+            select distinct ms.*
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.substance_in_state as cs_s on filter.substance_in_state_id = cs_s.id
+            inner join ont.magnetic_structure as ms on cs_s.magnetic_struct_id = ms.id
+        
+        """
+	];
+
+	rr:subjectMap [
+		rr:class www:MagneticStructure;
+		rr:class owl:NamedIndividual;
+		rr:template "http://www.ThermalDb.ru#MagneticStructure{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate www:hasMagneticStructureName;
+		rr:objectMap [ rr:column "magnetic_type"; rr:datatype xsd:string; ];
+	].
+
+
+<#Dimension>
+	a rr:TriplesMap;
+
+	rr:logicalTable [
+		rr:sqlQuery """
+        
+            select distinct d.*
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.point_of_measure as pm on pm.data_set_id = filter.id
+            inner join ont.dimension as d on pm.dimension_id = d.id
+        
+        """
+	];
+
+	rr:subjectMap [
+		rr:classs www:Dimension;
+		rr:class owl:NamedIndividual;
+		rr:template "http://www.ThermalDb.ru#Dim{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate www:hasADimensionName;
+		rr:objectMap [ rr:column "dimension_name"; rr:datatype xsd:string; ];
+	];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasADimDesignation;
+        rr:objectMap [ rr:column "dimension_designation"; rr:datatype xsd:string; ];
+    ].
+
+
+<#PhysicalQuantity>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery """
+        
+            select distinct pq.*
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.point_of_measure as pm on pm.data_set_id = filter.id
+            inner join ont.physical_quantity as pq on pm.quantity_id = pq.id
+        
+        """
+	];
+
+	rr:subjectMap [
+		rr:class www:PhysicalQuantity;
+		rr:class owl:NamedIndividual;
+		rr:template "http://www.ThermalDb.ru#PQ_{quantity_name}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate www:hasAPhysicalQuantityName;
+		rr:objectMap [ rr:column "quantity_name"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate www:hasAPhysicalQuantityDesignation;
+		rr:objectMap [ rr:column "quantity_designation"; rr:datatype xsd:string; ];
+	];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAPhysicalQuantityRole;
+        rr:objectMap [ rr:template "http://www.ThermalDb.ru#{quantity_type}" ];
+    ].
+
+
+<#UncertaintyType>
+    a rr:TriplesMap;
+
+    rr:logicalTable [
+        rr:sqlQuery """
+        
+            select distinct ut.*
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.point_of_measure as pm on pm.data_set_id = filter.id
+            inner join ont.measurement_uncertainty as mu on pm.id = mu.point_of_measure_id
+            inner join ont.uncertainty_type as ut on mu.uncertainty_type_id = ut.id
+        
+        """
+    ];
+
+    rr:subjectMap [
+        rr:class www:UncertaintyType;
+        rr:class owl:NamedIndividual;
+        rr:template "http://www.ThermalDb.ru#UT_{uncertainty_name}";
+        rr:termType rr:IRI;
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasATypeName;
+        rr:objectMap [ rr:column "uncertainty_name"; rr:datatype xsd:string; ];
+    ].
+
+
+<#QuantityState>
+    a rr:TriplesMap;
+
+    rr:logicalTable [
+        rr:sqlQuery """
+        
+            select distinct qs.*
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.substance_in_state as cs_s on filter.substance_in_state_id = cs_s.id
+            inner join ont.quantity_state as qs on cs_s.state_id = qs.state_id
+        
+        """
+    ];
+
+    rr:subjectMap [
+        rr:class www:QuantityState;
+        rr:class owl:NamedIndividual;
+        rr:template "http://www.ThermalDb.ru#QS_{state_id}_{func_quantity_id}_{func_argument_id}_{dimension_id}";
+        rr:termType rr:IRI;
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:isForState;
+        rr:objectMap [ rr:template "http://www.ThermalDb.ru#State{state_id}" ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:isForQuantity;
+        rr:objectMap [
+            rr:parentTriplesMap <#PhysicalQuantity>;
+            rr:joinCondition [
+                rr:child "func_quantity_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAFunctionArgument;
+        rr:objectMap [
+            rr:parentTriplesMap <#PhysicalQuantity>;
+            rr:joinCondition [
+                rr:child "func_argument_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAFunctionArgumentDimension;
+        rr:objectMap [
+            rr:parentTriplesMap <#Dimension>;
+            rr:joinCondition [
+                rr:child "dimension_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAQSLRangeOfDefinition;
+        rr:objectMap [ rr:column "lrange_of_definition"; rr:datatype xsd:real; ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAQSURangeOfDefinition;
+        rr:objectMap [ rr:column "urange_of_definition"; rr:datatype xsd:real; ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAQSLRangeOfVariation;
+        rr:objectMap [ rr:column "lrange_of_variation"; rr:datatype xsd:real; ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAQSURangeOfVariation;
+        rr:objectMap [ rr:column "urange_of_variation"; rr:datatype xsd:real; ];
+    ].
+
+
+<#SubstanceInState>
+    a rr:TriplesMap;
+
+    rr:logicalTable [
+        rr:sqlQuery """
+        
+            select distinct cs_s.*, cs.substance_name as cs_name
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.substance_in_state as cs_s on filter.substance_in_state_id = cs_s.id
+            inner join ont.pure_chemical_substance as cs on cs_s.substance_id = cs.id
+        
+        """
+    ];
+
+    rr:subjectMap [
+        rr:class www:SubstanceInState;
+        rr:class owl:NamedIndividual;
+        rr:template "http://www.ThermalDb.ru#{cs_name}InState{state_id}";
+        rr:termType rr:IRI;
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:isASubstance;
+        rr:objectMap [
+            rr:parentTriplesMap <#PureChemicalSubstance>;
+            rr:joinCondition [
+                rr:child "substance_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:isInState;
+        rr:objectMap [
+            rr:parentTriplesMap <#StateOfAggregation>;
+            rr:joinCondition [
+                rr:child "state_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:isInCrystalStructure;
+        rr:objectMap [
+            rr:parentTriplesMap <#CrystalStructure>;
+            rr:joinCondition [
+                rr:child "crystal_struct_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:isInMagneticStructure;
+        rr:objectMap [
+            rr:parentTriplesMap <#MagneticStructure>;
+            rr:joinCondition [
+                rr:child "magnetic_struct_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAnAdditionalName;
+        rr:objectMap [ rr:column "additional_name"; rr:datatype xsd:string; ];
+    ].
+
+
+<#DataSet>
+	a rr:TriplesMap;
+
+	rr:logicalTable [
+		rr:sqlQuery """
+        
+            select distinct ds.* from ont.data_set as ds where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false
+        
+        """
+	];
+
+	rr:subjectMap [
+		rr:class www:DataSet;
+		rr:class owl:NamedIndividual;
+		rr:template "http://www.ThermalDb.ru#DataSet{id}";
+		rr:termType rr:IRI;
+	];
+
+    rr:predicateObjectMap [
+        rr:predicate www:isADataForSubstanceInState;
+        rr:objectMap [
+            rr:parentTriplesMap <#SubstanceInState>;
+            rr:joinCondition [
+	        	rr:child "substance_in_state_id";
+	            rr:parent "id";
+	        ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasADataSetDesciption;
+        rr:objectMap [ rr:column "data_description"; rr:datatype xsd:string; ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasADataSetType;
+        rr:objectMap [ rr:column "data_type"; rr:datatype xsd:string; ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasADataSetFormat;
+        rr:objectMap [ rr:column "data_format"; rr:datatype xsd:string; ];
+    ].
+
+
+<#PointOfMeasure>
+	a rr:TriplesMap;
+
+	rr:logicalTable [
+		rr:sqlQuery """
+        
+            select distinct pm.*
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.point_of_measure as pm on pm.data_set_id = filter.id
+        
+        """
+	];
+
+	rr:subjectMap [
+		rr:class www:PointOfMeasure;
+		rr:class owl:NamedIndividual;
+		rr:template "http://www.ThermalDb.ru#PM{id}";
+		rr:termType rr:IRI;
+	];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasADataSource;
+        rr:objectMap [
+            rr:parentTriplesMap <#DataSource>;
+            rr:joinCondition [
+                rr:child "data_source_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:isAPartOfDataSet;
+        rr:objectMap [
+            rr:parentTriplesMap <#DataSet>;
+            rr:joinCondition [
+                rr:child "data_set_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+	rr:predicateObjectMap [
+		rr:predicate www:hasAPhysicalQuantityValue;
+		rr:objectMap [ rr:column "quantity_value"; rr:datatype xsd:real; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate www:hasRowCount;
+		rr:objectMap [ rr:column "row_num"; rr:datatype xsd:integer; ];
+	];
+
+    rr:predicateObjectMap [
+        rr:predicate www:isAValueOfPhysicalQuantity;
+        rr:objectMap [
+            rr:parentTriplesMap <#PhysicalQuantity>;
+            rr:joinCondition [
+                rr:child "quantity_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:measuredInDimension;
+        rr:objectMap [
+            rr:parentTriplesMap <#Dimension>;
+            rr:joinCondition [
+                rr:child "dimension_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+	rr:predicateObjectMap [
+        rr:predicate www:hasAMeasurementUncertainty;
+        rr:objectMap [
+            rr:parentTriplesMap <#Uncertainty>;
+            rr:joinCondition [
+	        	rr:child "id";
+	            rr:parent "point_of_measure_id";
+	        ];
+        ];
+	].
+    
+
+<#Uncertainty>
+	a rr:TriplesMap;
+
+	rr:logicalTable [
+		rr:sqlQuery """
+        
+            select distinct mu.*
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.point_of_measure as pm on pm.data_set_id = filter.id
+            inner join ont.measurement_uncertainty as mu on pm.id = mu.point_of_measure_id
+        
+        """
+	];
+
+	rr:subjectMap [
+		rr:class www:Uncertainty;
+		rr:class owl:NamedIndividual;
+		rr:template "http://www.ThermalDb.ru#Unc{id}";
+		rr:termType rr:IRI;
+	];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasACorrespondingPointOfMeasure;
+        rr:objectMap [
+            rr:parentTriplesMap <#PointOfMeasure>;
+            rr:joinCondition [
+                rr:child "point_of_measure_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAnUncertaintyType;
+        rr:objectMap [
+            rr:parentTriplesMap <#UncertaintyType>;
+            rr:joinCondition [
+                rr:child "uncertainty_type_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+	rr:predicateObjectMap [
+		rr:predicate www:hasAnUncertaintyValue;
+		rr:objectMap [ rr:column "uncertainty_value"; rr:datatype xsd:string; ];
+	].
+
+
+<#FunctionDefinition>
+    a rr:TriplesMap;
+
+    rr:logicalTable [
+        rr:sqlQuery """
+        
+            select distinct fd.*
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.substance_in_state as cs_s on filter.substance_in_state_id = cs_s.id
+            inner join ont.function_definition as fd on cs_s.id = fd.substance_in_state_id
+        
+        """
+    ];
+
+    rr:subjectMap [
+        rr:class www:FunctionDefinition;
+        rr:class owl:NamedIndividual;
+        rr:template "http://www.ThermalDb.ru#FD_{function_id}";
+        rr:termType rr:IRI;
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:isFuncForSubstanceInState;
+        rr:objectMap [
+            rr:parentTriplesMap <#SubstanceInState>;
+            rr:joinCondition [
+                rr:child "substance_in_state_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAFuncFormula;
+        rr:objectMap [ rr:column "function_formula"; rr:datatype xsd:string; ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:isResultInDimension;
+        rr:objectMap [
+            rr:parentTriplesMap <#Dimension>;
+            rr:joinCondition [
+                rr:child "standart_dimension_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAFuncUncertaintyType;
+        rr:objectMap [
+            rr:parentTriplesMap <#UncertaintyType>;
+            rr:joinCondition [
+                rr:child "uncertainty_type_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAFuncUncertaintyValue;
+        rr:objectMap [ rr:column "uncertainty_value"; rr:datatype xsd:string; ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:isResultOfPhysicalQuantity;
+        rr:objectMap [
+            rr:parentTriplesMap <#PhysicalQuantity>;
+            rr:joinCondition [
+                rr:child "func_quantity_id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+    
+
+    
+<#ControlFunctionDefinition>
+    a rr:TriplesMap;
+
+    rr:logicalTable [
+        rr:sqlQuery """
+        
+            select distinct cfd.*
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.substance_in_state as cs_s on filter.substance_in_state_id = cs_s.id
+            inner join ont.control_function_definition as cfd on cs_s.id = cfd.substance_in_state_id
+        
+        """
+    ];
+
+    rr:subjectMap [
+        rr:class www:ControlFunctionDefinition;
+        rr:class owl:NamedIndividual;
+        rr:template "http://www.ThermalDb.ru#CFD_{control_function_id}";
+        rr:termType rr:IRI;
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:isControlFuncForSubstanceInState;
+        rr:objectMap [
+            rr:parentTriplesMap <#SubstanceInState>;
+            rr:joinCondition [
+                rr:child "substance_in_state_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAControlFuncFormula;
+        rr:objectMap [ rr:column "function_formula"; rr:datatype xsd:string; ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAControlFuncUncertaintyType;
+        rr:objectMap [
+            rr:parentTriplesMap <#UncertaintyType>;
+            rr:joinCondition [
+                rr:child "uncertainty_type_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAControlFuncUncertaintyValue;
+        rr:objectMap [ rr:column "uncertainty_value"; rr:datatype xsd:string; ];
+    ].
+
+
+<#DomainOfControlFunctionDefinition>
+    a rr:TriplesMap;
+
+    rr:logicalTable [
+        rr:sqlQuery """
+        
+            select distinct d_cfd.*
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.substance_in_state as cs_s on filter.substance_in_state_id = cs_s.id
+            inner join ont.control_function_definition as cfd on cs_s.id = cfd.substance_in_state_id
+            inner join ont.domain_of_control_function_definition as d_cfd on cfd.control_function_id = d_cfd.control_function_id
+        
+        """
+    ];
+
+    rr:subjectMap [
+        rr:class www:DomainOfControlFunctionDefinition;
+        rr:class owl:NamedIndividual;
+        rr:template "http://www.ThermalDb.ru#DomainOfCFD_{control_domain_id}";
+        rr:termType rr:IRI;
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAControlFuncDefinition;
+        rr:objectMap [
+            rr:parentTriplesMap <#ControlFunctionDefinition>;
+            rr:joinCondition [
+                rr:child "control_function_id";
+                rr:parent "control_function_id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAControlFuncArgument;
+        rr:objectMap [
+            rr:parentTriplesMap <#PhysicalQuantity>;
+            rr:joinCondition [
+                rr:child "argument_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:isControlFuncArgumentInDimension;
+        rr:objectMap [
+            rr:parentTriplesMap <#Dimension>;
+            rr:joinCondition [
+                rr:child "standart_dimension_id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+
+<#DomainOfFunctionDefinition>
+    a rr:TriplesMap;
+
+    rr:logicalTable [
+        rr:sqlQuery """
+        
+            select distinct d_fd.*
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.substance_in_state as cs_s on filter.substance_in_state_id = cs_s.id
+            inner join ont.function_definition as fd on cs_s.id = fd.substance_in_state_id
+            inner join ont.domain_of_function_definition as d_fd on fd.function_id = d_fd.function_id
+        
+        """
+    ];
+
+    rr:subjectMap [
+        rr:class www:DomainOfFunctionDefinition;
+        rr:class owl:NamedIndividual;
+        rr:template "http://www.ThermalDb.ru#DomainOfFD_{func_domain_id}";
+        rr:termType rr:IRI;
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAFuncDefinition;
+        rr:objectMap [
+            rr:parentTriplesMap <#FunctionDefinition>;
+            rr:joinCondition [
+                rr:child "function_id";
+                rr:parent "function_id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAFuncArgument;
+        rr:objectMap [
+            rr:parentTriplesMap <#PhysicalQuantity>;
+            rr:joinCondition [
+                rr:child "argument_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:isFuncArgumentInDimension;
+        rr:objectMap [
+            rr:parentTriplesMap <#Dimension>;
+            rr:joinCondition [
+                rr:child "standart_dimension_id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasFuncConnectionType;
+        rr:objectMap [ rr:template "http://www.ThermalDb.ru#{func_connection_type}" ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAFuncLRangeOfDefinition;
+        rr:objectMap [ rr:column "lrange_of_definition"; rr:datatype xsd:real; ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate www:hasAFuncURangeOfDefinition;
+        rr:objectMap [ rr:column "urange_of_definition"; rr:datatype xsd:real; ];
+    ].
+
+#----chem 2 phys_quant
+
+<#chem2phys_quant>
+	a rr:TriplesMap;
+
+	rr:logicalTable [
+        rr:sqlQuery """
+        
+            select distinct cs_pq.*, cs.substance_name as cs_name
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.substance_in_state as cs_s on filter.substance_in_state_id = cs_s.id
+            inner join ont.pure_chemical_substance as cs on cs_s.substance_id = cs.id
+            inner join ont.substance_quantity as cs_pq on cs_pq.substance_id = cs.id
+        
+        """
+	];
+
+	rr:subjectMap [
+		rr:template "http://www.ThermalDb.ru#{cs_name}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate www:hasAConstantQuantity;
+        rr:objectMap [
+            rr:parentTriplesMap <#PhysicalQuantity>;
+            rr:joinCondition [
+                rr:child "quantity_id";
+                rr:parent "id";
+            ];
+        ];
+	].
+
+<#phys_quant2chem>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+        rr:sqlQuery """
+        
+            select distinct cs_pq.*, pq.quantity_name as pq_name
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.substance_in_state as cs_s on filter.substance_in_state_id = cs_s.id
+            inner join ont.pure_chemical_substance as cs on cs_s.substance_id = cs.id
+            inner join ont.substance_quantity as cs_pq on cs_pq.substance_id = cs.id
+            inner join ont.physical_quantity as pq on cs_pq.quantity_id  = pq.id
+        
+        """
+	];
+
+	rr:subjectMap [
+		rr:template "http://www.ThermalDb.ru#PQ_{pq_name}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate www:isASubstanceConstant;
+        rr:objectMap [
+            rr:parentTriplesMap <#PureChemicalSubstance>;
+            rr:joinCondition [
+                rr:child "substance_id";
+                rr:parent "id";
+            ];
+        ];
+	].
+
+
+#---dim 2 phys quant
+
+<#dim2phys_quant>
+	a rr:TriplesMap;
+
+	rr:logicalTable [
+        rr:sqlQuery """
+        
+            select distinct d_pq.*, d.id as d_id
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.point_of_measure as pm on pm.data_set_id = filter.id
+            inner join ont.dimension as d on pm.dimension_id = d.id
+            inner join ont.quantity_dimension as d_pq  on d_pq.dimension_id = d.id
+        
+        """
+	];
+
+	rr:subjectMap [
+		rr:template "http://www.ThermalDb.ru#Dim{d_id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate www:correspondsWithPhysicalQuantities;
+		rr:objectMap [
+            rr:parentTriplesMap <#PhysicalQuantity>;
+            rr:joinCondition [
+                rr:child "quantity_id";
+                rr:parent "id";
+            ];
+        ];
+	].
+
+<#phys_quant2dim>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+        rr:sqlQuery """
+        
+            select distinct d_pq.*, pq.quantity_name as pq_name
+            from (select * from ont.data_set where isuploadedtoviewmodel is null or isuploadedtoviewmodel = false) as filter
+            inner join ont.point_of_measure as pm on pm.data_set_id = filter.id
+            inner join ont.dimension as d on pm.dimension_id = d.id
+            inner join ont.quantity_dimension as d_pq  on d_pq.dimension_id = d.id
+            inner join ont.physical_quantity as pq on d_pq.quantity_id  = pq.id
+        
+        """
+	];
+
+	rr:subjectMap [
+		rr:template "http://www.ThermalDb.ru#PQ_{pq_name}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate www:hasACorrespondingDimension;
+        rr:objectMap [
+            rr:parentTriplesMap <#Dimension>;
+            rr:joinCondition [
+                rr:child "dimension_id";
+                rr:parent "id";
+            ];
+        ];
+	].

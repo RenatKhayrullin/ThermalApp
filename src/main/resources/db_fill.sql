@@ -41,9 +41,7 @@ insert into ont.quantity_dimension values (5,3);
 -- {substance_id, state_id} - уникальная пара
 insert into ont.substance_in_state values (1, 1, 1, 1, 'blank', 1);
 
---data_set.set_description - оставлять пустым, если нет информации о типе данных (например, что данные экспериментальные, расчетные, справочные)
---data_set.upload_date - в формате строки например 2015.10.10 '20151010'
-insert into ont.data_set values (1, 1, 'docs_1-5', 'table', 'xls');
+insert into ont.data_set values (1, 1, 'docs_1-5', 'table', 'xls', false);
 
 --=====
 --{property_id, row_num, data_set_id} -- уникальный набор, в базе почему-то ограничение не создалось
@@ -148,8 +146,8 @@ insert into ont.quantity_dimension values (9,4);
 insert into ont.substance_in_state values (2, 1, 1, 1, 'blank', 2);
 insert into ont.substance_in_state values (3, 1, 1, 1, 'blank', 3);
 
-insert into ont.data_set values (2, 2, 'docs_1-5', 'table', 'xls');
-insert into ont.data_set values (3, 3, 'docs_1-5', 'table', 'xls');
+insert into ont.data_set values (2, 2, 'docs_1-5', 'table', 'xls', false);
+insert into ont.data_set values (3, 3, 'docs_1-5', 'table', 'xls', false);
 --row_num = 0 -- соотвествует константам в наборе
 insert into ont.point_of_measure (id, data_set_id, row_num, quantity_id, data_source_id, dimension_id, quantity_value)
 values (31, 2, 0, 6, 1, 1, 25.55);
@@ -187,8 +185,8 @@ insert into ont.uncertainty_type values (3, 'Extended with a significance level 
 insert into ont.uncertainty_type values (4, 'Deviation from the approximating expression');
 
 insert into ont.substance_in_state values (4, 1, 1, 1, 'blank', 4);
-insert into ont.data_set values (4, 4, 'docs_1-5', 'table', 'xls');
-insert into ont.data_set values (5, 4, 'docs_1-5', 'table', 'xls');
+insert into ont.data_set values (4, 4, 'docs_1-5', 'table', 'xls', false);
+insert into ont.data_set values (5, 4, 'docs_1-5', 'table', 'xls', false);
 --data_set = 4
 --row_num = 1
 insert into ont.point_of_measure (id, data_set_id, row_num, quantity_id, data_source_id, dimension_id, quantity_value)
@@ -325,10 +323,10 @@ insert into ont.substance_in_state values(6, 2, 1, 1, 'blank', 6);
 insert into ont.substance_in_state values(7, 2, 1, 1, 'blank', 7);
 insert into ont.substance_in_state values(8, 2, 1, 1, 'blank', 8);
 
-insert into ont.data_set values (6, 5, 'docs_6_7', 'table', 'xls');
-insert into ont.data_set values (7, 6, 'docs_6_7', 'table', 'xls');
-insert into ont.data_set values (8, 7, 'docs_6_7', 'table', 'xls');
-insert into ont.data_set values (9, 8, 'docs_6_7', 'table', 'xls');
+insert into ont.data_set values (6, 5, 'docs_6_7', 'table', 'xls', false);
+insert into ont.data_set values (7, 6, 'docs_6_7', 'table', 'xls', false);
+insert into ont.data_set values (8, 7, 'docs_6_7', 'table', 'xls', false);
+insert into ont.data_set values (9, 8, 'docs_6_7', 'table', 'xls', false);
 
 --data_set = 6 //bcc-ferromagnetic
 --row_num = 1
@@ -575,10 +573,10 @@ insert into ont.substance_in_state values(10, 2, 1, 1, 'blank', 10);
 insert into ont.substance_in_state values(11, 2, 1, 1, 'blank', 11);
 insert into ont.substance_in_state values(12, 2, 1, 1, 'blank', 12);
 
-insert into ont.data_set values (10, 9, 'docs_6_7', 'table', 'xls');
-insert into ont.data_set values (11, 10, 'docs_6_7', 'table', 'xls');
-insert into ont.data_set values (12, 11, 'docs_6_7', 'table', 'xls');
-insert into ont.data_set values (13, 12, 'docs_6_7', 'table', 'xls');
+insert into ont.data_set values (10, 9, 'docs_6_7', 'table', 'xls', false);
+insert into ont.data_set values (11, 10, 'docs_6_7', 'table', 'xls', false);
+insert into ont.data_set values (12, 11, 'docs_6_7', 'table', 'xls', false);
+insert into ont.data_set values (13, 12, 'docs_6_7', 'table', 'xls', false);
 
 
 insert into ont.point_of_measure (id, data_set_id, row_num, quantity_id, data_source_id, dimension_id, quantity_value)
@@ -633,7 +631,7 @@ insert into ont.data_source values (6, 'База данных «Термичес
 
 insert into ont.substance_in_state values(13, 3, 1, 1, 'blank', 13);
 
-insert into ont.data_set values (14, 13, '5.XLS','table', 'xls');
+insert into ont.data_set values (14, 13, '5.XLS','table', 'xls', false);
 
 insert into ont.point_of_measure (id, data_set_id, row_num, quantity_id, data_source_id, dimension_id, quantity_value)
 values (148, 14, 0, 14, 6, 7, 4949.044);

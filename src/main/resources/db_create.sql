@@ -87,7 +87,8 @@ CREATE TABLE data_set (
     substance_in_state_id bigint REFERENCES substance_in_state(id) NOT NULL,
     data_description character varying(255),
     data_type character varying(255),
-    data_format character varying(255)
+    data_format character varying(255),
+    isuploadedtoviewmodel boolean
 );
 
 CREATE TABLE point_of_measure (
@@ -110,18 +111,18 @@ CREATE TABLE measurement_uncertainty (
 CREATE TABLE control_function_definition (
     control_function_id bigint PRIMARY KEY,
     substance_in_state_id bigint REFERENCES substance_in_state(id) NOT NULL,
-    function_formula character varying(4095),
+    function_formula character varying(255),
     uncertainty_type_id bigint REFERENCES uncertainty_type(id) NOT NULL,
-    uncertainty_value double precision
+    uncertainty_value character varying(255)
 );
 
 CREATE TABLE function_definition (
     function_id bigint PRIMARY KEY,
     substance_in_state_id bigint REFERENCES substance_in_state(id) NOT NULL,
-    function_formula character varying(4095),
+    function_formula character varying(255),
     standart_dimension_id bigint REFERENCES dimension(id) NOT NULL,
     uncertainty_type_id bigint REFERENCES uncertainty_type(id) NOT NULL,
-    uncertainty_value double precision,
+    uncertainty_value character varying(255),
     func_quantity_id bigint REFERENCES physical_quantity(id) NOT NULL
 );
 
@@ -136,6 +137,7 @@ CREATE TABLE domain_of_function_definition (
     function_id bigint REFERENCES function_definition(function_id) NOT NULL,
     argument_id bigint REFERENCES physical_quantity(id) NOT NULL,
     standart_dimension_id bigint REFERENCES dimension(id) NOT NULL,
+    func_connection_type character varying(255),
     lrange_of_definition double precision,
     urange_of_definition double precision,
     func_domain_id bigint PRIMARY KEY
