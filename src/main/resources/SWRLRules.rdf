@@ -1,0 +1,1197 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.ThermalDb.ru#"
+     xml:base="http://www.ThermalDb.ru"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:www="http://www.ThermalDb.ru#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://www.ThermalDb.ru"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#real -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#real"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ThermalDb.ru#correspondsWithPhysicalQuantities -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#correspondsWithPhysicalQuantities">
+        <owl:inverseOf rdf:resource="http://www.ThermalDb.ru#hasACorrespondingDimension"/>
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#Dimension"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#PhysicalQuantity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAConstantQuantity -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasAConstantQuantity">
+        <owl:inverseOf rdf:resource="http://www.ThermalDb.ru#isASubstanceConstant"/>
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PureChemicalSubstance"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#PhysicalQuantity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAControlFuncArgument -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasAControlFuncArgument">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#DomainOfControlFunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#PhysicalQuantity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAControlFuncDefinition -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasAControlFuncDefinition">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#DomainOfControlFunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#ControlFunctionDefinition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAControlFuncUncertaintyType -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasAControlFuncUncertaintyType">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#ControlFunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#UncertaintyType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAControlFunction -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasAControlFunction">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#ControlFunctionFailure"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#ControlFunctionDefinition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasACorrespondingDimension -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasACorrespondingDimension">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PhysicalQuantity"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#Dimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasACorrespondingPointOfMeasure -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasACorrespondingPointOfMeasure">
+        <owl:inverseOf rdf:resource="http://www.ThermalDb.ru#hasAMeasurementUncertainty"/>
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#Uncertainty"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasADataSource -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasADataSource">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#DataSource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAFuncArgument -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasAFuncArgument">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#DomainOfFunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#PhysicalQuantity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAFuncDefinition -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasAFuncDefinition">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#DomainOfFunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#FunctionDefinition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAFuncUncertaintyType -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasAFuncUncertaintyType">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#FunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#UncertaintyType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAFunctionArgument -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasAFunctionArgument">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#QuantityState"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#PhysicalQuantity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAFunctionArgumentDimension -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasAFunctionArgumentDimension">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#QuantityState"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#Dimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAMeasurementUncertainty -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasAMeasurementUncertainty">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#Uncertainty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAPhysicalQuantityRole -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasAPhysicalQuantityRole">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PhysicalQuantity"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#PhysicalQuantityRole"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAnInvalidPointOfMeasure -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasAnInvalidPointOfMeasure">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#ControlFunctionFailure"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAnUncertaintyType -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasAnUncertaintyType">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#Uncertainty"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#UncertaintyType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasFuncConnectionType -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#hasFuncConnectionType">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#FunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#FunctionalConnectionType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isADataForSubstanceInState -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isADataForSubstanceInState">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#DataSet"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#SubstanceInState"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isAPartOfDataSet -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isAPartOfDataSet">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#DataSet"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isASubstance -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isASubstance">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#SubstanceInState"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#PureChemicalSubstance"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isASubstanceConstant -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isASubstanceConstant">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PhysicalQuantity"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#PureChemicalSubstance"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isAValueOfPhysicalQuantity -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isAValueOfPhysicalQuantity">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#PhysicalQuantity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isControlFuncArgumentInDimension -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isControlFuncArgumentInDimension">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#FunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#Dimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isControlFuncForSubstanceInState -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isControlFuncForSubstanceInState">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#ControlFunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#SubstanceInState"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isForQuantity -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isForQuantity">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#QuantityState"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#PhysicalQuantity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isForState -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isForState">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#QuantityState"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#StateOfAggregation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isFuncArgumentInDimension -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isFuncArgumentInDimension">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#FunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#Dimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isFuncForSubstanceInState -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isFuncForSubstanceInState">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#FunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#SubstanceInState"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isInCrystalStructure -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isInCrystalStructure">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#SubstanceInState"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#CrystalStructure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isInMagneticStructure -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isInMagneticStructure">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#SubstanceInState"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#MagneticStructure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isInState -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isInState">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#SubstanceInState"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#StateOfAggregation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isResultInDimension -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isResultInDimension">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#FunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#Dimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#isResultOfPhysicalQuantity -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#isResultOfPhysicalQuantity">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#FunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#PhysicalQuantity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#linkedWithQuantityValues -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#linkedWithQuantityValues">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#measuredInDimension -->
+
+    <owl:ObjectProperty rdf:about="http://www.ThermalDb.ru#measuredInDimension">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
+        <rdfs:range rdf:resource="http://www.ThermalDb.ru#Dimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasABibliographicReference -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasABibliographicReference">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#DataSource"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAControlFuncFormula -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasAControlFuncFormula">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#ControlFunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAControlFuncUncertaintyValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasAControlFuncUncertaintyValue">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#ControlFunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasADataSetDesciption -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasADataSetDesciption">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#DataSet"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasADataSetFormat -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasADataSetFormat">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#DataSet"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasADataSetType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasADataSetType">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#DataSet"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasADimDesignation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasADimDesignation">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#Dimension"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasADimensionName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasADimensionName">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#Dimension"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAFuncFormula -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasAFuncFormula">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#FunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAFuncLRangeOfDefinition -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasAFuncLRangeOfDefinition">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#DomainOfFunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#real"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAFuncURangeOfDefinition -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasAFuncURangeOfDefinition">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#DomainOfFunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#real"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAFuncUncertaintyValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasAFuncUncertaintyValue">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#FunctionDefinition"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAPhysicalQuantityDesignation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasAPhysicalQuantityDesignation">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PhysicalQuantity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAPhysicalQuantityName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasAPhysicalQuantityName">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PhysicalQuantity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAPhysicalQuantityValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasAPhysicalQuantityValue">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#real"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAQSLRangeOfDefinition -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasAQSLRangeOfDefinition">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#QuantityState"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#real"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAQSLRangeOfVariation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasAQSLRangeOfVariation">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#QuantityState"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#real"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAQSURangeOfDefinition -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasAQSURangeOfDefinition">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#QuantityState"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#real"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAQSURangeOfVariation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasAQSURangeOfVariation">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#QuantityState"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#real"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasATypeName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasATypeName">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#UncertaintyType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAnAdditionalName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasAnAdditionalName">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#SubstanceInState"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasAnUncertaintyValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasAnUncertaintyValue">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#Uncertainty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasChemicalFormula -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasChemicalFormula">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PureChemicalSubstance"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasChemicalName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasChemicalName">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PureChemicalSubstance"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasChemicalType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasChemicalType">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PureChemicalSubstance"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasCrystalStructureName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasCrystalStructureName">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#CrystalStructure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasMagneticStructureName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasMagneticStructureName">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#MagneticStructure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasPassedCheck -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasPassedCheck">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasRowCount -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasRowCount">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasStateName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasStateName">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#StateOfAggregation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ThermalDb.ru#hasStateType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ThermalDb.ru#hasStateType">
+        <rdfs:domain rdf:resource="http://www.ThermalDb.ru#StateOfAggregation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ThermalDb.ru#ControlFunctionDefinition -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#ControlFunctionDefinition">
+        <rdfs:comment>Класс описаниия предметной области, характеризует понятие Проверочная Функция</rdfs:comment>
+        <rdfs:label>control function definition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#ControlFunctionFailure -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#ControlFunctionFailure">
+        <rdfs:comment>Класс описаниия случаев неудачи выполнения проверочной функции</rdfs:comment>
+        <rdfs:label>control function failure</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#CrystalStructure -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#CrystalStructure">
+        <rdfs:comment>Класс описаниия предментной области, характеризует понятие Кристаллическая Структура.</rdfs:comment>
+        <rdfs:label>crystal structure</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#DataSet -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#DataSet">
+        <rdfs:comment>Класс описаниия документов с данными, характеризует понятие Набор Данных.</rdfs:comment>
+        <rdfs:label>data set</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#DataSource -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#DataSource">
+        <rdfs:comment>Класс описаниия документов с данными, характеризует понятие Источник Данных.</rdfs:comment>
+        <rdfs:label>data source</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#Dimension -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#Dimension">
+        <rdfs:comment>Класс описания предметной области, характеризует понятие Единицы Измерения.</rdfs:comment>
+        <rdfs:label>dimension</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#DomainOfControlFunctionDefinition -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#DomainOfControlFunctionDefinition">
+        <rdfs:comment>Класс описаниия предметной области, характеризует понятие Область Определения Проверочной Функции</rdfs:comment>
+        <rdfs:label>domain of control function definition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#DomainOfFunctionDefinition -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#DomainOfFunctionDefinition">
+        <rdfs:comment>Класс описаниия предметной области, характеризует понятие Область Определения Расчетной Функции</rdfs:comment>
+        <rdfs:label>domain of function definition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#DoublePhaseState -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#DoublePhaseState">
+        <rdfs:subClassOf rdf:resource="http://www.ThermalDb.ru#StateOfAggregation"/>
+        <rdfs:comment>Класс описаниия предметной области, характеризует понятие Двухфазное Состояние.</rdfs:comment>
+        <rdfs:label>double phase state</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#FunctionDefinition -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#FunctionDefinition">
+        <rdfs:comment>Класс описаниия предметной области, характеризует понятие Расчетная Функция</rdfs:comment>
+        <rdfs:label>function definition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#FunctionalConnectionType -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#FunctionalConnectionType">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.ThermalDb.ru#ConstantConnection"/>
+                    <rdf:Description rdf:about="http://www.ThermalDb.ru#MonotonicDecrease"/>
+                    <rdf:Description rdf:about="http://www.ThermalDb.ru#MonotonicIncrease"/>
+                    <rdf:Description rdf:about="http://www.ThermalDb.ru#NoConnection"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment>Класс описаниия предметной области, характеризует тип зависимости функции от аргумента, задается перечислением экземпляров: константная зависимость, монотонное возрастание, монотонное неубывание, без зависимости.</rdfs:comment>
+        <rdfs:label>functional connection type</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#MagneticStructure -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#MagneticStructure">
+        <rdfs:comment>Класс описаниия предментной области, характеризует понятие Магнитная структура.</rdfs:comment>
+        <rdfs:label>magnetic structure</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#PhysicalQuantity -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#PhysicalQuantity">
+        <rdfs:comment>Класс описания предметной области, характеризует понятие Физичкской Величины.</rdfs:comment>
+        <rdfs:label>physical quantity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#PhysicalQuantityRole -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#PhysicalQuantityRole">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.ThermalDb.ru#Argument"/>
+                    <rdf:Description rdf:about="http://www.ThermalDb.ru#Constant"/>
+                    <rdf:Description rdf:about="http://www.ThermalDb.ru#Function"/>
+                    <rdf:Description rdf:about="http://www.ThermalDb.ru#SubstanceConstant"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment>Класс описаниия предметной области, характеризует тип физической величины, задается перечислением экземпляров: функции, константы, агрументы, константы вещества.</rdfs:comment>
+        <rdfs:label>physical quantity role</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#PointOfMeasure -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#PointOfMeasure">
+        <rdfs:comment>Класс описаниия физических измерений, характеризует понятие Точка Измерения.</rdfs:comment>
+        <rdfs:label>point of measure</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#PureChemicalSubstance -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#PureChemicalSubstance">
+        <rdfs:comment>Класс описаниия предметной области, характеризует понятие Химическое Вещество.</rdfs:comment>
+        <rdfs:label>pure chemical substance</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#QuantityState -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#QuantityState">
+        <rdfs:comment>(необходимость в отдельном классе возникла из-за дополнительных хар-к аргумента ф-и физ.величины, размерности и т.д.)</rdfs:comment>
+        <rdfs:comment>Класс описаниия предметной области, характеризует понятие Физической Велечины в Агрегантном Сотоянии</rdfs:comment>
+        <rdfs:label>quantity state</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#SinglePhaseState -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#SinglePhaseState">
+        <rdfs:subClassOf rdf:resource="http://www.ThermalDb.ru#StateOfAggregation"/>
+        <rdfs:comment>Класс описаниия предметной области, характеризует понятие Однофазное Состояние.</rdfs:comment>
+        <rdfs:label>single phase state </rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#StateOfAggregation -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#StateOfAggregation">
+        <rdfs:comment>Класс описаниия предметной области, характеризует понятие Агрегатное Состояние.</rdfs:comment>
+        <rdfs:label>state of aggregation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#SubstanceInState -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#SubstanceInState">
+        <rdfs:comment>Класс описания предметной области, характеризует понятие Химическое Вещество в Агрегатном Состоянии.</rdfs:comment>
+        <rdfs:label>subtance in state</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#TriplePhaseState -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#TriplePhaseState">
+        <rdfs:subClassOf rdf:resource="http://www.ThermalDb.ru#StateOfAggregation"/>
+        <rdfs:comment>Класс описаниия предметной области, характеризует понятие Трехфазное Состояние.</rdfs:comment>
+        <rdfs:label>triple phase state</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#Uncertainty -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#Uncertainty">
+        <rdfs:comment>Класс описаниия физических измерений, характеризует понятие Неопределенность Измерения.</rdfs:comment>
+        <rdfs:label>measurement uncertainty</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ThermalDb.ru#UncertaintyType -->
+
+    <owl:Class rdf:about="http://www.ThermalDb.ru#UncertaintyType">
+        <rdfs:comment>Класс описаниия физических измерений, характеризует понятие Тип Неопределенности.</rdfs:comment>
+        <rdfs:label>uncertainty type</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ThermalDb.ru#Argument -->
+
+    <owl:Thing rdf:about="http://www.ThermalDb.ru#Argument">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.ThermalDb.ru#Constant -->
+
+    <owl:Thing rdf:about="http://www.ThermalDb.ru#Constant">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.ThermalDb.ru#ConstantConnection -->
+
+    <owl:Thing rdf:about="http://www.ThermalDb.ru#ConstantConnection">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.ThermalDb.ru#Function -->
+
+    <owl:Thing rdf:about="http://www.ThermalDb.ru#Function">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.ThermalDb.ru#MonotonicDecrease -->
+
+    <owl:Thing rdf:about="http://www.ThermalDb.ru#MonotonicDecrease">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.ThermalDb.ru#MonotonicIncrease -->
+
+    <owl:Thing rdf:about="http://www.ThermalDb.ru#MonotonicIncrease">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.ThermalDb.ru#NoConnection -->
+
+    <owl:Thing rdf:about="http://www.ThermalDb.ru#NoConnection">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.ThermalDb.ru#SubstanceConstant -->
+
+    <owl:Thing rdf:about="http://www.ThermalDb.ru#SubstanceConstant">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.ThermalDb.ru#pom">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.ThermalDb.ru#pom_pq">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.ThermalDb.ru#pom_dim">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.ThermalDb.ru#ds">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.ThermalDb.ru#ss">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.ThermalDb.ru#s">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.ThermalDb.ru#qs">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.ThermalDb.ru#pq">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.ThermalDb.ru#qs_dim">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.ThermalDb.ru#pq_dim">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S1</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
+                        <swrl:argument1 rdf:resource="http://www.ThermalDb.ru#pom"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.ThermalDb.ru#isAValueOfPhysicalQuantity"/>
+                                <swrl:argument1 rdf:resource="http://www.ThermalDb.ru#pom"/>
+                                <swrl:argument2 rdf:resource="http://www.ThermalDb.ru#pom_pq"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.ThermalDb.ru#measuredInDimension"/>
+                                        <swrl:argument1 rdf:resource="http://www.ThermalDb.ru#pom"/>
+                                        <swrl:argument2 rdf:resource="http://www.ThermalDb.ru#pom_dim"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.ThermalDb.ru#isAPartOfDataSet"/>
+                                                <swrl:argument1 rdf:resource="http://www.ThermalDb.ru#pom"/>
+                                                <swrl:argument2 rdf:resource="http://www.ThermalDb.ru#ds"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.ThermalDb.ru#isADataForSubstanceInState"/>
+                                                        <swrl:argument1 rdf:resource="http://www.ThermalDb.ru#ds"/>
+                                                        <swrl:argument2 rdf:resource="http://www.ThermalDb.ru#ss"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://www.ThermalDb.ru#isInState"/>
+                                                                <swrl:argument1 rdf:resource="http://www.ThermalDb.ru#ss"/>
+                                                                <swrl:argument2 rdf:resource="http://www.ThermalDb.ru#s"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://www.ThermalDb.ru#isForState"/>
+                                                                        <swrl:argument1 rdf:resource="http://www.ThermalDb.ru#qs"/>
+                                                                        <swrl:argument2 rdf:resource="http://www.ThermalDb.ru#s"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                        <rdf:first>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                <swrl:propertyPredicate rdf:resource="http://www.ThermalDb.ru#hasAFunctionArgument"/>
+                                                                                <swrl:argument1 rdf:resource="http://www.ThermalDb.ru#qs"/>
+                                                                                <swrl:argument2 rdf:resource="http://www.ThermalDb.ru#pq"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:first>
+                                                                        <rdf:rest>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                <rdf:first>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                        <swrl:propertyPredicate rdf:resource="http://www.ThermalDb.ru#hasAFunctionArgumentDimension"/>
+                                                                                        <swrl:argument1 rdf:resource="http://www.ThermalDb.ru#qs"/>
+                                                                                        <swrl:argument2 rdf:resource="http://www.ThermalDb.ru#qs_dim"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:first>
+                                                                                <rdf:rest>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                        <rdf:first>
+                                                                                            <rdf:Description>
+                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#SameIndividualAtom"/>
+                                                                                                <swrl:argument1 rdf:resource="http://www.ThermalDb.ru#pq_dim"/>
+                                                                                                <swrl:argument2 rdf:resource="http://www.ThermalDb.ru#qs_dim"/>
+                                                                                            </rdf:Description>
+                                                                                        </rdf:first>
+                                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:rest>
+                                                                            </rdf:Description>
+                                                                        </rdf:rest>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.ThermalDb.ru#hasPassedCheck"/>
+                        <swrl:argument1 rdf:resource="http://www.ThermalDb.ru#pom"/>
+                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Check1</swrl:argument2>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

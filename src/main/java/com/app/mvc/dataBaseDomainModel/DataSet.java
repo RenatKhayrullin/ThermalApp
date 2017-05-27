@@ -8,14 +8,15 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(schema = "ont", name = "data_sets")
+@Table(schema = "ont", name = "data_set")
 public class DataSet implements Serializable {
 
     private Long id;
     private SubstanceInState substanceInState;
-    private String dataDescription;
-    private String dataType;
-    private String dataFormat;
+    private String  dataDescription;
+    private String  dataType;
+    private String  dataFormat;
+    private boolean isUploadedToViewModel;
 
     @JsonIgnore
     private Set<PointOfMeasure> pointsOfMeasure;// = new HashSet<PointOfMeasure>();
@@ -40,6 +41,10 @@ public class DataSet implements Serializable {
     @Column(name = "data_format")
     public String getDataFormat() { return this.dataFormat; }
     public void setDataFormat(String dataFormat) { this.dataFormat =dataFormat; }
+
+    @Column(name = "isuploadedtoviewmodel")
+    public boolean getisUploadedToViewModel() { return this.isUploadedToViewModel; }
+    public void setIsUploadedToViewModel(boolean isUploadedToViewModel) { this.isUploadedToViewModel = isUploadedToViewModel; }
 
     @ManyToOne
     @JoinColumn(name = "substance_in_state_id")

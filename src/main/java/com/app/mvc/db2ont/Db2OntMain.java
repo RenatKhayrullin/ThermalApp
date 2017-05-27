@@ -9,14 +9,14 @@ import java.io.OutputStream;
 import java.util.Iterator;
 import java.util.List;
 
-import com.app.mvc.dataBaseDomainModelDao.Impl.OntologyAbstractDaoImpl;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.util.FileManager;
 
 public class Db2OntMain {
-    public static final String OntologyStorageFilename = "OntologyStorage.rdf";
+    public static final String OntologyStorageFilename = "src/main/resources/OntologyStorage.rdf";
+    public static final String OntologyDefinitionFilename = "src/main/resources/OntologyDefinition.rdf";
 
     public static OntModel getCurrentOntology() {
         OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, null);
@@ -35,6 +35,7 @@ public class Db2OntMain {
     }
 
     public static void markDatasetsProcessed() {
+        /*
         OntologyAbstractDao<DataSet> datasetsDao = new OntologyAbstractDaoImpl<DataSet>(DataSet.class);
 
         List<DataSet> datasets = datasetsDao.findAllEntity();
@@ -45,6 +46,7 @@ public class Db2OntMain {
             dataset.setIsUploadedToViewModel(true);
             datasetsDao.saveOrUpdate(dataset);
         }
+        */
     }
 
     //all-in-one function, contains the whole db2ont process
@@ -55,7 +57,7 @@ public class Db2OntMain {
         }
         OntModel modelClasses = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, null);
         try {
-            InputStream is = FileManager.get().open("src/main/resources/termal_ont.rdf");
+            InputStream is = FileManager.get().open(OntologyDefinitionFilename);
             modelClasses.read(is, null);
             is.close();
         } catch (Exception e) {
@@ -64,7 +66,7 @@ public class Db2OntMain {
         }
 
         modelClasses.add(modelFromDb);
-        //PointsOfMeasureLinkingProcesser.doPMLinking(modelClasses);
+        PointsOfMeasureLinkingProcesser.doPMLinking(modelClasses);
         //SubstanceInStatesClassDataGenerator.doGenerateSubstanceInStatesDataClasses(modelClasses);
 
         OntModel currentModel = getCurrentOntology();

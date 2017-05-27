@@ -11,8 +11,8 @@ import org.apache.jena.util.FileManager;
 
 public class MorphWorker {
     public static final String morphCmd = "java -cp .:morph.jar:lib/* es.upm.fi.dia.oeg.morph.r2rml.rdb.engine.MorphRDBRunner db2ont_individuals db2ont_individuals.morph.properties";
-    public static final String morphDir = "morph";
-    public static final String morphOutput = "ont-result.nt";
+    public static final String morphDir = "src/main/resources/morph";
+    public static final String morphOutput = "db2ont_individuals/result.nt";
     public static final String morphOutputFormat = "N-TRIPLE";
 
     //internal function just to generate triples with morph-rdb
