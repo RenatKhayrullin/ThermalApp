@@ -23,4 +23,5 @@ public interface GenericDao<E extends Serializable>
     List<E> findColumnsOfResource(Long id);
 
     E findResourceByName(String name);
+
 }

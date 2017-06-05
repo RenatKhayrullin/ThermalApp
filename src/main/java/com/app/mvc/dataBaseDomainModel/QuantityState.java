@@ -15,7 +15,6 @@ class QuantityState implements Serializable{
     private Double uRangeOfVariation;
     private Double lRangeOfDefinition;
     private Double uRangeOfDefinition;
-
     public QuantityState() {}
 
 

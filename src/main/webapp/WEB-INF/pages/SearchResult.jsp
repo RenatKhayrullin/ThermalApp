@@ -36,7 +36,7 @@
     <h2>List of available data</h2>
 
     <form:form id="bind" action="/bind?entity=${entity}&resource=${resource}" method="POST" modelAttribute="link">
-        <table id="form">
+        <table id="form" width="80%">
             <tr>
                 <td>
                     <table id="dataTab" class="display cell-border row-border dt-middle" cellspacing="0" width="100%" style="overflow-x:auto">

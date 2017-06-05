@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(schema = "ont", name = "chemical_substances")
+@Table(schema = "ont", name = "pure_chemical_substance")
 public class ChemicalSubstance implements Serializable
 {
     public ChemicalSubstance() {}
