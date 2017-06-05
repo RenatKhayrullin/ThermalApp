@@ -8,11 +8,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(schema = "ont", name = "uncertainty_types")
+@Table(schema = "ont", name = "uncertainty_type")
 public class UncertaintyType {
     
 	private Long id;
-    private String uncertaintyType;
+    private String uncertaintyName;
     @JsonIgnore
     private Set<MeasurementUncertainty> measurementUncertainties = new HashSet<MeasurementUncertainty>();
 
@@ -28,12 +28,12 @@ public class UncertaintyType {
         this.id=id;
     }
 
-    @Column(name = "uncertainty_type")
-    public String getUncertaintyType(){
-        return this.uncertaintyType;
+    @Column(name = "uncertainty_name")
+    public String getUncertaintyName(){
+        return this.uncertaintyName;
     }
-    public void setUncertaintyType(String uncertaintyType){
-        this.uncertaintyType = uncertaintyType;
+    public void setUncertaintyName(String uncertaintyName){
+        this.uncertaintyName = uncertaintyName;
     }
 
     @OneToMany(mappedBy = "uncertaintyType", cascade = CascadeType.ALL,

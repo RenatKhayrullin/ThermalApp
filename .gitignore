@@ -4,6 +4,9 @@ out/
 *.war
 *.ear
 
+# Protege catalog.xml
+catalog*.xml
+
 #Idea files#
 .idea/
 *.iml

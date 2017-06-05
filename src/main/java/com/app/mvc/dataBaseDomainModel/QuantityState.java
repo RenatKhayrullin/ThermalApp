@@ -5,12 +5,14 @@ import java.io.Serializable;
 
 @Entity
 @Table(schema = "ont", name = "quantity_state",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"func_quantity_id", "func_argument_id", "state_id"}))
+        uniqueConstraints = @UniqueConstraint(columnNames = {"func_quantity_id", "func_argument_id", "state_id", "dimension_id"}))
 class QuantityState implements Serializable{
 
     private PhysicalQuantity funcQuantity;
     private PhysicalQuantity funcArgument;
     private State state;
+
+    private Dimension dimension;
     private Double lRangeOfVariation;
     private Double uRangeOfVariation;
     private Double lRangeOfDefinition;
@@ -52,4 +54,10 @@ class QuantityState implements Serializable{
     @JoinColumn(name = "state_id")
     public State getState() { return this.state; }
     public void setState(State state) { this.state =state; }
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "dimension_id")
+    public Dimension getDimension() { return dimension; }
+    public void setDimension(Dimension dimension) { this.dimension = dimension; }
 }

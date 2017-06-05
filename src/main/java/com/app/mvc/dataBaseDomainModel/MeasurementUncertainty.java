@@ -6,7 +6,7 @@ import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(schema = "ont", name = "measurement_uncertainties")
+@Table(schema = "ont", name = "measurement_uncertainty")
 public class MeasurementUncertainty {
 	
 	private Long id;

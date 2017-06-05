@@ -24,13 +24,13 @@ insert into ont.physical_quantity values (5, 'Vsolid', 'VolumeOfSolidPhase', 'fu
 
 --в таблицу вносится информация только о константах и функциях
 --T
-insert into ont.quantity_state values (1, 3, 1, 1, 0, 10000, 0, 10000);
-insert into ont.quantity_state values (1, 4, 1, 1, 0, 10000, 0, 10000);
-insert into ont.quantity_state values (1, 5, 1, 1, 0, 10000, 0, 10000);
+insert into ont.quantity_state values (1, 3, 1, 1, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (1, 4, 1, 1, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (1, 5, 1, 1, -10000, 10000, -10000, 10000);
 --P
-insert into ont.quantity_state values (1, 3, 2, 2, 0, 10000, 0, 10000);
-insert into ont.quantity_state values (1, 4, 2, 2, 0, 10000, 0, 10000);
-insert into ont.quantity_state values (1, 5, 2, 2, 0, 10000, 0, 10000);
+insert into ont.quantity_state values (1, 3, 2, 2, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (1, 4, 2, 2, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (1, 5, 2, 2, -10000, 10000, -10000, 10000);
 
 insert into ont.quantity_dimension values (1,1);
 insert into ont.quantity_dimension values (2,2);
@@ -131,10 +131,10 @@ insert into ont.physical_quantity values (9, 'Pc', 'PressureInCriticalPoint', 'c
 insert into ont."state" values (2, 'triple point', 'triple point');
 insert into ont."state" values (3, 'critical point', 'critical point');
 
-insert into ont.quantity_state values (2,6, NULL, NULL, 0, 0, 0, 10000);
-insert into ont.quantity_state values (2,7, NULL, NULL, 0, 0, 0, 10000);
-insert into ont.quantity_state values (3,8, NULL, NULL, 0, 0, 0, 10000);
-insert into ont.quantity_state values (3,9, NULL, NULL, 0, 0, 0, 10000);
+insert into ont.quantity_state values (2,6, NULL, NULL, 0, 0, -10000, 10000);
+insert into ont.quantity_state values (2,7, NULL, NULL, 0, 0, -10000, 10000);
+insert into ont.quantity_state values (3,8, NULL, NULL, 0, 0, -10000, 10000);
+insert into ont.quantity_state values (3,9, NULL, NULL, 0, 0, -10000, 10000);
 
 insert into ont.dimension values (4,'atm','atm');
 
@@ -169,9 +169,9 @@ insert into ont.physical_quantity values (10, 'B', 'SecondVirialСoefficient', '
 insert into ont."state" values (4, 'Gas');
 
 --T
-insert into ont.quantity_state values (4,10, 1, 1, 100, 2000, -1000, 1000);
+insert into ont.quantity_state values (4,10, 1, 1, -10000, 10000, -10000, 10000);
 --P
-insert into ont.quantity_state values (4,10, 2, 2, 1, 1, -1000, 1000);
+insert into ont.quantity_state values (4,10, 2, 2, -10000, 10000, -10000, 10000);
 
 insert into ont.dimension values (5, 'cm3/mol', 'cm3/mol');
 
@@ -308,15 +308,15 @@ insert into ont."state" values (7, 'fcc-pm');
 insert into ont."state" values (8, 'liquid');
 
 --T
-insert into ont.quantity_state values (5,11, 1, 1, 0, 10000, 10, 1000);
-insert into ont.quantity_state values (6,11, 1, 1, 0, 10000, 10, 1000);
-insert into ont.quantity_state values (7,11, 1, 1, 0, 10000, 10, 1000);
-insert into ont.quantity_state values (8,11, 1, 1, 0, 10000, 10, 1000);
+insert into ont.quantity_state values (5,11, 1, 1, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (6,11, 1, 1, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (7,11, 1, 1, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (8,11, 1, 1, -10000, 10000, -10000, 10000);
 --P
-insert into ont.quantity_state values (5,11, 2, 2, 1, 1, 10, 1000);
-insert into ont.quantity_state values (6,11, 2, 2, 1, 1, 10, 1000);
-insert into ont.quantity_state values (7,11, 2, 2, 1, 1, 10, 1000);
-insert into ont.quantity_state values (8,11, 2, 2, 1, 1, 10, 1000);
+insert into ont.quantity_state values (5,11, 2, 2, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (6,11, 2, 2, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (7,11, 2, 2, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (8,11, 2, 2, -10000, 10000, -10000, 10000);
 
 insert into ont.substance_in_state values(5, 2, 1, 1, 'blank', 5);
 insert into ont.substance_in_state values(6, 2, 1, 1, 'blank', 6);
@@ -554,14 +554,14 @@ insert into ont."state" values (12, 'bcc -> liquid', 'bcc -> liquid');
 insert into ont.physical_quantity values (12, 'Ttrans', 'TemperatureOfTransition', 'cnst');
 insert into ont.physical_quantity values (13, 'DHtrans', 'EnthalpyOfTransition', 'cnst');
 
-insert into ont.quantity_state values (9,12, NULL, NULL, 0, 0, 0, 10000);
-insert into ont.quantity_state values (9,13, NULL, NULL, 0, 0, 0, 10000);
-insert into ont.quantity_state values (10,12, NULL, NULL, 0, 0, 0, 10000);
-insert into ont.quantity_state values (10,13, NULL, NULL, 0, 0, 0, 10000);
-insert into ont.quantity_state values (11,12, NULL, NULL, 0, 0, 0, 10000);
-insert into ont.quantity_state values (11,13, NULL, NULL, 0, 0, 0, 10000);
-insert into ont.quantity_state values (12,12, NULL, NULL, 0, 0, 0, 10000);
-insert into ont.quantity_state values (12,13, NULL, NULL, 0, 0, 0, 10000);
+insert into ont.quantity_state values ( 9,12, NULL, NULL, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values ( 9,13, NULL, NULL, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (10,12, NULL, NULL, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (10,13, NULL, NULL, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (11,12, NULL, NULL, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (11,13, NULL, NULL, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (12,12, NULL, NULL, -10000, 10000, -10000, 10000);
+insert into ont.quantity_state values (12,13, NULL, NULL, -10000, 10000, -10000, 10000);
 
 insert into ont.dimension values (7, 'kJ/mol', 'kJ/mol');
 
@@ -616,7 +616,7 @@ insert into ont.physical_quantity values (14, 'DHF(0)', 'EnthalpyOfFormationAt0K
 insert into ont.physical_quantity values (15, 'I', 'IonizationPotential', 'scnst');
 insert into ont.physical_quantity values (16, 'Z', 'Charge', 'scnst');
 
-insert into ont.quantity_state values (13,14, NULL, NULL, 0, 0, 0, 10000);
+insert into ont.quantity_state values (13,14, NULL, NULL, -10000, 10000, -10000, 10000);
 
 --свойства характеризующие только вещество
 insert into ont.substance_quantity values (15,3);
@@ -642,3 +642,34 @@ values (150, 14, 0, 16, 6, null, 2);
 
 insert into ont.measurement_uncertainty values (129, '0.711', 148, 1);
 insert into ont.measurement_uncertainty values (130, '0.015', 149, 1);
+
+insert into ont.control_function_definition values (1, 1, '<math><apply><geq/><ci>T</ci><cn>0</cn></apply></math>', 1, 10);
+insert into ont.domain_of_control_function_definition values (1, 1, 1, 1);
+
+insert into ont.function_definition values (1, 1, '<math><apply><times/><ci>T</ci><cn>2</cn></apply></math>', 1, 1, 10, 1);
+insert into ont.domain_of_function_definition values (1, 1, 1, 'Monotonic', 0, 10000, 1);
+/*
+insert into ont.control_function_definition values (1, 1,
+						 '<math>' ||
+						 '    <apply\n>' ||
+						 '        <leq/>' ||
+                         '        <apply>\n' ||
+                         '            <abs/>\n' ||
+                         '            <apply>\n' ||
+                         '                <minus/>\n' ||
+                         '                <ci>G</ci>\n' ||
+                         '                <apply>\n' ||
+                         '                    <minus/>\n' ||
+                         '                    <ci>H</ci>\n' ||
+                         '                    <apply>\n' ||
+                         '                        <times/>\n' ||
+                         '                        <ci>T</ci>\n' ||
+                         '                        <ci>S</ci>\n' ||
+                         '                    </apply>\n' ||
+                         '                </apply>\n' ||
+                         '            </apply>\n' ||
+                         '        <ci>eps</ci>' ||
+                         '        </apply>\n' ||
+                         '    </apply>\n' ||
+                         '</math>', 1, 10);
+*/

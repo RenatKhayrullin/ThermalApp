@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(schema = "ont", name = "points_of_measure",
+@Table(schema = "ont", name = "point_of_measure",
         uniqueConstraints = @UniqueConstraint( columnNames = {"quantity_id", "row_num", "data_set_id"}))
 public class PointOfMeasure implements Serializable {
     

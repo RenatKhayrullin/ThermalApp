@@ -1312,6 +1312,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">25.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -1329,6 +1330,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">6.942E-4</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim3"/>
@@ -1347,6 +1349,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">36.693</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -1364,6 +1367,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1600.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -1381,6 +1385,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">37.521</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -1398,6 +1403,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1665.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -1415,6 +1421,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">38.06</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -1432,6 +1439,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1665.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -1449,6 +1457,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">41.113</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -1466,6 +1475,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1700.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -1483,6 +1493,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">41.464</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -1500,6 +1511,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1800.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -1517,6 +1529,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">27.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -1534,6 +1547,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">42.489</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -1551,6 +1565,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1809.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -1568,6 +1583,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">42.559</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -1585,6 +1601,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1809.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet9"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -1602,6 +1619,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">48.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet9"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -1619,6 +1637,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1636,6 +1655,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1653,6 +1673,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1670,6 +1691,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1687,6 +1709,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1704,6 +1727,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1721,6 +1745,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1738,6 +1763,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1755,6 +1781,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1772,6 +1799,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1789,6 +1817,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1806,6 +1835,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1823,6 +1853,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1840,6 +1871,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1857,6 +1889,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1874,6 +1907,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">168.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim2"/>
@@ -1892,6 +1926,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1909,6 +1944,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1926,6 +1962,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1943,6 +1980,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1960,6 +1998,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1977,6 +2016,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -1994,6 +2034,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -2011,6 +2052,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -2028,6 +2070,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -2045,6 +2088,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet9"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim4"/>
@@ -2062,6 +2106,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">7.793E-4</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim3"/>
@@ -2230,6 +2275,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">6.904E-4</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim3"/>
@@ -2261,6 +2307,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">28.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2278,6 +2325,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">239.3</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim2"/>
@@ -2296,6 +2344,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">7.717E-4</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim3"/>
@@ -2314,6 +2363,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">6.867E-4</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim3"/>
@@ -2332,6 +2382,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">29.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2349,6 +2400,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">312.2</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim2"/>
@@ -2367,6 +2419,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">7.645E-4</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim3"/>
@@ -2385,6 +2438,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">6.831E-4</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim3"/>
@@ -2403,6 +2457,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">30.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2420,6 +2475,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">386.7</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim2"/>
@@ -2438,6 +2494,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">7.579E-4</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim3"/>
@@ -2456,6 +2513,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">30.45</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim2"/>
@@ -2474,6 +2532,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">6.796E-4</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim3"/>
@@ -2552,6 +2611,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">50.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2567,6 +2627,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">-36.4</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim5"/>
@@ -2583,6 +2644,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">60.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2598,6 +2660,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">-25.3</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim5"/>
@@ -2614,6 +2677,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">75.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2629,6 +2693,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">7.9667E-4</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim3"/>
@@ -2647,6 +2712,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">-14.4</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim5"/>
@@ -2663,6 +2729,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">90.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2678,6 +2745,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">-7.6</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim5"/>
@@ -2694,6 +2762,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">110.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2709,6 +2778,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">-1.9</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim5"/>
@@ -2725,6 +2795,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">130.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2740,6 +2811,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1.8</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim5"/>
@@ -2756,6 +2828,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">160.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2771,6 +2844,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">5.3</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim5"/>
@@ -2787,6 +2861,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">200.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2802,6 +2877,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">6.979E-4</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim3"/>
@@ -2820,6 +2896,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">8.1</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet4"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource2"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim5"/>
@@ -2836,6 +2913,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">44.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet5"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource3"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2851,6 +2929,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">-46.1</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet5"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource3"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim5"/>
@@ -2868,6 +2947,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">46.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet5"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource3"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2883,6 +2963,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">-42.2</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet5"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource3"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim5"/>
@@ -2900,6 +2981,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">50.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet5"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource3"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2915,6 +2997,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">-35.4</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet5"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource3"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim5"/>
@@ -2932,6 +3015,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">60.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet5"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource3"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2947,6 +3031,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">-24.9</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet5"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource3"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim5"/>
@@ -2964,6 +3049,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">62.25</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet5"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource4"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2979,6 +3065,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">26.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -2996,6 +3083,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">-21.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet5"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource4"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim5"/>
@@ -3013,6 +3101,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">70.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet5"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource3"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3028,6 +3117,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">-17.1</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet5"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource3"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim5"/>
@@ -3045,6 +3135,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">90.65</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet5"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource4"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3060,6 +3151,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">-8.2</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet5"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource4"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim5"/>
@@ -3077,6 +3169,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">298.15</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3094,6 +3187,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">25.1</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3111,6 +3205,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">300.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3128,6 +3223,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">25.136</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3145,6 +3241,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">400.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3162,6 +3259,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">27.436</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3179,6 +3277,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">500.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3196,6 +3295,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">29.718</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3213,6 +3313,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">600.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3230,6 +3331,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">31.942</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3247,6 +3349,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">700.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3264,6 +3367,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">34.528</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3281,6 +3385,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">800.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3298,6 +3403,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">38.037</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3315,6 +3421,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">900.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3332,6 +3439,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">98.38</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim2"/>
@@ -3350,6 +3458,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">43.162</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3367,6 +3476,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1000.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3384,6 +3494,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">55.328</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3401,6 +3512,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1042.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3418,6 +3530,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">71.824</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet6"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3435,6 +3548,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1042.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3452,6 +3566,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">62.767</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3469,6 +3584,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1100.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3486,6 +3602,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">46.082</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3503,6 +3620,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1184.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3520,6 +3638,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">7.876E-4</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet1"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource1"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim3"/>
@@ -3538,6 +3657,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">40.906</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet7"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3555,6 +3675,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1184.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3572,6 +3693,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">34.075</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3589,6 +3711,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1200.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3606,6 +3729,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">34.208</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3623,6 +3747,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1300.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3640,6 +3765,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">35.038</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3657,6 +3783,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1400.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>
@@ -3674,6 +3801,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">35.885</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim6"/>
@@ -3691,6 +3819,7 @@
         <rdf:type rdf:resource="http://www.ThermalDb.ru#PointOfMeasure"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
         <www:hasAPhysicalQuantityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#real">1500.0</www:hasAPhysicalQuantityValue>
+        <www:hasPassedCheck rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Criteria7</www:hasPassedCheck>
         <www:isAPartOfDataSet rdf:resource="http://www.ThermalDb.ru#DataSet8"/>
         <www:hasADataSource rdf:resource="http://www.ThermalDb.ru#DataSource5"/>
         <www:measuredInDimension rdf:resource="http://www.ThermalDb.ru#Dim1"/>

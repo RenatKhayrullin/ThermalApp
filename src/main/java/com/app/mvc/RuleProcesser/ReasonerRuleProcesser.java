@@ -1,5 +1,6 @@
 package com.app.mvc.RuleProcesser;
 
+import com.clarkparsia.pellet.PelletOptions;
 import com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
@@ -8,6 +9,7 @@ import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
 import org.semanticweb.owlapi.util.*;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
 import java.io.File;
@@ -16,9 +18,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.logging.Logger;
 
 public class ReasonerRuleProcesser {
     public static final String THERMALONT_PREFIX = "http://www.ThermalDb.ru#";
+
+    private static org.slf4j.Logger log = LoggerFactory.getLogger(ReasonerRuleProcesser.class);
 
     private OWLOntology fullOntology;
     private OWLOntologyManager fullOntologyManager;
@@ -52,6 +57,7 @@ public class ReasonerRuleProcesser {
     }
 
     public void loadRules(String rulesPath) throws OWLOntologyCreationException {
+        SWRLCalculation.registerBuiltin();
         rulesOntologyManager = OWLManager.createOWLOntologyManager();
         File fin = new File(rulesPath);
         rulesOntology = rulesOntologyManager.loadOntologyFromOntologyDocument(IRI.create(fin));
@@ -65,20 +71,26 @@ public class ReasonerRuleProcesser {
         Set<SWRLRule> rules = this.rulesOntology.getAxioms(AxiomType.SWRL_RULE);
         Iterator<SWRLRule> it = rules.iterator();
         ArrayList<OWLOntologyChange> ruleChanges = new ArrayList<OWLOntologyChange>();
+        log.debug("adding changes");
         while (it.hasNext()) {
             SWRLRule rule = it.next();
 
             ruleChanges.add(new AddAxiom(fullOntology, rule));
         }
 
+        log.debug("changes added");
         fullOntologyManager.applyChanges(ruleChanges);
+        log.debug("changes applied");
     }
 
     public void flushToFile(String path) throws OWLOntologyCreationException {
+        log.debug("flush start");
         reasoner.flush();
+        log.debug("flush ended");
         InferredOntologyGenerator gen = new InferredOntologyGenerator(reasoner);
         OWLOntology infOnt = fullOntologyManager.createOntology();
         gen.fillOntology(fullOntologyDataFactory, infOnt);
+        log.debug("ont filled");
         try {
             fullOntologyManager.saveOntology(infOnt, new FileOutputStream(new File(path)));
         } catch (Exception e) {

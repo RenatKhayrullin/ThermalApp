@@ -7,14 +7,14 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(schema = "ont", name = "chemical_substances")
+@Table(schema = "ont", name = "pure_chemical_substance")
 public class ChemicalSubstance implements Serializable
 {
     public ChemicalSubstance() {}
 
     private Long id;
     private String substanceName;
-    private String chemicalFormula;
+    private String substanceFormula;
     private String substanceType;
 
     @JsonIgnore
@@ -40,12 +40,12 @@ public class ChemicalSubstance implements Serializable
         this.substanceName =name;
     }
 
-    @Column(name = "chemical_formula")
-    public String getChemicalFormula(){
-        return this.chemicalFormula;
+    @Column(name = "substance_formula")
+    public String getSubstanceFormula(){
+        return this.substanceFormula;
     }
-    public void setChemicalFormula(String subst_formula){
-        this.chemicalFormula =subst_formula;
+    public void setSubstanceFormula(String subst_formula){
+        this.substanceFormula =subst_formula;
     }
 
     @Column(name = "substance_type")
@@ -69,7 +69,7 @@ public class ChemicalSubstance implements Serializable
     }
 
     @ManyToMany
-    @JoinTable(name = "chem_subst_quantities",
+    @JoinTable(name = "substance_quantity",
             joinColumns = @JoinColumn(name = "substance_id"),
             inverseJoinColumns = @JoinColumn(name = "quantity_id"))
     public Set<PhysicalQuantity> getPhysicalQuantities(){

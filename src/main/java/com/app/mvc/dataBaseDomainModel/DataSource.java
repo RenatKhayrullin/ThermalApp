@@ -10,7 +10,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(schema = "ont", name = "data_sources")
+@Table(schema = "ont", name = "data_source")
 public class DataSource implements Serializable {
 
 	private Long id;

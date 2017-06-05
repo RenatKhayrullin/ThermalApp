@@ -111,7 +111,7 @@ CREATE TABLE measurement_uncertainty (
 CREATE TABLE control_function_definition (
     control_function_id bigint PRIMARY KEY,
     substance_in_state_id bigint REFERENCES substance_in_state(id) NOT NULL,
-    function_formula character varying(255),
+    function_formula character varying(4096),
     uncertainty_type_id bigint REFERENCES uncertainty_type(id) NOT NULL,
     uncertainty_value character varying(255)
 );
@@ -119,7 +119,7 @@ CREATE TABLE control_function_definition (
 CREATE TABLE function_definition (
     function_id bigint PRIMARY KEY,
     substance_in_state_id bigint REFERENCES substance_in_state(id) NOT NULL,
-    function_formula character varying(255),
+    function_formula character varying(4096),
     standart_dimension_id bigint REFERENCES dimension(id) NOT NULL,
     uncertainty_type_id bigint REFERENCES uncertainty_type(id) NOT NULL,
     uncertainty_value character varying(255),
