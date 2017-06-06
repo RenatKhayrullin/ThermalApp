@@ -63,6 +63,7 @@ CREATE TABLE quantity_dimension (
 );
 
 CREATE TABLE quantity_state (
+	id bigint PRIMARY KEY,
     state_id bigint REFERENCES "state"(id) NOT NULL,
     func_quantity_id bigint REFERENCES physical_quantity(id) NOT NULL,
     func_argument_id bigint REFERENCES physical_quantity(id),

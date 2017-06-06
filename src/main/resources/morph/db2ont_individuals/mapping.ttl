@@ -271,7 +271,7 @@
     rr:subjectMap [
         rr:class www:QuantityState;
         rr:class owl:NamedIndividual;
-        rr:template "http://www.ThermalDb.ru#QS_{state_id}_{func_quantity_id}_{func_argument_id}_{dimension_id}";
+        rr:template "http://www.ThermalDb.ru#QS_{id}";
         rr:termType rr:IRI;
     ];
 
