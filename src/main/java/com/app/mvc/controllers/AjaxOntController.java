@@ -23,8 +23,8 @@ import com.app.mvc.jsonview.Views;
 @RestController
 public class AjaxOntController
 {
-    @Autowired
-    private StardogDao stardogDAO;
+    //@Autowired
+    //private StardogDao stardogDAO;
 
     @Autowired
     private JenaDAO jenaDAO;
@@ -50,17 +50,12 @@ public class AjaxOntController
         List<String> ontInstances = jenaDAO.getInstances(ontClassName);
         List<String> ontLabel = jenaDAO.getClassProperty(ontClassName, label);
         List<String> ontComment = jenaDAO.getClassProperty(ontClassName, comment);
-        //List<String> ontSameAs = jenaDAO.getSameAs("http://www.ThermalDb.ru#Oxygen");
-
-        //System.out.println("OLD: "+ontSameAs);
-
-        //jenaDAO.setSameAs("http://www.ThermalDb.ru#Oxygen", "NewOxygen");
-        //ontSameAs = jenaDAO.getSameAs("http://www.ThermalDb.ru#Oxygen");
-        //System.out.println("NEW: "+ontSameAs);
+        List<String> ontEquivalentClass = jenaDAO.getOwlProperty(ontClassName, "equivalentClass");
 
         OntProperties ontProperties = new OntProperties();
 
-        if (ontObjProperties.size() > 0 || ontDataProperties.size() > 0 || ontLabel.size() > 0) {
+        if (ontObjProperties.size() > 0 || ontDataProperties.size() > 0
+                || ontLabel.size() > 0 || ontEquivalentClass.size() > 0) {
             ontProperties.setCode("200");
             ontProperties.setMsg("");
             ontProperties.setDataProperties(ontDataProperties);
@@ -68,6 +63,8 @@ public class AjaxOntController
             ontProperties.setStringIndividuals(ontInstances);
             ontProperties.setLabel(ontLabel);
             ontProperties.setComment(ontComment);
+            if (ontEquivalentClass.size() > 0)
+                ontProperties.setEquivalentClass(ontEquivalentClass.get(0));
         } else {
             ontProperties.setCode("400");
             ontProperties.setMsg("No data!");
@@ -104,17 +101,13 @@ public class AjaxOntController
             }
         }
 
-        List<String> ontSameAs = jenaDAO.getSameAs(ontInstName);
+        List<String> ontSameAs = jenaDAO.getOwlProperty(ontInstName, "sameAs");
+
         response.put("sameAs", ontSameAs.toArray());
-
-
-        //response.put("class", className);
-
-        //System.out.println(response.toString());
 
         OntProperties ontProperties = new OntProperties();
         ontProperties.setInstInfo(response.toString());
         return ontProperties;
 
     }
-    }
+}

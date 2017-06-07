@@ -25,6 +25,8 @@ public class OntProperties
     List<String> comment;
     @JsonView(Views.Public.class)
     String instInfo;
+    @JsonView(Views.Public.class)
+    String equivalentClass;
 
     public String getMsg() { return msg; }
 
@@ -68,5 +70,9 @@ public class OntProperties
     public String getInstInfo() { return instInfo; }
 
     public void setInstInfo(String instInfo) { this.instInfo = instInfo; }
+
+    public String getEquivalentClass() { return equivalentClass; }
+
+    public void setEquivalentClass(String equivalentClass) { this.equivalentClass = equivalentClass; }
 
 }

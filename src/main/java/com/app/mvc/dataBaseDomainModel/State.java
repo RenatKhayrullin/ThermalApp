@@ -8,10 +8,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(schema = "ont", name = "states")
+@Table(schema = "ont", name = "\"state\"")
 public class State implements Serializable {
 
-	private Long id;
+    private Long id;
     private String phaseName;
     private String phaseType;
     @JsonIgnore

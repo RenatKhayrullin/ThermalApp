@@ -3,14 +3,23 @@ package com.app.mvc.OntologyModelDao;
 import com.app.mvc.TreeModel.CourtBranch;
 import com.app.mvc.TreeModel.OntList;
 import com.sun.corba.se.spi.orbutil.fsm.Input;
+import org.apache.jena.ontology.OntClass;
+import org.apache.jena.ontology.OntModel;
+import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.*;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.util.FileManager;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.method.annotation.*;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static org.apache.jena.vocabulary.RDFS.Resource;
@@ -26,7 +35,9 @@ public class JenaDAO {
 
     private String filename;
     private Model model;
+    private OntModel ontModel;
     private InfModel inf;
+    private static int counter = 0;
 
     public JenaDAO() throws FileNotFoundException {
         filename = Constants.HOME + "OntologyStorage.rdf";
@@ -34,6 +45,7 @@ public class JenaDAO {
         InputStream in = new FileInputStream(filename);
         model = model.read(in, null);
         inf = ModelFactory.createRDFSModel(model);
+        ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM, model);
     }
 
     private String createNewSubject(String name) {
@@ -54,21 +66,22 @@ public class JenaDAO {
         return model;
     }
 
-    List<String> getSearchResults(String queryString) {
+    private List<String> getSearchResults(String queryString) {
 
         Query jenaquery = QueryFactory.create(queryString) ;
         QueryExecution qexec = QueryExecutionFactory.create(jenaquery, inf);
         ResultSet jenaresults = qexec.execSelect();
-
         ArrayList<String> results = new ArrayList<String>();
 
         while(jenaresults.hasNext()) {
             String soln = jenaresults.next().toString();
-            //System.out.println(soln);
+            System.out.println(soln);
             if ((soln.contains("#")) && (soln.contains(">")))
                 soln = soln.substring(soln.indexOf('#')+1, soln.indexOf('>'));
             if (soln.contains("\""))
                     soln = soln.substring(soln.indexOf('"') + 1, soln.lastIndexOf('"'));
+            if (soln.contains("<") && soln.contains(">"))
+                soln = soln.substring(soln.indexOf('<')+1, soln.indexOf('>'));
             results.add(soln);
         }
         return results;
@@ -153,16 +166,30 @@ public class JenaDAO {
     }
 
 
-    //sameAs
-    public List<String> getSameAs(String instName) throws IOException {
-        String nameUri = createNewSubject(instName);
+    //owl properties
+    public List<String> getOwlProperty(String entityName, String property) throws IOException {
+        String nameUri = createNewSubject(entityName);
 
         String query = "SELECT ?entity WHERE {<" + nameUri+ "> <" + Constants.OWL +
-                "#sameAs> ?entity.}";
+                "#" + property + "> ?entity.}";
 
         System.out.println(query);
         List <String> queryResult = getSearchResults(query);
         return queryResult;
+    }
+
+    public String getTree() throws IOException, JSONException {
+
+        String query = "select distinct ?type ?supertype \n" +
+                "WHERE {\n" +
+                " { ?type a <http://www.w3.org/2002/07/owl#Class> . } \n" +
+                "OPTIONAL { ?type <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?supertype } .\n" +
+                "OPTIONAL { ?type <http://www.w3.org/2002/07/owl#equivalentClass> " +
+                "[a <http://www.w3.org/2002/07/owl#Class> ; <http://www.w3.org/2002/07/owl#intersectionOf> " +
+                "[<http://www.w3.org/1999/02/22-rdf-syntax-ns#rest>*/<http://www.w3.org/1999/02/22-rdf-syntax-ns#first> ?supertype] ]. }}";
+
+        System.out.println(query);
+        return getJsonTree(query);
     }
 
     public void setSameAs(String className, String newEntity) throws IOException {
@@ -179,111 +206,97 @@ public class JenaDAO {
         out.close();
     }
 
-    /*
-    //Tree hierarchy
-    List<OntList> getOntList() {
+    public void setSubClass(String instName, String link) throws IOException {
+        String className = getClassName(instName);
+        String classUri = createNewSubject(className);
+        Resource superClass = model.getResource(classUri);
+        System.out.println("SuperClass   " + superClass.getURI());
 
-        String query = "select distinct ?type ?supertype WHERE { { ?type a <" + Constants.CLASS.toString() + "> . }" +
-                "OPTIONAL { ?supertype <" + Constants.SUBCLASS.toString() + "> ?type } . " +
-                "} ORDER BY ?type ?supertype";
+        Resource existingResource = superClass;
+        String newName = "", newnameUri = "";
+        Property property = model.getProperty(Constants.SUBCLASS.toString());
 
-        System.out.println("Class Hierarchy: " + query);
+        do {
+            ++counter;
+            newName = instName + '-' + counter;
+            newnameUri = createNewSubject(newName);
+            existingResource = model.getResource(newnameUri);
+        }
+        while (model.contains(existingResource, property));
 
+        System.out.println("ExistingResource   " + newnameUri);
+
+        OntClass newResource = ontModel.createClass(newnameUri);
+        newResource.addSuperClass(superClass);
+        Resource differentResource = ontModel.getResource(link);
+        newResource.setEquivalentClass(differentResource);
+        System.out.println("test    "+differentResource.toString());
+        /*
+        Property eqProperty = model.getProperty(Constants.OWL.toString() + "#equivalentTo");
+        System.out.println(eqProperty.getURI());
+
+        Statement statement = model.createStatement(existingResource, eqProperty, link);
+        model.add(statement);*/
+
+        OutputStream out = new FileOutputStream(filename);
+       // model.write(out);
+        ontModel.write(out);
+        out.close();
+
+    }
+
+    private String getJsonTree(String query) throws JSONException {
         Query jenaquery = QueryFactory.create(query) ;
-        QueryExecution qexec = QueryExecutionFactory.create(jenaquery, inf);
+        QueryExecution qexec = QueryExecutionFactory.create(jenaquery, ontModel);
         ResultSet jenaresults = qexec.execSelect();
-        ArrayList<OntList> ontLists = new ArrayList<OntList>();
-        int count = 0;
+        int id = 1;
+        JSONArray array = new JSONArray();
+        JSONObject allTypes = new JSONObject();
+        JSONObject list = new JSONObject();
+        list.put("Thing", 1);
+        JSONObject object = new JSONObject();
+        object.put("id", list.getString("Thing"));
+        object.put("parent", "#");
+        object.put("text", "Thing");
+        array.put(object);
 
         while(jenaresults.hasNext()) {
-            OntList ontList = new OntList();
-            ++count;
-            QuerySolution sol = jenaresults.nextSolution();
-            String ssol = sol.toString();
-            //System.out.println("SOL: " + ssol);
-            String type = sol.getResource("type").toString();
+            QuerySolution solution = jenaresults.next();
+            String type = solution.get("type").toString();
             if (type.contains("#")) {
-                type = type.substring(type.indexOf('#')+1);
-                System.out.println("TYPE: " + type);
-                ontList.setName(type);
-            } else continue;
-
-            RDFNode st = sol.getResource("supertype");
-            String supertype = (st == null)? "#Nothing" : st.toString();
-            if (supertype.contains("#")) {
-                supertype = supertype.substring(supertype.indexOf('#')+1);
-                System.out.println("SUPERTYPE: " + supertype);
-            }
-            ontList.setParent(supertype);
-            ontLists.add(ontList);
-        }
-        System.out.println(count);
-        return ontLists;
-    }
-
-    public List<CourtBranch> buildOntTree() {
-        List<OntList> results = getOntList();
-        List<CourtBranch> elements = new ArrayList<CourtBranch>();
-
-        String Base = "Thing";
-        int i = 0; //счетчик
-        int b = 1; //идентификатор базового класса
-        boolean is = true;
-
-        elements.add(new CourtBranch(++i, Base, 0));
-
-        List<OntList> clear = new ArrayList<>();
-
-        for (final OntList result : results) {
-            if(!result.getParent().equals("Thing") && !result.getParent().equals("Nothing") && !result.getParent().equals(result.getName())) {
-                clear.add(new OntList(result.getName(), result.getParent()));
-            }
-        }
-
-        while (!clear.isEmpty()) {
-
-            //algoritm
-            List<OntList> baseList = new ArrayList<OntList>(); //base class
-            List<OntList> childList = new ArrayList<OntList>(); //classes with children
-
-
-            //разбиение на 2 циакла - цикл с базовым классом и все остальное
-            for (final OntList result : clear) {
-                if (result.getName().equals(Base)) {
-                    baseList.add(new OntList(result.getName(), result.getParent()));
-                } else {
-                    childList.add(new OntList(result.getName(), result.getParent()));
-                }
-            }
-
-            //цикл по base class
-            //заполняем elements
-            for (final OntList base : baseList) {
-                for (final OntList child : childList) {
-                    if (base.getParent().equals(child.getParent())) {
-                        is = false;
+                if (solution.contains("supertype")) {
+                    String supertype = solution.get("supertype").toString();
+                    if (supertype.contains("#") && ! supertype.equalsIgnoreCase(type)) {
+                        //System.out.println(type + "    " + supertype);
+                        if (! allTypes.has(type)) allTypes.put(type, supertype);
                     }
                 }
-                if (is == true) {
-                    elements.add(new CourtBranch(++i, base.getParent(), b));
-                }
-                is = true;
-            }
-            if (!childList.isEmpty()) {
-                Base = childList.get(childList.size() - 1).getName();
-
-                //узнаем индекс базового элемента
-                for (final CourtBranch element : elements) {
-                    if (element.getName().equals(Base)) {
-                        b = element.getId();
-                        break;
-                    }
+                if (! allTypes.has(type)) {
+                    //System.out.println(type);
+                    allTypes.put(type, "Thing");
                 }
             }
-            clear = childList;
         }
+        Iterator<String> keys = allTypes.keys();
+        while (keys.hasNext()){
+            String key = keys.next();
+            String value = allTypes.getString(key);
 
-        return elements;
+            if (! list.has(key)) {
+                ++id;
+                list.put(key, id);
+            }
+            if (! list.has(value)) {
+                ++id;
+                list.put(value, id);
+            }
+            JSONObject newObject = new JSONObject();
+            newObject.put("id", list.getString(key));
+            newObject.put("parent", list.getString(value));
+            newObject.put("text", key.substring(key.indexOf('#')+1));
+            array.put(newObject);
+        }
+        System.out.println(array);
+        return array.toString();
     }
-    */
 }

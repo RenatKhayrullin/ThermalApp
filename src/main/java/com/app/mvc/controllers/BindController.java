@@ -26,15 +26,20 @@ public class BindController {
                           @RequestParam(value="entity", required=true) String entity,
                           @RequestParam(value="resource", required=true) String resource) throws IOException {
 
+        System.out.println("ENTITY:  "+entity);
+        System.out.println("RESOURCE:  "+resource);
+        System.out.println("LINK:  "+link);
+
         if (resource.toLowerCase().contains("chemspider")) {
             jenaDAO.setSameAs(entity, link);
             System.out.println(entity+"   "+resource+"    "+link);
         }
-        /*
-        System.out.println("ENTITY:  "+entity);
-        System.out.println("RESOURCE:  "+resource);
-        System.out.println("LINK:  "+link);
-        */
+
+        if (resource.toLowerCase().contains("bioontology")) {
+            jenaDAO.setSubClass(entity, link);
+            //jenaDAO.getTree();
+        }
+
         return new ModelAndView("redirect:/OntTree");
     }
 

@@ -33,7 +33,7 @@
 <h1>Ontology</h1>
     <table  cellpadding="5" cellspacing="20" >
         <tr>
-            <td valign="top" rowspan="5" width="370">
+            <td valign="top" rowspan="6" width="370">
                 <div id="ontology"/>
             </td>
             <td valign="top" colspan="3" height="30">
@@ -43,6 +43,11 @@
         <tr>
             <td valign="top" colspan="3" height="30">
                 <div id="comment"></div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" colspan="3" height="30">
+                <div id="equivalentClass"></div>
             </td>
         </tr>
         <tr>
@@ -119,8 +124,8 @@
         $("#label").html("Choose Ontology Class");
         var ontData = JSON.parse('${ontJson}');
         console.log(ontData);
-        ontData = makeTree('${ontJson}');
-        console.log(ontData);
+        //ontData = makeTree('${ontJson}');
+        //console.log(ontData);
 
         $("#ontology").on("changed.jstree", function (e, data) {
 
@@ -175,8 +180,10 @@
     function datatab(data) {
         var label = (data["label"])? data["label"] : "";
         var comment = (data["comment"])? data["comment"] : "";
+        var equivalentClass = (data["equivalentClass"])? data["equivalentClass"] : "";
         $('#label').html('<h3>' + label + '</h3>');
         $('#comment').html('<h4>' + comment + '</h4>');
+        $('#equivalentClass').html('Equivalent Class: ' + '<a href="' + equivalentClass + '">' + equivalentClass);
 
         //Destroy old dataTables
         if ($.fn.DataTable.isDataTable( '#objProp' ) ) {

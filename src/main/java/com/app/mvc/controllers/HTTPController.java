@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -52,15 +53,11 @@ public class HTTPController {
 
         ThirdPartyResource resource = resourceService.getResourceByName(searchRequest.getResource());
 
-        //List<ThirdPartyResource> thirdPartyResources = resourceService.getAllResources();
-
-        //choosing chemspider - get(0)
         List<ResourceColumns> resourceColumns = resourceService.getResourceColumns(resource.getId());
 
         String url = resource.getUrl();
-        //String url =
 
-        if (resource.getResourceName().contains("chemspider")) {
+        if (resource.getSearchParameter().contains("formula")) {
             String entity = jenaDAO.getInstanceProperty(searchRequest.getEntity(), "hasChemicalFormula");
             if (entity.isEmpty()) {
                 uiModel.addAttribute("msg", "This instance does not have Chemical Formula");
@@ -68,7 +65,9 @@ public class HTTPController {
             }
             url = url.replace("{entity}", transformFormulaForQuery(entity));
         }
-        else url = url.replace("{entity}", searchRequest.getEntity().toLowerCase());
+        if (resource.getSearchParameter().contains("substance")) {
+            url = url.replace("{entity}", searchRequest.getEntity().toLowerCase());
+        }
 
         if (url.contains("{apikey}")) {
             url = url.replace("{apikey}", resource.getApikey());
@@ -84,8 +83,6 @@ public class HTTPController {
         //add request header
         con.addRequestProperty("Accept", resource.getAcceptData());
         con.addRequestProperty("Accept-Charset", resource.getAcceptCharset());
-        //con.addRequestProperty("Accept", "application/json");
-        //con.addRequestProperty("Accept-Charset", "UTF-8");
 
         int responseCode = con.getResponseCode();
         System.out.println("\nSending 'GET' request to URL : " + url);
@@ -93,8 +90,8 @@ public class HTTPController {
         String contentType = con.getContentType();
         System.out.println(contentType);
 
-        if ((responseCode != 200)) { //|| (! contentType.equalsIgnoreCase(resource.getAcceptData()))) {
-            //System.out.println(resource.getAcceptData());
+        if ((responseCode != 200) || (! contentType.contains(resource.getAcceptData()))) {
+            System.out.println(resource.getAcceptData());
             uiModel.addAttribute("msg", "Nothing was found at this resource");
             return "ErrorPage";
         }
@@ -112,18 +109,25 @@ public class HTTPController {
         System.out.println(response.toString());
 
         String infos = "";
+        List<ChemSpiderInfo> chem_infos = new ArrayList<>();
+        ObjectMapper jsonDataMapper = new ObjectMapper();
+
         if (con.getContentType().contains("xml")) {
             Document xml = XMLLoader.loadXmlFromString(response.toString().replaceAll("'", ""));
-            List<ChemSpiderInfo> chem_infos = ChemSpiderXMLHelper.getInfoListFromAtomXML(xml);
-
-            ObjectMapper jsonDataMapper = new ObjectMapper();
+            try {
+                chem_infos = ChemSpiderXMLHelper.getInfoListFromAtomXML(xml);
+            }
+            catch (Throwable t){
+                uiModel.addAttribute("msg", "Response XML is invalid");
+                return "ErrorPage";
+            }
             infos = jsonDataMapper.writeValueAsString(chem_infos);
         }
+
         if (con.getContentType().contains("json")) {
             infos = response.toString().replaceAll("'", "");
         }
 
-        ObjectMapper jsonDataMapper = new ObjectMapper();
         String columns = jsonDataMapper.writeValueAsString(resourceColumns);
 
         uiModel.addAttribute("infos", infos);
@@ -135,7 +139,7 @@ public class HTTPController {
         return "SearchResult";
     }
 
-    public static String transformFormulaForQuery(String formula){
+    private static String transformFormulaForQuery(String formula){
         formula = formula.toUpperCase();
         Pattern p = Pattern.compile("[a-zA-Z]+[0-9]+");
         Matcher m = p.matcher(formula);

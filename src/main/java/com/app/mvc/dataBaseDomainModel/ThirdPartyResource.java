@@ -21,6 +21,7 @@ public class ThirdPartyResource implements Serializable{
     private String acceptData;
     private String acceptCharset;
     private String resourceName;
+    private String searchParameter;
     private String additional;
     @JsonIgnore
     private Set<ResourceColumns> resourceColumns = new HashSet<ResourceColumns>();
@@ -56,6 +57,10 @@ public class ThirdPartyResource implements Serializable{
     @Column(name = "resource_name")
     public String getResourceName() { return this.resourceName; }
     public void setResourceName(String resourceName) { this.resourceName = resourceName; }
+
+    @Column(name = "search_parameter")
+    public String getSearchParameter() { return this.searchParameter; }
+    public void setSearchParameter(String searchParameter) { this.searchParameter = searchParameter; }
 
     @Column(name = "additional")
     public String getAdditional() { return this.additional; }

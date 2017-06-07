@@ -32,12 +32,12 @@ public class ResourceServiceImpl implements ResourceService {
     }
 
     @Override
-    public List getAllResources() {
+    public List<ThirdPartyResource> getAllResources() {
         return thirdPartyResourceDao.findAll();
     }
 
     @Override
-    public List getResourceColumns(Long id) {
+    public List<ResourceColumns> getResourceColumns(Long id) {
         return resourceColumnsDao.findColumnsOfResource(id);
     }
 

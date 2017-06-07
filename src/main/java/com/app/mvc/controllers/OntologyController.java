@@ -6,6 +6,7 @@ import com.app.mvc.applicationServices.ResourceService;
 import com.app.mvc.dataBaseDomainModel.ThirdPartyResource;
 import org.apache.jena.Jena;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.json.JSONException;
 import org.springframework.stereotype.Controller;
 import com.app.mvc.TreeModel.CourtBranch;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.slf4j.Logger;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import com.app.mvc.OntologyModelDao.StardogDao;
 import org.springframework.ui.Model;
@@ -38,19 +40,20 @@ public class OntologyController {
 
     //вывод таблички иерархии классов
     @RequestMapping(value="/OntTree", method = RequestMethod.GET)
-    public String showOntTree(Locale locale, Model model) throws IOException {
-        List<CourtBranch> ontList = stardogDAO.makeOntTree();
+    public String showOntTree(Locale locale, Model model) throws IOException, JSONException {
+        //List<CourtBranch> ontList = stardogDAO.makeOntTree();
+        //List<CourtBranch> ontList = new ArrayList<>();
+
+        String ontJson = jenaDAO.getTree();
         //logger.debug("Found " + ontList.size() + " number of dogs in the store");
-        //List<OntList> ontList = jenaDAO.getOntList();
-        //List<CourtBranch> ontList = jenaDAO.buildOntTree();
 
         List<ThirdPartyResource> tpresources = resourceService.getAllResources();
         ObjectMapper jsonDataMapper = new ObjectMapper();
         String resources = jsonDataMapper.writeValueAsString(tpresources);
-        String ontJson = jsonDataMapper.writeValueAsString(ontList);
+        //String ontJson = jsonDataMapper.writeValueAsString(ontList);
 
         model.addAttribute("thirdPartyRes", resources);
-        model.addAttribute("ontList", ontList);
+        //model.addAttribute("ontList", ontList);
         model.addAttribute("ontJson", ontJson);
         return "OntTree";
     }

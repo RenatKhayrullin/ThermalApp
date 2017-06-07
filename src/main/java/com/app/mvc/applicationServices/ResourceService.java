@@ -10,8 +10,8 @@ import java.util.List;
  */
 public interface ResourceService {
 
-    List getAllResources();
-    List getResourceColumns(Long id);
+    List <ThirdPartyResource> getAllResources();
+    List <ResourceColumns> getResourceColumns(Long id);
     void saveResource(ThirdPartyResource resource);
     ThirdPartyResource getResourceById(Long id);
     ThirdPartyResource getResourceByName(String name);

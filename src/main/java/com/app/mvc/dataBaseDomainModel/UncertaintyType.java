@@ -4,15 +4,16 @@ package com.app.mvc.dataBaseDomainModel;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(schema = "ont", name = "uncertainty_types")
-public class UncertaintyType {
-    
-	private Long id;
-    private String uncertaintyType;
+@Table(schema = "ont", name = "uncertainty_type")
+public class UncertaintyType implements Serializable {
+
+    private Long id;
+    private String uncertaintyName;
     @JsonIgnore
     private Set<MeasurementUncertainty> measurementUncertainties = new HashSet<MeasurementUncertainty>();
 
@@ -28,12 +29,12 @@ public class UncertaintyType {
         this.id=id;
     }
 
-    @Column(name = "uncertainty_type")
-    public String getUncertaintyType(){
-        return this.uncertaintyType;
+    @Column(name = "uncertainty_name")
+    public String getUncertaintyName(){
+        return this.uncertaintyName;
     }
-    public void setUncertaintyType(String uncertaintyType){
-        this.uncertaintyType = uncertaintyType;
+    public void setUncertaintyName(String uncertaintyName){
+        this.uncertaintyName = uncertaintyName;
     }
 
     @OneToMany(mappedBy = "uncertaintyType", cascade = CascadeType.ALL,
@@ -46,7 +47,7 @@ public class UncertaintyType {
     }
 
     public  void addMeasurementUncertainty(MeasurementUncertainty measurementUncertainty){
-    	measurementUncertainty.setUncertaintyType(this);
+        measurementUncertainty.setUncertaintyType(this);
         getMeasurementUncertainties().add(measurementUncertainty);
     }
 

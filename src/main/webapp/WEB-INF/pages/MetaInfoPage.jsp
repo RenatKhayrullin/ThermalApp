@@ -25,10 +25,11 @@
 <spring:url value="/resources/css/common.css"                           var="common" />
 <link href="${common}" rel="stylesheet" />
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Meta Data</title>
 </head>
 <body>
-<form:form id="metaForm" action="metainfo" method="post" modelAttribute="metaData">
+<form:form id="metaForm" action="numericinfo" method="post" modelAttribute="metaData" >
     <table class="display cell-border row-border dt-middle" cellspacing="0" width="50%" style="overflow-x:auto">
         <tr>
             <table id="metaDataTab" class="display cell-border row-border dt-middle" cellspacing="0" width="50%" style="overflow-x:auto">
@@ -66,11 +67,13 @@
             'columnDefs': [
                 {
                     'targets': 0,
-                    'render': function (data) {return data;}
+                    'render': function (data) {return '<input form="metaForm" type="hidden" ' +
+                            'name="metaData" value="' + data + '">' + data + '</>';}
                 },
                 {
                     'targets': 1,
-                    'render': function (data) {return data;}
+                    'render': function (data) {return '<input form="metaForm" type="hidden" ' +
+                            'name="metaData" value="' + data + '">' + data + '</>';}
                 },
                 {
                     'targets': "_all",

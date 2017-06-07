@@ -9,11 +9,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(schema = "ont", name = "points_of_measure",
+@Table(schema = "ont", name = "point_of_measure",
         uniqueConstraints = @UniqueConstraint( columnNames = {"quantity_id", "row_num", "data_set_id"}))
 public class PointOfMeasure implements Serializable {
-    
-	private Long id;
+
+    private Long id;
     private Double quantityValue;
     private Long rowNum;
     private DataSource dataSource;
@@ -79,13 +79,13 @@ public class PointOfMeasure implements Serializable {
         this.measurementUncertainties = measureUncertainties;
     }
     public  void addMeasurementUncertainty(MeasurementUncertainty measurementUncertainty){
-    	measurementUncertainty.setPointOfMeasure(this);
+        measurementUncertainty.setPointOfMeasure(this);
         getMeasurementUncertainties().add(measurementUncertainty);
     }
     public void removeMeasurementUncertainty(MeasurementUncertainty measurementUncertainty){
         getMeasurementUncertainties().remove(measurementUncertainty);
     }
-    
+
     @ManyToOne
     @JoinColumn(name = "dimension_id")
     public Dimension getDimension(){

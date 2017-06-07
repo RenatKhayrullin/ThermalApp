@@ -33,7 +33,7 @@
 <link href="${common}" rel="stylesheet" />
 
 <body>
-    <h2>List of available data</h2>
+    <h2><div id="Title"/></h2>
 
     <form:form id="bind" action="/bind?entity=${entity}&resource=${resource}" method="POST" modelAttribute="link">
         <table id="form" width="80%">
@@ -63,7 +63,15 @@
 
     $(document).ready(function (){
         console.log('${infos}');
-        var data = JSON.parse('${infos}');
+        try {
+            var data = JSON.parse('${infos}');
+        }
+        catch (error) {
+            $("#Title").html("Response JSON is invalid");
+            return;
+        }
+        $("#Title").html("List of available data");
+
         if ('${tpresource.additional}'.length > 0) {
                 console.log('${tpresource.additional}');
                 data = data['${tpresource.additional}'];

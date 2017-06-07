@@ -25,10 +25,14 @@
     <spring:url value="/resources/css/common.css"                           var="common" />
         <link href="${common}" rel="stylesheet" />
 
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
 <body>
 	<h1>${message}</h1>
     <div id="feedback"></div>
-    <form:form id="metaData" action="/metadata/datainfo" method="POST" modelAttribute="dataMetaInfo">
+    <form:form id="metaData" action="/metadata/datainfo" method="POST" modelAttribute="dataMetaInfo" >
         <table class="table table-bordered dt-middle">
             <tr>
                 <td>
@@ -88,7 +92,7 @@
             'aoColumns': [
                 { 'mData': 'id'},
                 { 'mData': 'substanceName' },
-                { 'mData': 'chemicalFormula' },
+                { 'mData': 'substanceFormula' },
                 { 'mData': 'substanceType' }
             ],
             'columnDefs': [{

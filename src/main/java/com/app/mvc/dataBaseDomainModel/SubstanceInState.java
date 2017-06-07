@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(schema = "ont", name = "substances_in_states",
+@Table(schema = "ont", name = "substance_in_state",
         uniqueConstraints = @UniqueConstraint(columnNames = {"substance_id", "state_id"}))
 public class SubstanceInState implements Serializable {
 
@@ -19,8 +19,12 @@ public class SubstanceInState implements Serializable {
     private ChemicalSubstance chemicalSubstance;
     private State state;
     private String additionalName;
+
     @JsonIgnore
     private Set<DataSet> dataSets;// = new HashSet<DataSet>();
+
+    @JsonIgnore
+    private Set<ControlFunctionDefinition> controlFunctionDefinitions;
 
     public SubstanceInState(){}
 
@@ -70,4 +74,12 @@ public class SubstanceInState implements Serializable {
     public void removeDataSet(DataSet dataSet){
         getDataSets().remove(dataSet);
     }
+
+    @OneToMany(mappedBy = "substanceInState", cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    public Set<ControlFunctionDefinition> getControlFunctionDefinitions() { return controlFunctionDefinitions; }
+    public void setControlFunctionDefinitions(Set<ControlFunctionDefinition> controlFunctionDefinitions) {
+        this.controlFunctionDefinitions = controlFunctionDefinitions;
+    }
+
 }

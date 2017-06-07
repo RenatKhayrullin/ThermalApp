@@ -7,14 +7,13 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(schema = "ont", name = "physical_quantities")
+@Table(schema = "ont", name = "physical_quantity")
 public class PhysicalQuantity implements Serializable {
 
-	private Long id;
+    private Long id;
     private String quantityName;
     private String quantityDesignation;
     private String quantityType;
-    private PhysicalQuantityRole quantityRole;
 
     @JsonIgnore
     private Set<Dimension> dimensions;//= new HashSet<Dimension>();
@@ -59,24 +58,16 @@ public class PhysicalQuantity implements Serializable {
     public String getQuantityType() { return this.quantityType; }
     public void setQuantityType(String quantityType) { this.quantityType =quantityType; }
 
-    @ManyToOne
-    @JoinColumn(name = "quantity_type_id")
-    public PhysicalQuantityRole getQuantityRole(){
-        return  this.quantityRole;
-    }
-    public void setQuantityRole(PhysicalQuantityRole role){
-        this.quantityRole = role;
-    }
 
     @ManyToMany
-    @JoinTable(name = "physical_quantities_dimensions",
-    			joinColumns = @JoinColumn(name = "quantity_id"),
-    			inverseJoinColumns = @JoinColumn(name = "dimension_id"))
+    @JoinTable(name = "quantity_dimension",
+            joinColumns = @JoinColumn(name = "quantity_id"),
+            inverseJoinColumns = @JoinColumn(name = "dimension_id"))
     public Set<Dimension> getDimensions() { return this.dimensions; }
     public void setDimensions(Set<Dimension> dimensions) { this.dimensions = dimensions; }
 
     @ManyToMany
-    @JoinTable(name = "chem_subst_quantities",
+    @JoinTable(name = "substance_quantity",
             joinColumns = @JoinColumn(name = "quantity_id"),
             inverseJoinColumns = @JoinColumn(name = "substance_id"))
     public Set<ChemicalSubstance> getChemicalSubstances() { return this.chemicalSubstances; }
