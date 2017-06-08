@@ -136,4 +136,13 @@ public class JpaQueryProvider {
                 .setParameter(4, dimension)
                 .getResultList();
     }
+
+    public List<Object[]> getUncertaintyValues() {
+        String query = "select distinct ut.id, cfd.uncertainty_value " +
+                "from ont.uncertainty_type ut " +
+                "join ont.control_function_definition cfd " +
+                "on ut.id = cfd.uncertainty_type_id";
+        return (List<Object[]>) entityManager.createNativeQuery(query)
+                .getResultList();
+    }
 }

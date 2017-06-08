@@ -119,4 +119,14 @@ public class MetaInfoServiceImpl implements MetaInfoService{
     public List getAllMeasurementUncertainties() {
         return measurementUncertaintyDao.findAll();
     }
+
+    @Override
+    public String getUncertaintyValues() throws JSONException {
+        List<Object[]> result = jpa.getUncertaintyValues();
+        JSONObject object = new JSONObject();
+        for (Object[] obj: result) {
+            object.put(obj[0].toString(), obj[1]);
+        }
+        return object.toString();
+    }
 }

@@ -29,6 +29,7 @@
     <title>Meta Data</title>
 </head>
 <body>
+<h2>CHOOSE QUANTITY DIMENSIONS</h2>
 <form:form id="metaForm" action="numericinfo" method="post" modelAttribute="metaData" >
     <table class="display cell-border row-border dt-middle" cellspacing="0" width="50%" style="overflow-x:auto">
         <tr>

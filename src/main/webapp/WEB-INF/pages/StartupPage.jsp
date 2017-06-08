@@ -101,7 +101,7 @@
                 'orderable': false,
                 'className': 'dt-body-center',
                 'render': function (data){
-                    return '<input type="checkbox" name="substanceid" value="' + $('<div/>').text(data).html() + '">';
+                    return '<input type="radio" name="substanceid" value="' + $('<div/>').text(data).html() + '">';
                 }
             }],
         });
@@ -124,7 +124,7 @@
                 'orderable': false,
                 'className': 'dt-body-center',
                 'render': function (data){
-                    return '<input type="checkbox" name="stateid" value="' + $('<div/>').text(data).html() + '">';
+                    return '<input type="radio" name="stateid" value="' + $('<div/>').text(data).html() + '">';
                 }
             }],
         });

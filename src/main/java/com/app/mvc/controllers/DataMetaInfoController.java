@@ -32,7 +32,7 @@ public class DataMetaInfoController  {
     }
 
     @RequestMapping(value = "/metadata/numericinfo", method = RequestMethod.POST /*, headers = {"charset=UTF-8"}*/)
-    public String ShowData(@RequestParam String metaData, ModelMap model) throws IOException {
+    public String ShowData(@RequestParam String metaData, ModelMap model) throws IOException, JSONException {
 
         //System.out.println(metaData);
         List<NumericData> numericDataList = metaInfoService.getNumericData(metaData);
@@ -46,11 +46,17 @@ public class DataMetaInfoController  {
         String uncertainties = jsonDataMapper.writeValueAsString(measurementUncertainties);
 
         //String encodeSources = new String(sources.getBytes("UTF-8"),"ISO-8859-1");
-        System.out.println(sources);
+        System.out.println("Sources   " +sources);
 
+        String values = metaInfoService.getUncertaintyValues();
+        System.out.println("values   "+ values);
+
+        model.addAttribute("substance", numericDataList.get(0).getSubstance());
+        model.addAttribute("state", numericDataList.get(0).getState());
         model.addAttribute("dataSources", sources);
         model.addAttribute("uncertainties", uncertainties);
         model.addAttribute("numericData", data);
+        model.addAttribute("uncertaintyValues", values);
         return "NumericDataPage";
     }
 }

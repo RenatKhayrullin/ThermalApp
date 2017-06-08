@@ -15,4 +15,6 @@ public interface MetaInfoService {
 
     List getAllDataSources();
     List getAllMeasurementUncertainties();
+
+    String getUncertaintyValues() throws JSONException;
 }
