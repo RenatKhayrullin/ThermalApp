@@ -1,6 +1,6 @@
 package com.app.mvc.jsonview;
 
-import com.app.mvc.TreeModel.Elements;
+import com.complexible.stardog.plan.filter.functions.rdfterm.Str;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import java.util.ArrayList;
@@ -14,11 +14,11 @@ public class OntProperties
     @JsonView(Views.Public.class)
     String code;
     @JsonView(Views.Public.class)
-    List<String> objProperties;
+    String objProperties;
     @JsonView(Views.Public.class)
-    List<String> dataProperties;
+    String dataProperties;
     @JsonView(Views.Public.class)
-    List<String> individuals;
+    String individuals;
     @JsonView(Views.Public.class)
     List<String> label;
     @JsonView(Views.Public.class)
@@ -36,26 +36,17 @@ public class OntProperties
 
     public void setCode(String code) { this.code = code; }
 
-    public List<String> getObjProperties() { return objProperties; }
+    public String getObjProperties() { return objProperties; }
 
-    public void setObjProperties(List<String> objProperties) { this.objProperties = objProperties; }
+    public void setObjProperties(String objProperties) { this.objProperties = objProperties; }
 
-    public List<String> getDataProperties() { return dataProperties; }
+    public String getDataProperties() { return dataProperties; }
 
-    public void setDataProperties(List<String> dataProperties) { this.dataProperties = dataProperties; }
+    public void setDataProperties(String dataProperties) { this.dataProperties = dataProperties; }
 
-    public List<String> getIndividuals() { return individuals; }
+    public String getIndividuals() { return individuals; }
 
-    public void setIndividuals(List<Elements> individuals) {
-        ArrayList<String> stringInds = new ArrayList<String>();
-        for (Elements ind: individuals) {
-            String element = ind.getElement();
-            stringInds.add(element);
-        }
-        this.individuals = stringInds;
-    }
-
-    public void setStringIndividuals(List<String> individuals) {
+    public void setStringIndividuals(String individuals) {
         this.individuals = individuals;
     }
 

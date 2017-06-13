@@ -1,7 +1,5 @@
 package com.app.mvc.OntologyModelDao;
 
-import com.app.mvc.TreeModel.CourtBranch;
-import com.app.mvc.TreeModel.OntList;
 import com.sun.corba.se.spi.orbutil.fsm.Input;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
@@ -74,7 +72,9 @@ public class JenaDAO {
         ArrayList<String> results = new ArrayList<String>();
 
         while(jenaresults.hasNext()) {
-            String soln = jenaresults.next().toString();
+            QuerySolution s = jenaresults.next();
+            System.out.println("JenaResult   "+s.get("entity"));
+            String soln = s.toString();
             System.out.println(soln);
             if ((soln.contains("#")) && (soln.contains(">")))
                 soln = soln.substring(soln.indexOf('#')+1, soln.indexOf('>'));
@@ -87,38 +87,60 @@ public class JenaDAO {
         return results;
     }
 
+    private JSONArray getResultJson(String query, String field) throws JSONException {
+        Query jenaQuery = QueryFactory.create(query) ;
+        QueryExecution qexec = QueryExecutionFactory.create(jenaQuery, inf);
+        ResultSet jenaResults = qexec.execSelect();
+        JSONArray result = new JSONArray();
+
+        while(jenaResults.hasNext()) {
+            String solution = jenaResults.next().get(field).toString();
+            if (solution.contains("#"))
+                solution = solution.substring(solution.indexOf('#')+1);
+            else
+            if (solution.contains("\""))
+                solution = solution.substring(solution.indexOf('"')+1, solution.lastIndexOf('"'));
+            else continue;
+            JSONObject object = new JSONObject();
+            object.put("field", solution);
+            object.put("info", solution);
+            result.put(object);
+        }
+        return result;
+    }
+
     //DataProperties
-    public List<String> getDataProperties(String className) {
+    public JSONArray getDataProperties(String className) throws JSONException {
         String nameUri = createNewSubject(className);
 
-        String query = "select ?dataprop WHERE " +
-                "{?dataprop a <" + Constants.OWL + "#DatatypeProperty> ." +
-                "?dataprop <" + Constants.RDFS + "#domain> <" +nameUri+"> .}";
+        String query = "select ?dataProperty WHERE " +
+                "{?dataProperty a <" + Constants.OWL + "#DatatypeProperty> ." +
+                "?dataProperty <" + Constants.RDFS + "#domain> <" +nameUri+"> .}";
 
-        System.out.println("SparqlQuery for DataProp: "+query);
-        return getSearchResults(query);
+        System.out.println("DATA PROPERTIES: "+query);
+        return getResultJson(query, "dataProperty");
     }
 
     //ObjectProperties
-    public List<String> getObjectProperties(String className) {
+    public JSONArray getObjectProperties(String className) throws JSONException {
         String nameUri = createNewSubject(className);
 
-        String query = "select ?objprop WHERE " +
-                "{?objprop a <" + Constants.OWL + "#ObjectProperty> ." +
-                "?objprop <" + Constants.RDFS + "#domain> <"+nameUri+"> .}";
+        String query = "select ?objectProperty WHERE " +
+                "{?objectProperty a <" + Constants.OWL + "#ObjectProperty> ." +
+                "?objectProperty <" + Constants.RDFS + "#domain> <"+nameUri+"> .}";
 
-        System.out.println("SparqlQuery for DataProp: "+query);
-        return getSearchResults(query);
+        System.out.println("OBJECT PROPERTIES: "+query);
+        return getResultJson(query, "objectProperty");
     }
 
     //Instances
-    public List<String> getInstances(String className) {
+    public JSONArray getInstances(String className) throws JSONException {
         String nameUri = createNewSubject(className);
 
-        String query = "SELECT ?s { ?s <" + Constants.ELEMENT + "> <"+nameUri+">}";
+        String query = "SELECT ?instance { ?instance <" + Constants.ELEMENT + "> <"+nameUri+">}";
 
-        System.out.println("SparqlQuery for DataProp: "+query);
-        return getSearchResults(query);
+        System.out.println("INSTANCES: "+query);
+        return getResultJson(query, "instance");
     }
 
     //Class
@@ -173,7 +195,7 @@ public class JenaDAO {
         String query = "SELECT ?entity WHERE {<" + nameUri+ "> <" + Constants.OWL +
                 "#" + property + "> ?entity.}";
 
-        System.out.println(query);
+        System.out.println("OWL PROPERTY:   "+query);
         List <String> queryResult = getSearchResults(query);
         return queryResult;
     }

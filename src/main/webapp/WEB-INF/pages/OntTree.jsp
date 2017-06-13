@@ -121,14 +121,12 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+
         $("#label").html("Choose Ontology Class");
         var ontData = JSON.parse('${ontJson}');
         console.log(ontData);
-        //ontData = makeTree('${ontJson}');
-        //console.log(ontData);
 
         $("#ontology").on("changed.jstree", function (e, data) {
-
             var ontData = data.node.text;
             console.log(ontData);
 
@@ -142,12 +140,10 @@
 
                 success : function(data) {
                     console.log("SUCCESS: ", data);
-                    //display(data);
                     datatab(data);
                 },
                 error : function(e) {
                     console.log("ERROR: ", e);
-                    display(e);
                 }
             })}).jstree({ 'core' : {
                 'data' : ontData
@@ -167,7 +163,6 @@
 
             success : function(data) {
                 console.log("SUCCESS: ", data);
-                //display(data);
                 displayInfo(data);
             },
             error : function(e) {
@@ -175,7 +170,6 @@
             }
         });
     }
-
 
     function datatab(data) {
         var label = (data["label"])? data["label"] : "";
@@ -202,7 +196,8 @@
         $('#searchTab').hide();
 
         //Show dataTables for ObjProperties and dataProperties
-        var objPropData = process(data, "objProperties");
+        var objPropData = JSON.parse(data["objProperties"]);
+        console.log("ObjProp: ", objPropData);
 
         $('#objPropHead').html("Object Properties");
         var objPropTable = $('#objProp').DataTable( {
@@ -216,7 +211,8 @@
             ]
         });
 
-        var dataPropData = process(data, "dataProperties");
+        var dataPropData = JSON.parse(data["dataProperties"]);
+        console.log("DataProp: ", dataPropData);
 
         $('#dataPropHead').html("Data Properties");
         var dataPropTable = $('#dataProp').DataTable( {
@@ -230,10 +226,9 @@
             ]
         });
 
-        var inds = process(data, "individuals");
-
+        var individuals = JSON.parse(data["individuals"]);
         //If there are no instances, do nothing
-        if (inds.length == 0) return;
+        if (individuals.length == 0) return;
 
         //Show form for searching related instances in thirdparty resources
         $('#search').show();
@@ -241,11 +236,11 @@
         $('#search').html('<h4>Choose instance and resource to search for related objects</h4>');
         $('#submit').html('<button type="submit">Get data</button>');
         $('#info').empty();
-
-
         $('#indHead').html("Instances");
+        $('#resHead').html("Resources");
+
         var indTable = $('#inds').DataTable( {
-            'aaData':           inds,
+            'aaData':           individuals,
             'paging':           false,
             'scrollCollapse':   true,
             'scrollY':          '50vh',
@@ -271,9 +266,6 @@
             }]
         });
 
-
-        $('#resHead').html("Resources");
-
         var resData = JSON.parse('${thirdPartyRes}');
         console.log(resData);
         var resTable = $('#resources').DataTable( {
@@ -294,37 +286,6 @@
                 }
             }]
         });
-    }
-
-    function process(data, field) {
-        var array = [];
-        if (data[field] == null) return array;
-        data[field].forEach(function (element) {
-            var object = {"field": element, "info": element};
-            array.push(object);
-        });
-        console.log(array);
-        return array;
-    }
-
-    function makeTree(data) {
-        var ontData = JSON.parse(data);
-        var object = {}, array = [];
-        ontData.forEach(function (element) {
-            if (element["parentId"] == 0) {
-                object = {
-                    "id": element["id"].toString(),
-                    "parent": "#",
-                    "text": element["name"]
-                };
-            } else object = {
-                "id": element["id"].toString(),
-                "parent": element["parentId"].toString(),
-                "text": element["name"]
-            };
-            array.push(object);
-        })
-        return array;
     }
 
     function displayInfo(data) {

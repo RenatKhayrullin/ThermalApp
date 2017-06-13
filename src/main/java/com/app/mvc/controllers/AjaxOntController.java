@@ -1,8 +1,6 @@
 package com.app.mvc.controllers;
 
 import com.app.mvc.OntologyModelDao.JenaDAO;
-import com.app.mvc.OntologyModelDao.StardogDao;
-import com.app.mvc.TreeModel.Elements;
 import com.app.mvc.jsonview.OntProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.json.JSONArray;
@@ -35,32 +33,27 @@ public class AjaxOntController
     @JsonView(Views.Public.class)
     //вывод objectproperty и dataproperty для классов
     @RequestMapping(value="/OntTree/OntProperty")
-    public OntProperties GetOntProperty (@RequestBody String thisClass) throws IOException {
+    public OntProperties GetOntProperty (@RequestBody String thisClass) throws IOException, JSONException {
 
         String ontClassName = thisClass.replace("\"","");
 
         System.out.println("CLASS NAME : "+ ontClassName);
-        /*
-        List<String> ontObjProperties = stardogDAO.getObjProperty(ontClassName);
-        List<String> ontDataProperties = stardogDAO.getDataProperty(ontClassName);
-        List<Elements> ontInstances = stardogDAO.getInstances(ontClassName);
-        */
-        List<String> ontObjProperties = jenaDAO.getObjectProperties(ontClassName);
-        List<String> ontDataProperties = jenaDAO.getDataProperties(ontClassName);
-        List<String> ontInstances = jenaDAO.getInstances(ontClassName);
+        JSONArray ontObjProperties = jenaDAO.getObjectProperties(ontClassName);
+        JSONArray ontDataProperties = jenaDAO.getDataProperties(ontClassName);
+        JSONArray ontInstances = jenaDAO.getInstances(ontClassName);
         List<String> ontLabel = jenaDAO.getClassProperty(ontClassName, label);
         List<String> ontComment = jenaDAO.getClassProperty(ontClassName, comment);
         List<String> ontEquivalentClass = jenaDAO.getOwlProperty(ontClassName, "equivalentClass");
 
         OntProperties ontProperties = new OntProperties();
 
-        if (ontObjProperties.size() > 0 || ontDataProperties.size() > 0
+        if (ontObjProperties.length() > 0 || ontDataProperties.length() > 0
                 || ontLabel.size() > 0 || ontEquivalentClass.size() > 0) {
             ontProperties.setCode("200");
             ontProperties.setMsg("");
-            ontProperties.setDataProperties(ontDataProperties);
-            ontProperties.setObjProperties(ontObjProperties);
-            ontProperties.setStringIndividuals(ontInstances);
+            ontProperties.setDataProperties(ontDataProperties.toString());
+            ontProperties.setObjProperties(ontObjProperties.toString());
+            ontProperties.setStringIndividuals(ontInstances.toString());
             ontProperties.setLabel(ontLabel);
             ontProperties.setComment(ontComment);
             if (ontEquivalentClass.size() > 0)
@@ -84,17 +77,19 @@ public class AjaxOntController
         String className = jenaDAO.getClassName(ontInstName);
         JSONObject response = new JSONObject();
 
-        List<String> ontObjProperties = jenaDAO.getObjectProperties(className);
-        List<String> ontDataProperties = jenaDAO.getDataProperties(className);
+        JSONArray ontObjProperties = jenaDAO.getObjectProperties(className);
+        JSONArray ontDataProperties = jenaDAO.getDataProperties(className);
 
-        for (String objProp: ontObjProperties) {
+        for (int i = 0; i < ontObjProperties.length(); ++i) {
+            String objProp = ontObjProperties.getJSONObject(i).getString("field");
             String result = jenaDAO.getInstanceProperty(ontInstName, objProp);
             if (!result.isEmpty()) {
                 response.put(objProp, result);
             }
         }
 
-        for (String dataProp: ontDataProperties) {
+        for (int i = 0; i < ontDataProperties.length(); ++i) {
+            String dataProp = ontDataProperties.getJSONObject(i).getString("field");
             String result = jenaDAO.getInstanceProperty(ontInstName, dataProp);
             if (!result.isEmpty()) {
                 response.put(dataProp, result);

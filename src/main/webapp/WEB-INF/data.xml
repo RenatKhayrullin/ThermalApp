@@ -8,6 +8,7 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!-- Настройки фабрики сессий Стардога //библиотека stardog-spring -->
+    <!--
     <bean name="ontDataSource" class="com.complexible.stardog.ext.spring.DataSourceFactoryBean">
         <property name="to" value="ThermalOnt"/>
         <property name="username" value="admin"/>
@@ -29,7 +30,7 @@
             </list>
         </property>
     </bean>
-
+    -->
 
     <!-- подлкючение к базе данных -->
     <!-- драйвер для подключения к серверу баз данных -->

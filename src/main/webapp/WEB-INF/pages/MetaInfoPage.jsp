@@ -52,18 +52,16 @@
 
     $(document).ready(function (){
         var data = JSON.parse('${dataMetaInfo}');
-        //data = process(data);
-        data = data["data"][0];
         console.log(data);
-        var columns = process(data);
-        console.log(columns);
+        data = data[0];
+
         var table = $('#metaDataTab').DataTable({
             'aaData': [data],
             'paging': false,
             'scrollCollapse': true,
             'scrollY': '50vh',
             'info': false,
-            'aoColumns': columns,
+            'aoColumns': data["columns"],
 
             'columnDefs': [
                 {
@@ -79,11 +77,11 @@
                 {
                     'targets': "_all",
                     'render': function(data) {
-                        console.log(data["quantity"]);
-                        var string = data["quantity"] + '<br><br><select form="metaForm" name="metaData">';
+                        //console.log(data["quantity"]);
+                        var string = '<select form="metaForm" name="metaData">';
+                        //var string = '';
                         data["dimensions"].forEach(function(element) {
-                            string += '<option value="' + data["quantity"] + ' ' + element + '">' + element + '</option>';
-                            //string += '<option value="1">' + element + '</option>';
+                            string += '<option value="' + data["name"] + ' ' + element + '">' + element + '</option>';
                         })
                         string += '</select>';
                         return string;
@@ -94,17 +92,6 @@
         });
     })
 
-    function process(data) {
-        var array = [], object = {}, count = 0;
-        array.push({mData: "substance"});
-        array.push({mData: "state"});
-        data["quantities"].forEach(function (element) {
-            object = {mData: "quantities." + count.toString()};
-            ++count;
-            array.push(object);
-        })
-        return array;
-    }
 </script>
 </body>
 </html>

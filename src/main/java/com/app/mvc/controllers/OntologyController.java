@@ -1,36 +1,24 @@
 package com.app.mvc.controllers;
 
 import com.app.mvc.OntologyModelDao.JenaDAO;
-import com.app.mvc.TreeModel.OntList;
 import com.app.mvc.applicationServices.ResourceService;
 import com.app.mvc.dataBaseDomainModel.ThirdPartyResource;
-import org.apache.jena.Jena;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONException;
 import org.springframework.stereotype.Controller;
-import com.app.mvc.TreeModel.CourtBranch;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import org.slf4j.Logger;
-
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import com.app.mvc.OntologyModelDao.StardogDao;
 import org.springframework.ui.Model;
 
 import java.util.Locale;
 
 @Controller
 public class OntologyController {
-    private static final Logger logger = LoggerFactory.getLogger(StardogDao.class);
-
-    @Autowired
-    private StardogDao stardogDAO;
 
     @Autowired
     private JenaDAO jenaDAO;

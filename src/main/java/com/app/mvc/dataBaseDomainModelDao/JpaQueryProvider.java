@@ -19,9 +19,9 @@ public class JpaQueryProvider {
 
     public List<Object[]> getMetaInfo(List<Long> substance, List<Long> state, List<Long> quantity) {
         String queryHead = "SELECT " +
-                "chs.substance_formula " +
+                "chs.substance_name " +
                 ",st.phase_name " +
-                ",string_agg(DISTINCT cast(pq1.id as TEXT) ||' '|| pq1.quantity_designation, ',') as constsQtys ";
+                ",string_agg(DISTINCT cast(pq1.id as TEXT) ||' '|| pq1.quantity_name, ',') as constsQtys ";
         String queryBody =
                 "FROM ont.pure_chemical_substance chs " +
                         "JOIN ont.substance_in_state sis " +
@@ -35,7 +35,7 @@ public class JpaQueryProvider {
                         "WHERE chs.id in ?1 " +
                         "AND st.id in ?2 ";
         String queryAdd = "AND pq1.id in ?3 ";
-        String queryEnd = "group by chs.substance_formula, st.phase_name";
+        String queryEnd = "group by chs.substance_name, st.phase_name";
         String query = "";
         if (quantity != null) {
             query = queryHead + queryBody + queryAdd + queryEnd;
@@ -70,30 +70,6 @@ public class JpaQueryProvider {
                 .getSingleResult();
     }
 
-    public ChemicalSubstance getSubstanceByFormula(String name) {
-        return (ChemicalSubstance) entityManager.createQuery(
-                "SELECT s FROM ChemicalSubstance s WHERE " +
-                        "s.substanceFormula like :name")
-                .setParameter("name", name)
-                .getSingleResult();
-    }
-
-    public State getStateByName(String name) {
-        return (State) entityManager.createQuery(
-                "SELECT s FROM State s WHERE " +
-                        "s.phaseName like :name")
-                .setParameter("name", name)
-                .getSingleResult();
-    }
-
-    public PhysicalQuantity getQuantityByDesignation(String name) {
-        return (PhysicalQuantity) entityManager.createQuery(
-                "SELECT p FROM PhysicalQuantity p WHERE " +
-                        "p.quantityDesignation like :name")
-                .setParameter("name", name)
-                .getSingleResult();
-    }
-
     public List<Object[]> getNumericDataList(String substance, String state, String quantity, String dimension) {
         System.out.println(substance + "  " + state+ "  "+ quantity+ "  "+dimension);
         String query = "SELECT " +
@@ -122,9 +98,9 @@ public class JpaQueryProvider {
                 "ON pm.quantity_id = pq.id " +
                 "JOIN ont.state s " +
                 "ON sis.state_id = s.id " +
-                "WHERE pcs.substance_formula like ?1 " +
+                "WHERE pcs.substance_name like ?1 " +
                 "AND s.phase_name like ?2 " +
-                "AND pq.quantity_designation like ?3 " +
+                "AND pq.quantity_name like ?3 " +
                 "AND dm.dimension_designation LIKE ?4";
 
         System.out.println(query);
@@ -137,12 +113,24 @@ public class JpaQueryProvider {
                 .getResultList();
     }
 
-    public List<Object[]> getUncertaintyValues() {
-        String query = "select distinct ut.id, cfd.uncertainty_value " +
+
+    public List<Object[]> getDataSources(ArrayList<Integer> requiredDataSources) {
+        String query = "select dsc.id, dsc.bibliographic_reference " +
+                "from ont.data_source dsc " +
+                "where dsc.id in ?1";
+        return (List<Object[]>) entityManager.createNativeQuery(query)
+                .setParameter(1, requiredDataSources)
+                .getResultList();
+    }
+
+    public List<Object[]> getUncertainties(ArrayList<Integer> requiredUncertainties) {
+        String query = "select ut.id, ut.uncertainty_name, cfd.uncertainty_value "+
                 "from ont.uncertainty_type ut " +
                 "join ont.control_function_definition cfd " +
-                "on ut.id = cfd.uncertainty_type_id";
+                "on ut.id = cfd.uncertainty_type_id " +
+                "where ut.id in ?1";
         return (List<Object[]>) entityManager.createNativeQuery(query)
+                .setParameter(1, requiredUncertainties)
                 .getResultList();
     }
 }

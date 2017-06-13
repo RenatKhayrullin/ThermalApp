@@ -8,6 +8,7 @@ import com.app.mvc.dataBaseDomainModel.MeasurementUncertainty;
 import com.app.mvc.dataBaseDomainModel.UncertaintyType;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,9 +25,11 @@ public class DataMetaInfoController  {
     @RequestMapping(value = "/metadata/datainfo", method = RequestMethod.POST  /*, headers = {"charset=UTF-8"}*/)
     public String ShowMetaInfo(@ModelAttribute final MetaInfo dataMetaInfo, ModelMap model) throws JSONException {
 
-        String JSONdata = metaInfoService.getMetaInfo(dataMetaInfo.getSubstanceid(), dataMetaInfo.getStateid(),
+        String JSONdata = metaInfoService.getMetaInfo(
+                dataMetaInfo.getSubstanceid(),
+                dataMetaInfo.getStateid(),
                 dataMetaInfo.getPropertyid());
-        System.out.println(JSONdata);
+        System.out.println("METADATA:  "+ JSONdata);
         model.addAttribute("dataMetaInfo", JSONdata);
         return "MetaInfoPage";
     }
@@ -34,29 +37,12 @@ public class DataMetaInfoController  {
     @RequestMapping(value = "/metadata/numericinfo", method = RequestMethod.POST /*, headers = {"charset=UTF-8"}*/)
     public String ShowData(@RequestParam String metaData, ModelMap model) throws IOException, JSONException {
 
-        //System.out.println(metaData);
-        List<NumericData> numericDataList = metaInfoService.getNumericData(metaData);
-        ObjectMapper jsonDataMapper = new ObjectMapper();
-        String data = jsonDataMapper.writeValueAsString(numericDataList);
+        System.out.println("MetaData:  "+metaData);
+        JSONObject numericData = metaInfoService.getNumericData(metaData);
 
-        List<DataSource> dataSources = metaInfoService.getAllDataSources();
-        List<UncertaintyType> measurementUncertainties = metaInfoService.getAllMeasurementUncertainties();
-
-        String sources = jsonDataMapper.writeValueAsString(dataSources);
-        String uncertainties = jsonDataMapper.writeValueAsString(measurementUncertainties);
-
-        //String encodeSources = new String(sources.getBytes("UTF-8"),"ISO-8859-1");
-        System.out.println("Sources   " +sources);
-
-        String values = metaInfoService.getUncertaintyValues();
-        System.out.println("values   "+ values);
-
-        model.addAttribute("substance", numericDataList.get(0).getSubstance());
-        model.addAttribute("state", numericDataList.get(0).getState());
-        model.addAttribute("dataSources", sources);
-        model.addAttribute("uncertainties", uncertainties);
-        model.addAttribute("numericData", data);
-        model.addAttribute("uncertaintyValues", values);
+        model.addAttribute("substance", numericData.get("substance"));
+        model.addAttribute("state", numericData.get("state"));
+        model.addAttribute("data", numericData);
         return "NumericDataPage";
     }
 }
