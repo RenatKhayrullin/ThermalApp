@@ -50,20 +50,6 @@ public class JenaDAO {
         return Constants.WWW + "#" + name;
     }
 
-    Model loadModel(String filename) {
-        // create an empty model
-        Model model = ModelFactory.createDefaultModel();
-
-        InputStream in = FileManager.get().open(filename);
-        if (in == null) {
-            throw new IllegalArgumentException( "File: " + filename + " not found");
-        }
-
-        // read the RDF/XML file
-        model.read(in, "");
-        return model;
-    }
-
     private List<String> getSearchResults(String queryString) {
 
         Query jenaquery = QueryFactory.create(queryString) ;
@@ -76,6 +62,7 @@ public class JenaDAO {
             System.out.println("JenaResult   "+s.get("entity"));
             String soln = s.toString();
             System.out.println(soln);
+            if (soln.contains("_:b")) continue;
             if ((soln.contains("#")) && (soln.contains(">")))
                 soln = soln.substring(soln.indexOf('#')+1, soln.indexOf('>'));
             if (soln.contains("\""))
@@ -161,14 +148,12 @@ public class JenaDAO {
         String nameUri = createNewSubject(className);
         ArrayList<String> result = new ArrayList<String>();
         Resource resource = inf.getResource(nameUri);
-        //System.out.println(resource.toString());
         Statement resourceProperty = resource.getProperty(property);
         if (resourceProperty == null) return result;
         else {
             String prop = resourceProperty.getObject().toString();
             result.add(prop);
         }
-        //System.out.println(resourceLabel);
         return result;
     }
 
@@ -252,16 +237,8 @@ public class JenaDAO {
         newResource.addSuperClass(superClass);
         Resource differentResource = ontModel.getResource(link);
         newResource.setEquivalentClass(differentResource);
-        System.out.println("test    "+differentResource.toString());
-        /*
-        Property eqProperty = model.getProperty(Constants.OWL.toString() + "#equivalentTo");
-        System.out.println(eqProperty.getURI());
-
-        Statement statement = model.createStatement(existingResource, eqProperty, link);
-        model.add(statement);*/
 
         OutputStream out = new FileOutputStream(filename);
-       // model.write(out);
         ontModel.write(out);
         out.close();
 
@@ -289,12 +266,10 @@ public class JenaDAO {
                 if (solution.contains("supertype")) {
                     String supertype = solution.get("supertype").toString();
                     if (supertype.contains("#") && ! supertype.equalsIgnoreCase(type)) {
-                        //System.out.println(type + "    " + supertype);
                         if (! allTypes.has(type)) allTypes.put(type, supertype);
                     }
                 }
                 if (! allTypes.has(type)) {
-                    //System.out.println(type);
                     allTypes.put(type, "Thing");
                 }
             }

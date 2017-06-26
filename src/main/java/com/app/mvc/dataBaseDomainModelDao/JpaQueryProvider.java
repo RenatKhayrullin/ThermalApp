@@ -56,6 +56,21 @@ public class JpaQueryProvider {
         }
     }
 
+    public String getConstants(List<Long> substance) {
+        String query = "SELECT " +
+                "string_agg(DISTINCT cast(pq.id as TEXT) ||' '|| pq.quantity_name, ',') as conQtys " +
+                "FROM ont.pure_chemical_substance chs " +
+                "JOIN ont.substance_quantity sq " +
+                "ON chs.id = sq.substance_id " +
+                "JOIN ont.physical_quantity pq " +
+                "ON pq.id = sq.quantity_id " +
+                "WHERE chs.id in ?1";
+
+        return (String) entityManager.createNativeQuery(query)
+                .setParameter(1, substance)
+                .getSingleResult();
+    }
+
     public String getDimensions(int id) {
         String query = "select " +
                 "string_agg(DISTINCT d.dimension_name, ',') " +
@@ -75,7 +90,7 @@ public class JpaQueryProvider {
         String query = "SELECT " +
                 "ds.id as dsid, pm.row_num, " +
                 "pcs.substance_name, s.phase_name, pq.quantity_designation, dm.dimension_designation, " +
-                "dsc.id as dscid, pm.quantity_value, ut.id, cfd.uncertainty_value " +
+                "dsc.id as dscid, pm.quantity_value, ut.id, mu.uncertainty_value " +
                 "FROM " +
                 "ont.substance_in_state sis " +
                 "JOIN ont.data_set ds " +
@@ -90,8 +105,6 @@ public class JpaQueryProvider {
                 "ON pm.id = mu.point_of_measure_id " +
                 "JOIN ont.uncertainty_type ut " +
                 "ON mu.uncertainty_type_id = ut.id " +
-                "JOIN ont.control_function_definition cfd " +
-                "ON (cfd.substance_in_state_id = sis.id AND cfd.uncertainty_type_id = ut.id) " +
                 "JOIN ont.pure_chemical_substance pcs " +
                 "ON sis.substance_id = pcs.id " +
                 "JOIN ont.physical_quantity pq " +
@@ -115,6 +128,7 @@ public class JpaQueryProvider {
 
 
     public List<Object[]> getDataSources(ArrayList<Integer> requiredDataSources) {
+        if (requiredDataSources.size() == 0) return new ArrayList<>();
         String query = "select dsc.id, dsc.bibliographic_reference " +
                 "from ont.data_source dsc " +
                 "where dsc.id in ?1";
@@ -124,10 +138,9 @@ public class JpaQueryProvider {
     }
 
     public List<Object[]> getUncertainties(ArrayList<Integer> requiredUncertainties) {
-        String query = "select ut.id, ut.uncertainty_name, cfd.uncertainty_value "+
+        if (requiredUncertainties.size() == 0) return new ArrayList<>();
+        String query = "select ut.id, ut.uncertainty_name "+
                 "from ont.uncertainty_type ut " +
-                "join ont.control_function_definition cfd " +
-                "on ut.id = cfd.uncertainty_type_id " +
                 "where ut.id in ?1";
         return (List<Object[]>) entityManager.createNativeQuery(query)
                 .setParameter(1, requiredUncertainties)

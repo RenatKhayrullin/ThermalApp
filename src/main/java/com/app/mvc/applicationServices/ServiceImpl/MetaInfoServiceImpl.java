@@ -119,9 +119,12 @@ public class MetaInfoServiceImpl implements MetaInfoService{
              *  [Neon, liquid-solid, 1 Temperature, 2 Pressure, 3 PressureOfMelting]
              */
 
+            String constants = jpa.getConstants(substance);
+
             String substanceName = obj[0].toString();
             String stateName = obj[1].toString();
             String quantities = obj[2].toString();
+            if (constants != null) quantities = quantities+","+constants;
 
             String[] quantityArray = quantities.split(","); // [1 Temperature, 2 Pressure, 3 PressureOfMelting]
 
@@ -225,6 +228,7 @@ public class MetaInfoServiceImpl implements MetaInfoService{
         ArrayList<Integer> requiredDataSources = new ArrayList<>();
         ArrayList<Integer> requiredUncertainties = new ArrayList<>();
         boolean multipleUncertainties = false;
+        String singleUncertaintyValue = "";
         JSONObject uncertaintyValues = new JSONObject();
         /*
          *  multipleUncertainties and uncertaintyValues object will be used to
@@ -239,6 +243,8 @@ public class MetaInfoServiceImpl implements MetaInfoService{
         /*
          *  hashmap will contain the key: pair dataSet-rowNumber and value: object like in numericDataArray
          */
+        ArrayList<String> headers = new ArrayList<>();
+
         for (int i = 2; i < data.length; ++i) {
             String[] quantityDimension = data[i].split(" ");
             /*
@@ -267,16 +273,26 @@ public class MetaInfoServiceImpl implements MetaInfoService{
                  *  ]
                  */
 
+                System.out.println(resultLine[0]+ "   "+resultLine[1]+ "   "+resultLine[2]+ "   "+resultLine[3]+ "   "+
+                        resultLine[4]+ "   "+resultLine[5]+ "   "+resultLine[6]+ "   "+resultLine[7]+ "   "+
+                        resultLine[8]+ "   "+resultLine[9]+ "   ");
+
                 //Constructing hashmap
                 String key = resultLine[0] + " " + resultLine[1];                           //dataSet rowNumber
                 JSONObject value = new JSONObject();
                 if (hashmap.containsKey(key)) value = hashmap.get(key);
+
                 String uncertainty = "Unc-" + resultLine[8];                                //Unc-1
                 String uncertaintyHeader = resultLine[4] + "-"+ uncertainty;                //Pmelt-Unc-1
-                value.put(resultLine[4].toString()+" ("+resultLine[5]+")", resultLine[7]);  //Pmelt (Bar): 168
+                String measureHeader = resultLine[4].toString()+" ("+resultLine[5]+")";     //Pmelt (Bar)
+                value.put(measureHeader, resultLine[7]);                                    //Pmelt (Bar): 168
                 value.put(uncertaintyHeader, resultLine[9]);                                //Pmelt-Unc-1: 10
                 value.put("datasource", resultLine[6]);                                     //datasource: 1
                 hashmap.put(key, value);
+
+                if (! headers.contains(uncertaintyHeader)) headers.add(uncertaintyHeader);
+                if (! headers.contains(measureHeader)) headers.add(measureHeader);
+                if (! headers.contains("datasource")) headers.add("datasource");
 
                 //Constructing list of required dataSources
                 Integer dataSourceId = new Integer(resultLine[6].toString());
@@ -290,11 +306,14 @@ public class MetaInfoServiceImpl implements MetaInfoService{
 
                 //Constructing uncertaintyValues
                 //If there are different values for one uncertainty, type is not less then 2
-                if (uncertaintyValues.has(uncertainty) && (uncertaintyValues.get(uncertainty) != resultLine[9]))
+                if (uncertaintyValues.has(uncertainty) &&
+                        !uncertaintyValues.get(uncertainty).toString().equalsIgnoreCase(resultLine[9].toString())) {
                     multipleUncertainties = true;
+                }
                 else uncertaintyValues.put(uncertainty, resultLine[9]);
                 //Assuming if there are two or more uncertainties
                 if (uncertaintyValues.length() > 1) multipleUncertainties = true;
+                singleUncertaintyValue = resultLine[9].toString();
             }
         }
 
@@ -303,6 +322,8 @@ public class MetaInfoServiceImpl implements MetaInfoService{
         int type = 1;
         if (multipleUncertainties) type = 2;
         if (requiredDataSources.size() > 1) type = 3;
+
+        System.out.println(type);
 
         JSONArray dataSources = new JSONArray();
         List<Object[]> dataSourcesList = jpa.getDataSources(requiredDataSources);
@@ -316,8 +337,7 @@ public class MetaInfoServiceImpl implements MetaInfoService{
         JSONArray uncertainties = new JSONArray();
         List<Object[]> uncertaintiesList = jpa.getUncertainties(requiredUncertainties);
         for (Object[] unc: uncertaintiesList) {
-            String uncertaintyValue = "";
-            if (type == 1) uncertaintyValue = unc[2].toString();
+            String uncertaintyValue = (type == 1)? singleUncertaintyValue: "";
             JSONObject object = new JSONObject();
             object.put("id", unc[0]);
             object.put("uncertaintyName", unc[1]);
@@ -325,32 +345,27 @@ public class MetaInfoServiceImpl implements MetaInfoService{
             uncertainties.put(object);
         }
 
-        JSONArray headers = getHeaders(numericData.getJSONObject(0), type);
+        JSONArray headersArray = getHeaders(headers, type);
 
         result.put("substance", substance);
         result.put("state", state);
         result.put("numericData", numericData);
-        result.put("headers", headers);
+        result.put("headers", headersArray);
         result.put("dataSources", dataSources);
         result.put("uncertainties", uncertainties);
-        //System.out.println(numericDataList.get(0).getQuantityValue());
-        //System.out.println(numericDataList.size());
         return result;
     }
 
-
-    private JSONArray getHeaders(JSONObject data, int type) throws JSONException {
+    private JSONArray getHeaders(ArrayList<String> headers, int type) throws JSONException {
         JSONArray resultJson = new JSONArray();
         ArrayList<JSONObject> result = new ArrayList<>();
-        Iterator<String> keys = data.keys();
-        while (keys.hasNext()) {
-            String key = keys.next();
+        for (String key: headers) {
             if (key.contains("-Unc-") && type == 1) continue;
             if (key.contains("datasource") && type != 3) continue;
-            result.add(new JSONObject("{" +
-                    "mData: "+key+", " +
-                    "sTitle: "+key+
-            "}"));
+            JSONObject object = new JSONObject();
+            object.put("mData", key);
+            object.put("sTitle", key);
+            result.add(object);
         }
 
         result.sort(new Comparator<JSONObject>() {

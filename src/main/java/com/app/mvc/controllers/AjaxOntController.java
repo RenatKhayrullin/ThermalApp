@@ -31,7 +31,6 @@ public class AjaxOntController
     // @RequestBody - Convert the json data into object (SearchCriteria) mapped by field name.
     // @JsonView(Views.Public.class) - Optional, limited the json data display to client.
     @JsonView(Views.Public.class)
-    //вывод objectproperty и dataproperty для классов
     @RequestMapping(value="/OntTree/OntProperty")
     public OntProperties GetOntProperty (@RequestBody String thisClass) throws IOException, JSONException {
 

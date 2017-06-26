@@ -30,6 +30,7 @@ public class DataMetaInfoController  {
                 dataMetaInfo.getStateid(),
                 dataMetaInfo.getPropertyid());
         System.out.println("METADATA:  "+ JSONdata);
+
         model.addAttribute("dataMetaInfo", JSONdata);
         return "MetaInfoPage";
     }
