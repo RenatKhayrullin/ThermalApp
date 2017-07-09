@@ -315,7 +315,7 @@ values (22,'0.05',34, 1);
 --Neon In Gas
 insert into ont.physical_quantity 
 (id, quantity_designation, quantity_name, quantity_type)
-values (10, 'B', 'SecondVirialСoefficient', 'func');
+values (10, 'B', 'SecondVirialCoefficient', 'func');
 
 insert into ont."state" 
 (id, phase_type, phase_name)
@@ -512,7 +512,7 @@ values (2, 'iron', 'Fe', '');
 
 insert into ont.physical_quantity 
 (id, quantity_designation, quantity_name, quantity_type)
-values (11, 'Cp', 'IsobaricHeatСapacity', 'func');
+values (11, 'Cp', 'IsobaricHeatCapacity', 'func');
 
 insert into ont.uncertainty_type (id, uncertainty_name) values (5, 'Precision class');
 
