@@ -282,38 +282,44 @@ public class MetaInfoServiceImpl implements MetaInfoService{
                 JSONObject value = new JSONObject();
                 if (hashmap.containsKey(key)) value = hashmap.get(key);
 
-                String uncertainty = "Unc-" + resultLine[8];                                //Unc-1
-                String uncertaintyHeader = resultLine[4] + "-"+ uncertainty;                //Pmelt-Unc-1
-                String measureHeader = resultLine[4].toString()+" ("+resultLine[5]+")";     //Pmelt (Bar)
-                value.put(measureHeader, resultLine[7]);                                    //Pmelt (Bar): 168
-                value.put(uncertaintyHeader, resultLine[9]);                                //Pmelt-Unc-1: 10
-                value.put("datasource", resultLine[6]);                                     //datasource: 1
-                hashmap.put(key, value);
+                String dimensionDesignation = resultLine[5] == null? "": " (" + resultLine[5].toString() + ") ";
 
-                if (! headers.contains(uncertaintyHeader)) headers.add(uncertaintyHeader);
+                String measureHeader = resultLine[4].toString()+ dimensionDesignation;      //Pmelt (Bar)
+                value.put(measureHeader, resultLine[7]);                                    //Pmelt (Bar): 168
+                value.put("datasource", resultLine[6]);                                     //datasource: 1
                 if (! headers.contains(measureHeader)) headers.add(measureHeader);
                 if (! headers.contains("datasource")) headers.add("datasource");
+
+                if (resultLine[9] != null) {
+                    String uncertainty = "Unc-" + resultLine[8];                                //Unc-1
+                    String uncertaintyHeader = resultLine[4] + "-"+ uncertainty;                //Pmelt-Unc-1
+                    value.put(uncertaintyHeader, resultLine[9]);                                //Pmelt-Unc-1: 10
+
+                    if (! headers.contains(uncertaintyHeader)) headers.add(uncertaintyHeader);
+
+                    //Constructing uncertaintyValues
+                    //If there are different values for one uncertainty, type is not less then 2
+                    if (uncertaintyValues.has(uncertainty) &&
+                            !uncertaintyValues.get(uncertainty).toString().equalsIgnoreCase(resultLine[9].toString())) {
+                        multipleUncertainties = true;
+                    }
+                    else uncertaintyValues.put(uncertainty, resultLine[9]);
+                    //Assuming if there are two or more uncertainties
+                    if (uncertaintyValues.length() > 1) multipleUncertainties = true;
+                    singleUncertaintyValue = resultLine[9].toString();
+
+                    //Constructing list of required uncertainties
+                    Integer uncertaintyId = new Integer(resultLine[8].toString());
+                    if (! requiredUncertainties.contains(uncertaintyId))
+                        requiredUncertainties.add(uncertaintyId);
+                }
+
+                hashmap.put(key, value);
 
                 //Constructing list of required dataSources
                 Integer dataSourceId = new Integer(resultLine[6].toString());
                 if (! requiredDataSources.contains(dataSourceId))
                     requiredDataSources.add(dataSourceId);
-
-                //Constructing list of required uncertainties
-                Integer uncertaintyId = new Integer(resultLine[8].toString());
-                if (! requiredUncertainties.contains(uncertaintyId))
-                    requiredUncertainties.add(uncertaintyId);
-
-                //Constructing uncertaintyValues
-                //If there are different values for one uncertainty, type is not less then 2
-                if (uncertaintyValues.has(uncertainty) &&
-                        !uncertaintyValues.get(uncertainty).toString().equalsIgnoreCase(resultLine[9].toString())) {
-                    multipleUncertainties = true;
-                }
-                else uncertaintyValues.put(uncertainty, resultLine[9]);
-                //Assuming if there are two or more uncertainties
-                if (uncertaintyValues.length() > 1) multipleUncertainties = true;
-                singleUncertaintyValue = resultLine[9].toString();
             }
         }
 

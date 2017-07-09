@@ -91,38 +91,45 @@ public class JpaQueryProvider {
                 "ds.id as dsid, pm.row_num, " +
                 "pcs.substance_name, s.phase_name, pq.quantity_designation, dm.dimension_designation, " +
                 "dsc.id as dscid, pm.quantity_value, ut.id, mu.uncertainty_value " +
-                "FROM " +
-                "ont.substance_in_state sis " +
+                "FROM ont.pure_chemical_substance pcs " +
+                "JOIN ont.substance_in_state sis " +
+                "ON sis.substance_id = pcs.id " +
+                "JOIN ont.state s " +
+                "ON sis.state_id = s.id " +
                 "JOIN ont.data_set ds " +
                 "ON sis.id = ds.substance_in_state_id " +
                 "JOIN ont.point_of_measure pm " +
                 "ON ds.id = pm.data_set_id " +
-                "JOIN ont.dimension dm " +
+                "JOIN ont.physical_quantity pq " +
+                "ON pm.quantity_id = pq.id " +
+                "LEFT JOIN ont.dimension dm " +
                 "ON dm.id = pm.dimension_id " +
                 "JOIN ont.data_source dsc " +
                 "ON dsc.id = pm.data_source_id " +
-                "JOIN ont.measurement_uncertainty mu " +
+                "LEFT JOIN ont.measurement_uncertainty mu " +
                 "ON pm.id = mu.point_of_measure_id " +
-                "JOIN ont.uncertainty_type ut " +
+                "LEFT JOIN ont.uncertainty_type ut " +
                 "ON mu.uncertainty_type_id = ut.id " +
-                "JOIN ont.pure_chemical_substance pcs " +
-                "ON sis.substance_id = pcs.id " +
-                "JOIN ont.physical_quantity pq " +
-                "ON pm.quantity_id = pq.id " +
-                "JOIN ont.state s " +
-                "ON sis.state_id = s.id " +
                 "WHERE pcs.substance_name like ?1 " +
                 "AND s.phase_name like ?2 " +
-                "AND pq.quantity_name like ?3 " +
-                "AND dm.dimension_designation LIKE ?4";
+                "AND pq.quantity_name like ?3 ";
 
+        if (!dimension.equalsIgnoreCase("none")) {
+            query += "AND dm.dimension_designation LIKE ?4 ";
+            System.out.println(query);
+            return (List<Object[]>) entityManager.createNativeQuery(query)
+                    .setParameter(1, substance)
+                    .setParameter(2, state)
+                    .setParameter(3, quantity)
+                    .setParameter(4, dimension)
+                    .getResultList();
+        }
         System.out.println(query);
 
         return (List<Object[]>) entityManager.createNativeQuery(query)
                 .setParameter(1, substance)
                 .setParameter(2, state)
                 .setParameter(3, quantity)
-                .setParameter(4, dimension)
                 .getResultList();
     }
 
